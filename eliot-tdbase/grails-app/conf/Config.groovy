@@ -61,6 +61,7 @@ if (appConfigLocation) {
 }
 
 // config générale
+grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
 grails.project.groupId = "org.lilie.services.eliot" // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
@@ -101,20 +102,6 @@ grails.spring.bean.packages = []
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
 
-// set per-environment serverURL stem for creating absolute links
-environments {
-  development {
-    //grails.serverURL = "http://192.168.0.1:8080/${appName}"
-    grails.serverURL = "http://localhost:8080/${appName}"
-  }
-  test {
-    grails.serverURL = "http://localhost:8080/${appName}"
-  }
-  testlilie {
-    grails.serverURL = "http://localhost:8080/${appName}"
-  }
-}
-
 // log4j configuration
 log4j = {
   // Example of changing the log pattern for the default console
@@ -146,6 +133,10 @@ log4j = {
 
 grails.controllers.defaultScope = "session"
 
+grails.serverURL = "http://localhost:8080/${appName}"
+eliot.tdbase.nomApplication = "eliot-tdbase"
+eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
+eliot.tdbase.urlServeur = "http//localhost:8080"
 
 grails.plugins.springsecurity.dao.reflectionSaltSourceProperty = 'username'
 grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
@@ -202,148 +193,8 @@ eliot.manuels.documents.urlMap = ["${FonctionEnum.ENS.name()}": "http://ticetime
 // relative au serveur Grails (l'URI doit commencer par '/'):
 eliot.jmol.resourcesURI = "/js/lib/jmol/"
 
-environments {
-  test {
-    grails.plugins.springsecurity.cas.active = false
-    eliot.fichiers.racine = '/tmp'
-    eliot.tdbase.nomApplication = "eliot-tdbase"
-    eliot.urlResolution.mode = UrlServeurResolutionEnum.ANNUAIRE_PORTEUR.name()
-    //eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
-    //eliot.tdbase.urlServeur = "http//localhost:8080"
-  }
-  development {
-    grails.plugins.springsecurity.interceptUrlMap = ['/': ['IS_AUTHENTICATED_FULLY'],
-            '/p/**': ['IS_AUTHENTICATED_FULLY'],
-            '/dashboard/**': ["${FonctionEnum.ENS.toRole()}",
-                    'IS_AUTHENTICATED_FULLY'],
-            '/sujet/**': ["${FonctionEnum.ENS.toRole()}",
-                    'IS_AUTHENTICATED_FULLY'],
-            '/question/**': ["${FonctionEnum.ENS.toRole()}",
-                    'IS_AUTHENTICATED_FULLY'],
-            '/seance/**': ["${FonctionEnum.ENS.toRole()}",
-                    'IS_AUTHENTICATED_FULLY'],
-            '/activite/**': ["${FonctionEnum.ELEVE.toRole()}",
-                    'IS_AUTHENTICATED_FULLY'],
-            '/resultats/**': ["${FonctionEnum.PERS_REL_ELEVE.toRole()}",
-                    'IS_AUTHENTICATED_FULLY']]
-
-    grails.plugins.springsecurity.cas.active = false
-    eliot.tdbase.nomApplication = "eliot-tdbase"
-    eliot.urlResolution.mode = UrlServeurResolutionEnum.ANNUAIRE_PORTEUR.name()
-    //eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
-    //eliot.tdbase.urlServeur = "http//localhost:8080"
-    // autorise l'identification via url get
-    grails.plugins.springsecurity.apf.postOnly = false
-    // application de la migration  définie dans eliot-tice-dbmigration
-    eliot.bootstrap.migration = true
-    // creation d'un jeu de test
-    eliot.bootstrap.jeudetest = true
-    // configuration de la racine de l'espace de fichier
-    eliot.fichiers.racine = '/Users/Shared/eliot-root'
-    eliot.fichiers.maxsize.mega = 10
-    // configuration des liens du menu portail et des annonces portail
-    eliot.portail.menu.affichage = true
-    eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
-            libelle: "ticetime"],
-            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
-                    libelle: "eliot-tdbase sur Github"]]
-    eliot.portail.news = ["TD Base version ${appVersion} - environnement DEV.",
-            "Le projet est disponible sur <a href=\"https://github.com/ticetime/eliot-tdbase/wiki\" target=\"_blank\">Github</a> !",
-            "Login / mot de passe enseignant : ens1 / ens1",
-            "Login / mot de passe élève 1 : elv1 / elv1",
-            "Login / mot de passe élève 2 : elv2 / elv2",
-            "Login / mot de passe parent 1 : resp1 / resp1"]
-  }
-  testlilie {
-    eliot.tdbase.nomApplication = "eliot-tdbase"
-    eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
-    eliot.tdbase.urlServeur = "http//localhost:8080"
-    // determine si eliot-tdbase doit s'executer en mode intégration Lilie
-    eliot.portail.lilie = true
-    eliot.portail.lilieCasActive = true
-    eliot.portail.continueAfterUnsuccessfullCasLilieAuthentication = true
-    // cas is not activated by default
-    grails.plugins.springsecurity.cas.active = false
-    grails.plugins.springsecurity.cas.loginUri = '/login'
-    grails.plugins.springsecurity.cas.serviceUrl = "http://localhost:8080/${appName}/j_spring_cas_security_check"
-    grails.plugins.springsecurity.cas.serverUrlPrefix = 'http://localhost:8181/cas-server-webapp-3.4.11'
-    grails.plugins.springsecurity.cas.proxyCallbackUrl = "http://localhost:8080/${appName}/secure/receptor"
-    grails.plugins.springsecurity.cas.proxyReceptorUrl = '/secure/receptor'
-
-    // application de la migration  définie dans eliot-tice-dbmigration
-    eliot.bootstrap.migration = false
-
-    // configuration de la racine de l'espace de fichier
-    eliot.fichiers.racine = '/Users/Shared/eliot-root'
-    eliot.fichiers.maxsize.mega = 10
-    // configuration des liens du menu portail et des annonces portail
-    eliot.portail.menu.affichage = true
-    eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
-            libelle: "ticetime"],
-            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
-                    libelle: "eliot-tdbase sur Github"]]
-    eliot.portail.news = ["TD Base version ${appVersion} - environnement TESTLILIE ",
-            "Login / mot de passe : voir base de test eliot/lilie",
-            "Pierre Baudet : UT110000000000005027"]
-  }
-  production {
-    // paramètres par defaut de CAS
-    grails.plugins.springsecurity.cas.active = true
-    grails.plugins.springsecurity.cas.useSingleSignout = true
-  }
-}
-
-// Configurations des opérations de webservices Rest
+// les operations de webservices
 //
-
-environments {
-  development {
-    eliot.interfacage.strongCheck = false
-    // rest client config for textes
-    eliot.webservices.rest.client.textes.user = "api"
-    eliot.webservices.rest.client.textes.password = "api"
-    eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
-    eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
-    // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
-    eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
-  }
-  test {
-    eliot.interfacage.strongCheck = false
-    // rest client config for textes
-    eliot.webservices.rest.client.textes.user = "api"
-    eliot.webservices.rest.client.textes.password = "api"
-    eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
-    eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
-    // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
-    eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
-  }
-  testlilie {
-    // Spécifie si les objets sensés être créés sont bien créés
-    // à n'activier que si les données tdbase, notes et textes sont stockées dans
-    // la même base
-    eliot.interfacage.strongCheck = false
-    // rest client config for textes
-    eliot.webservices.rest.client.textes.user = "api"
-    eliot.webservices.rest.client.textes.password = "api"
-    eliot.webservices.rest.client.textes.urlServer = "http://fylab02.dns-oid.com:8380"
-    eliot.webservices.rest.client.textes.uriPrefix = "/eliot-textes-2.8.2-A1/echanges/v2"
-    eliot.webservices.rest.client.textes.connexionTimeout = 10000 // ms
-    // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "api"
-    eliot.webservices.rest.client.notes.password = "api"
-    eliot.webservices.rest.client.notes.urlServer = "http://fylab02.dns-oid.com:8380"
-    eliot.webservices.rest.client.notes.uriPrefix = "/eliot-notes-2.8.2-A1/echanges/v2"
-    eliot.webservices.rest.client.notes.connexionTimeout = 10000 // ms
-  }
-
-}
-
 eliot.webservices.rest.client.operations = [[operationName: "getStructureChapitresForCahierId",
         description: "Retourne la liste arborescente de chapitres d'un cahier",
         contentType: ContentType.JSON,
@@ -416,3 +267,198 @@ eliot.webservices.rest.client.operations = [[operationName: "getStructureChapitr
                 responseContentStructure: "eliot-notes#evaluation#id>",
                 //urlServer: "http://localhost:8090",
                 uriTemplate: '/evaluations/$evaluationId/notes.json']]
+
+environments {
+  test {
+    eliot.fichiers.racine = '/tmp'
+    eliot.tdbase.nomApplication = "eliot-tdbase"
+    eliot.urlResolution.mode = UrlServeurResolutionEnum.ANNUAIRE_PORTEUR.name()
+    //eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
+    //eliot.tdbase.urlServeur = "http//localhost:8080"
+
+    // Spécifie si les objets sensés être créés sont bien créés
+    // à n'activier que si les données tdbase, notes et textes sont stockées dans
+    // la même base
+
+    eliot.interfacage.strongCheck = false
+    // rest client config for textes
+    eliot.webservices.rest.client.textes.user = "api"
+    eliot.webservices.rest.client.textes.password = "api"
+    eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
+    eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
+    // rest client config for notes
+    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
+    eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
+
+  }
+  development {
+    grails.plugins.springsecurity.interceptUrlMap = ['/': ['IS_AUTHENTICATED_FULLY'],
+            '/p/**': ['IS_AUTHENTICATED_FULLY'],
+            '/dashboard/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/sujet/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/question/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/seance/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/activite/**': ["${FonctionEnum.ELEVE.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/resultats/**': ["${FonctionEnum.PERS_REL_ELEVE.toRole()}",
+                    'IS_AUTHENTICATED_FULLY']]
+
+    eliot.tdbase.nomApplication = "eliot-tdbase"
+    eliot.urlResolution.mode = UrlServeurResolutionEnum.ANNUAIRE_PORTEUR.name()
+    //eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
+    //eliot.tdbase.urlServeur = "http//localhost:8080"
+    // autorise l'identification via url get
+    grails.plugins.springsecurity.apf.postOnly = false
+    // application de la migration  définie dans eliot-tice-dbmigration
+    eliot.bootstrap.migration = true
+    // creation d'un jeu de test
+    eliot.bootstrap.jeudetest = true
+    // configuration de la racine de l'espace de fichier
+    eliot.fichiers.storedInDatabase = true
+    eliot.fichiers.racine = '/Users/Shared/eliot-root'
+    eliot.fichiers.maxsize.mega = 10
+    // configuration des liens du menu portail et des annonces portail
+    eliot.portail.menu.affichage = true
+    eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
+            libelle: "ticetime"],
+            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
+                    libelle: "eliot-tdbase sur Github"]]
+    eliot.portail.news = ["TD Base version ${appVersion} - environnement DEV.",
+            "Le projet est disponible sur <a href=\"https://github.com/ticetime/eliot-tdbase/wiki\" target=\"_blank\">Github</a> !",
+            "Login / mot de passe enseignant : ens1 / ens1",
+            "Login / mot de passe élève 1 : elv1 / elv1",
+            "Login / mot de passe élève 2 : elv2 / elv2",
+            "Login / mot de passe parent 1 : resp1 / resp1"]
+
+    // Spécifie si les objets sensés être créés sont bien créés
+    // à n'activier que si les données tdbase, notes et textes sont stockées dans
+    // la même base
+    eliot.interfacage.strongCheck = false
+    // rest client config for textes
+    eliot.webservices.rest.client.textes.user = "api"
+    eliot.webservices.rest.client.textes.password = "api"
+    eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
+    eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
+    // rest client config for notes
+    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
+    eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
+
+  }
+  cf {
+    grails.serverURL = "http://eliot-tdbase.cloudfoundry.com"
+    eliot.tdbase.urlServeur = "http://eliot-tdbase.cloudfoundry.com"
+    eliot.tdbase.nomApplication = "eliot-tdbase"
+    eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
+    eliot.tdbase.urlServeur = "http//eliot-tdbase.cloudfoundry.com"
+
+
+    grails.plugins.springsecurity.interceptUrlMap = ['/': ['IS_AUTHENTICATED_FULLY'],
+            '/p/**': ['IS_AUTHENTICATED_FULLY'],
+            '/dashboard/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/sujet/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/question/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/seance/**': ["${FonctionEnum.ENS.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/activite/**': ["${FonctionEnum.ELEVE.toRole()}",
+                    'IS_AUTHENTICATED_FULLY'],
+            '/resultats/**': ["${FonctionEnum.PERS_REL_ELEVE.toRole()}",
+                    'IS_AUTHENTICATED_FULLY']]
+
+    // autorise l'identification via url get
+    grails.plugins.springsecurity.apf.postOnly = false
+    // application de la migration  définie dans eliot-tice-dbmigration
+    eliot.bootstrap.migration = true
+    // creation d'un jeu de test
+    eliot.bootstrap.jeudetest = true
+    // configuration de la racine de l'espace de fichier
+    eliot.fichiers.storedInDatabase = true
+    eliot.fichiers.racine = '/Users/Shared/eliot-root'
+    eliot.fichiers.maxsize.mega = 10
+    // configuration des liens du menu portail et des annonces portail
+    eliot.portail.menu.affichage = true
+    eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
+            libelle: "ticetime"],
+            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
+                    libelle: "eliot-tdbase sur Github"]]
+
+    eliot.portail.news = ["TDBase v2.0.4-SNAPSHOT on Cloudfoundry.",
+            "Le projet est disponible sur <a href=\"https://github.com/ticetime/eliot-tdbase/wiki\" target=\"_blank\">Github</a> !",
+            "Login / mot de passe enseignant : ens1 / ens1",
+            "Login / mot de passe élève 1 : elv1 / elv1",
+            "Login / mot de passe élève 2 : elv2 / elv2",
+            "Login / mot de passe parent 1 : resp1 / resp1"]
+
+
+    // Spécifie si les objets sensés être créés sont bien créés
+    // à n'activier que si les données tdbase, notes et textes sont stockées dans
+    // la même base
+    eliot.interfacage.strongCheck = false
+    // rest client config for textes
+    eliot.webservices.rest.client.textes.user = "api"
+    eliot.webservices.rest.client.textes.password = "api"
+    eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
+    eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
+    // rest client config for notes
+    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
+    eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
+
+  }
+  testlilie {
+    eliot.tdbase.nomApplication = "eliot-tdbase"
+    eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
+    eliot.tdbase.urlServeur = "http//localhost:8080"
+    // determine si eliot-tdbase doit s'executer en mode intégration Lilie
+    eliot.portail.lilie = true
+    eliot.portail.lilieCasActive = true
+    eliot.portail.continueAfterUnsuccessfullCasLilieAuthentication = true
+
+    // application de la migration  définie dans eliot-tice-dbmigration
+    eliot.bootstrap.migration = false
+
+    // configuration de la racine de l'espace de fichier
+    eliot.fichiers.racine = '/Users/Shared/eliot-root'
+    eliot.fichiers.maxsize.mega = 10
+    // configuration des liens du menu portail et des annonces portail
+    eliot.portail.menu.affichage = true
+    eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
+            libelle: "ticetime"],
+            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
+                    libelle: "eliot-tdbase sur Github"]]
+    eliot.portail.news = ["TDBase version ${appVersion} - environnement TESTLILIE ",
+            "Login / mot de passe : voir base de test eliot/lilie",
+            "Pierre Baudet : UT110000000000005027"]
+
+    // Spécifie si les objets sensés être créés sont bien créés
+    // à n'activier que si les données tdbase, notes et textes sont stockées dans
+    // la même base
+    eliot.interfacage.strongCheck = false
+    // rest client config for textes
+    eliot.webservices.rest.client.textes.user = "api"
+    eliot.webservices.rest.client.textes.password = "api"
+    eliot.webservices.rest.client.textes.urlServer = "http://fylab02.dns-oid.com:8380"
+    eliot.webservices.rest.client.textes.uriPrefix = "/eliot-textes-2.8.2-A1/echanges/v2"
+    eliot.webservices.rest.client.textes.connexionTimeout = 10000 // ms
+    // rest client config for notes
+    eliot.webservices.rest.client.notes.user = "api"
+    eliot.webservices.rest.client.notes.password = "api"
+    eliot.webservices.rest.client.notes.urlServer = "http://fylab02.dns-oid.com:8380"
+    eliot.webservices.rest.client.notes.uriPrefix = "/eliot-notes-2.8.2-A1/echanges/v2"
+    eliot.webservices.rest.client.notes.connexionTimeout = 10000 // ms
+  }
+
+}
+
+

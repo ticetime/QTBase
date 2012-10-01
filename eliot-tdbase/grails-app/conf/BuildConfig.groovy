@@ -53,11 +53,14 @@ grails.project.dependency.resolution = {
   }
   log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
   repositories {
+    inherits true
     grailsPlugins()
     grailsHome()
     grailsCentral()
+
     mavenRepo "http://repository-ticetime.forge.cloudbees.com/release"
     mavenRepo "http://repository-ticetime.forge.cloudbees.com/snapshot"
+
   }
 
   /**
@@ -74,6 +77,7 @@ grails.project.dependency.resolution = {
     }
 
     compile 'org.apache.maven.wagon:wagon-webdav:1.0-beta-2'
+
   }
 
   plugins {
@@ -90,6 +94,7 @@ grails.project.dependency.resolution = {
     compile ":mail:1.0"
 
     compile ":spring-security-core:1.2.7.2"
+    compile ':cloud-foundry:1.2.2'
 
     build(":tomcat:$grailsVersion",
           ":rest-client-builder:1.0.2",
