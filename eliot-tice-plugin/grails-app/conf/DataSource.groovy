@@ -29,8 +29,8 @@
 dataSource {
   pooled = true
   driverClassName = "org.postgresql.Driver"
-  username = "eliot_scolarite"
-  password = "eliot"
+  username = "qtbase"
+  password = "qtbase"
   logSql = true
 }
 hibernate {
@@ -42,12 +42,12 @@ hibernate {
 environments {
   development {
     dataSource {
-      url = "jdbc:postgresql://localhost:5433/eliot-tdbase-dev"
+      url = "jdbc:postgresql://localhost:5433/qtbase-dev"
     }
   }
   test {
     dataSource {
-      url = "jdbc:postgresql://localhost:5433/eliot-tdbase-test"
+      url = "jdbc:postgresql://localhost:5433/qtbase-test"
     }
   }
   testH2 {
@@ -58,7 +58,7 @@ environments {
       password = ""
 
       //dbCreate = "update"
-      url = "jdbc:h2:mem:eliot-tdbase-test-h2"
+      url = "jdbc:h2:mem:qtbase-test-h2"
 
     }
   }
