@@ -30,11 +30,9 @@ package org.lilie.services.eliot.tdbase
 
 import org.lilie.services.eliot.tice.annuaire.GroupePersonnes
 import org.lilie.services.eliot.tice.annuaire.Personne
-import org.lilie.services.eliot.tice.notes.Evaluation
 import org.lilie.services.eliot.tice.scolarite.Etablissement
 import org.lilie.services.eliot.tice.scolarite.Matiere
 import org.lilie.services.eliot.tice.scolarite.StructureEnseignement
-import org.lilie.services.eliot.tice.textes.Activite
 import org.lilie.services.eliot.tice.scolarite.ProfilScolariteService
 
 /**

@@ -31,9 +31,7 @@
 package org.lilie.services.eliot.tdbase
 
 import org.lilie.services.eliot.tice.annuaire.Personne
-import org.lilie.services.eliot.tice.notes.Evaluation
 import org.lilie.services.eliot.tice.scolarite.ProfilScolariteService
-import org.lilie.services.eliot.tice.textes.Activite
 import org.springframework.transaction.annotation.Transactional
 
 /**
@@ -185,18 +183,7 @@ class ModaliteActiviteService {
     if (!actId) {
       return false
     }
-    // note technique
-    // le check de l'existence d'une activité s'effectue sans web services pour des
-    // raisons  de perf
-    if (strongCheck) {
-      Activite act = Activite.get(actId)
-      if (!act) {
-        modaliteActivite.activiteId = null
-        if (modaliteActivite.save()) {
-          return false
-        }
-      }
-    }
+
     return true
   }
 
@@ -227,18 +214,7 @@ class ModaliteActiviteService {
     if (!evalId) {
       return false
     }
-    // note technique
-    // le check de l'existence d'un devoir s'effectue sans web services pour des
-    // raisons  de perf
-    if (strongCheck) {
-      Evaluation eval = Evaluation.get(evalId)
-      if (!eval) {
-        modaliteActivite.evaluationId = null
-        if (modaliteActivite.save()) {
-          return false
-        }
-      }
-    }
+
     return true
   }
 

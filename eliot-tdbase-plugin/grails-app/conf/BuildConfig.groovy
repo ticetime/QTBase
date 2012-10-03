@@ -4,8 +4,6 @@ grails.project.test.reports.dir = "target/test-reports"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.plugin.location.'eliot-tice-plugin' = "../eliot-tice-plugin"
-grails.plugin.location.'eliot-textes-plugin' = "../eliot-textes-plugin"
-grails.plugin.location.'eliot-notes-plugin' = "../eliot-notes-plugin"
 
 grails.project.dependency.resolution = {
   // inherit Grails' default dependencies

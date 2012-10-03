@@ -163,15 +163,15 @@ grails.plugins.springsecurity.interceptUrlMap = ['/': ['IS_AUTHENTICATED_FULLY']
 
 // l'interfacage doit il effectuer des contrôles fort sur les "pseudo
 // clés étrangères"
-eliot.interfacage.strongCheck = true
+eliot.interfacage.strongCheck = false
 
 //  support de l'interfaçage eliot-notes
 //
-eliot.interfacage.notes = true
+eliot.interfacage.notes = false
 
 //  support de l'interfaçage eliot-textes
 //
-eliot.interfacage.textes = true
+eliot.interfacage.textes = false
 
 // le nombre d'éléments max à afficher dans une liste de résultat
 eliot.listes.maxrecherche = 5
