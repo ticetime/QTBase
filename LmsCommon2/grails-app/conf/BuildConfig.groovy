@@ -30,72 +30,64 @@ grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 
-grails.plugin.location.'lms-common' = "../LmsCommon"
-grails.plugin.location.'eliot-tdbase-plugin' = "../QtBaseCommon"
+//grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 
-grails.project.war.file = "target/${appName}.war"
-
-// This closure is passed the location of the staging directory that
-// is zipped up to make the WAR file, and the command line arguments.
-grails.war.resources = { stagingDir, args ->
-  copy(file: "src/templates/eliot-tdbase-config.groovy",
-       tofile: "${stagingDir}/WEB-INF/classes/eliot-tdbase-config.groovy")
-}
+versionTDBase = "12.01-SNAPSHOT"
 
 grails.project.dependency.resolution = {
+
   // inherit Grails' default dependencies
   inherits("global") {
     // uncomment to disable ehcache
     // excludes 'ehcache'
+    excludes "xml-apis"
   }
   log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
-  repositories {
-    inherits true
-    grailsPlugins()
-    grailsHome()
-    grailsCentral()
 
+  repositories {
+    grailsCentral()
+    mavenLocal()
     mavenRepo "http://repository-ticetime.forge.cloudbees.com/release"
     mavenRepo "http://repository-ticetime.forge.cloudbees.com/snapshot"
-
   }
 
-  /**
-   *   specify dependencies here under either 'build', 'compile', 'runtime',
-   *   'test' or 'provided' scopes eg.
-   */
   dependencies {
-    build group: 'net.sourceforge.saxon', name: 'saxon', version: '9.1.0.8'
+    // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+
     runtime "postgresql:postgresql:9.1-901.jdbc4"
-    compile group: 'net.sourceforge.saxon', name: 'saxon', version: '9.1.0.8'
-    build 'net.sf.saxon:saxon-dom:8.7'
+    compile group: 'org.liquibase', name: 'liquibase-core', version: '2.0.2'
+    runtime group: 'org.lilie.services.eliot', name: 'eliot-tice-dbmigration-all', version: "${versionTDBase}"
     compile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.2') {
       excludes "commons-logging", "xml-apis", "groovy"
     }
 
-    compile 'org.apache.maven.wagon:wagon-webdav:1.0-beta-2'
-
   }
 
   plugins {
-    compile ":hibernate:$grailsVersion"
-    compile ":jquery:1.7.1"
-    compile ":jquery-ui:1.8.15"
-    compile ":resources:1.1.6"
-
-    compile ":codenarc:0.15"
-    compile(":gmetrics:0.3.1") {
-      excludes "groovy-all"
-    }
-
-    compile ":mail:1.0"
-
-    compile ":spring-security-core:1.2.7.2"
-    compile ':cloud-foundry:1.2.3'
 
     build(":tomcat:$grailsVersion",
           ":rest-client-builder:1.0.2",
-          ":release:2.0.2")
+          ":release:2.0.3") {
+      export = false
+    }
+
+    compile ":spring-security-core:1.2.7.3"
+
+    compile(":hibernate:$grailsVersion") {
+      export = false
+    }
+
+
+    compile(":codenarc:0.15") {
+      export = false
+    }
+
+    compile(":gmetrics:0.3.1") {
+      excludes "groovy-all"
+      export = false
+    }
+
+    compile ":mail:1.0"
   }
 }

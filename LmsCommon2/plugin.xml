@@ -1,0 +1,141 @@
+<plugin name='LMSCommon' version='12.01-SNAPSHOT' grailsVersion='2.0.3 &gt; *'>
+  <author>Franck Silvestre</author>
+  <title>LMSCommon Plugin</title>
+  <description>      Plugin containing common stuff for LMS apps
+      </description>
+  <type>LMSCommonGrailsPlugin</type>
+  <resources>
+    <resource>EliotTiceResources</resource>
+    <resource>LoginController</resource>
+    <resource>LogoutController</resource>
+    <resource>org.lilie.services.eliot.tice.AttachementController</resource>
+    <resource>org.lilie.services.eliot.tice.Attachement</resource>
+    <resource>org.lilie.services.eliot.tice.CopyrightsType</resource>
+    <resource>org.lilie.services.eliot.tice.DBDataRecord</resource>
+    <resource>org.lilie.services.eliot.tice.ExportFormat</resource>
+    <resource>org.lilie.services.eliot.tice.HashConstantes</resource>
+    <resource>org.lilie.services.eliot.tice.Publication</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.AppartenancePersonneGroupe</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.Civilite</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.GroupePersonnes</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.Personne</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.PorteurEnt</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.SourceImport</resource>
+    <resource>org.lilie.services.eliot.tice.discussion.Commentaire</resource>
+    <resource>org.lilie.services.eliot.tice.discussion.CommentaireLu</resource>
+    <resource>org.lilie.services.eliot.tice.discussion.Discussion</resource>
+    <resource>org.lilie.services.eliot.tice.discussion.EtatCommentaire</resource>
+    <resource>org.lilie.services.eliot.tice.discussion.EtatDiscussion</resource>
+    <resource>org.lilie.services.eliot.tice.discussion.TypeModeration</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.AnneeScolaire</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Enseignement</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Etablissement</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Filiere</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Fonction</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.IntervalleEnum</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Matiere</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Mef</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.ModaliteCours</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.ModaliteMatiere</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.NaturePeriodeEnum</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Niveau</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.OrigineEnum</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Periode</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.PersonneProprietesScolarite</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.PreferencesEtablissement</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.ProprietesScolarite</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Regime</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.RelPeriodeService</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.ResponsableEleve</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.ResponsableProprietesScolarite</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.Service</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.SousService</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.StructureEnseignement</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.TypeIntervalleEnum</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.TypePeriode</resource>
+    <resource>org.lilie.services.eliot.tice.securite.CompteUtilisateur</resource>
+    <resource>org.lilie.services.eliot.tice.securite.DomainAutorisation</resource>
+    <resource>org.lilie.services.eliot.tice.securite.DomainAutorite</resource>
+    <resource>org.lilie.services.eliot.tice.securite.DomainItem</resource>
+    <resource>org.lilie.services.eliot.tice.securite.DomainPermission</resource>
+    <resource>org.lilie.services.eliot.tice.securite.Perimetre</resource>
+    <resource>org.lilie.services.eliot.tice.securite.PerimetreSecurite</resource>
+    <resource>org.lilie.services.eliot.tice.AttachementDataStore</resource>
+    <resource>org.lilie.services.eliot.tice.AttachementJobService</resource>
+    <resource>org.lilie.services.eliot.tice.AttachementService</resource>
+    <resource>org.lilie.services.eliot.tice.DBAttachementDataStore</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.RoleUtilisateurService</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.UtilisateurService</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.data.Utilisateur</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.impl.DefaultRoleUtilisateurService</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.impl.DefaultUtilisateurService</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.impl.LilieRoleUtilisateurService</resource>
+    <resource>org.lilie.services.eliot.tice.annuaire.impl.LilieUtilisateurService</resource>
+    <resource>org.lilie.services.eliot.tice.migrations.DbMigrationService</resource>
+    <resource>org.lilie.services.eliot.tice.migrations.LiquibaseWrapper</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.FonctionService</resource>
+    <resource>org.lilie.services.eliot.tice.scolarite.ProfilScolariteService</resource>
+    <resource>org.lilie.services.eliot.tice.utils.BootstrapService</resource>
+    <resource>org.lilie.services.eliot.tice.utils.BreadcrumpsLien</resource>
+    <resource>org.lilie.services.eliot.tice.utils.BreadcrumpsService</resource>
+    <resource>org.lilie.services.eliot.tice.utils.EliotApplicationEnum</resource>
+    <resource>org.lilie.services.eliot.tice.utils.EliotUrlProvider</resource>
+    <resource>org.lilie.services.eliot.tice.utils.InitialisationTestService</resource>
+    <resource>org.lilie.services.eliot.tice.utils.PortailTagLibService</resource>
+    <resource>org.lilie.services.eliot.tice.utils.UrlServeurResolutionEnum</resource>
+    <resource>org.lilie.services.eliot.tice.AttachementTagLib</resource>
+    <resource>org.lilie.services.eliot.tice.PortailTagLib</resource>
+    <resource>org.lilie.services.eliot.tice.utils.EliotEditeurRegistrar</resource>
+    <resource>org.lilie.services.eliot.tice.utils.NumberUtils</resource>
+    <resource>org.lilie.services.eliot.tice.utils.StringUtils</resource>
+  </resources>
+  <repositories>
+    <repository name='grailsCentral' url='http://plugins.grails.org' />
+    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+    <repository name='http://repository-ticetime.forge.cloudbees.com/release' url='http://repository-ticetime.forge.cloudbees.com/release/' />
+    <repository name='http://repository-ticetime.forge.cloudbees.com/snapshot' url='http://repository-ticetime.forge.cloudbees.com/snapshot/' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+    <repository name='http://download.java.net/maven/2/' url='http://download.java.net/maven/2/' />
+    <repository name='http://maven.springframework.org/milestone' url='http://maven.springframework.org/milestone/' />
+  </repositories>
+  <dependencies>
+    <compile>
+      <dependency group='org.codehaus.groovy.modules.http-builder' name='http-builder' version='0.5.2' />
+      <dependency group='net.sourceforge.saxon' name='saxon' version='9.1.0.8' />
+      <dependency group='org.apache.maven.wagon' name='wagon-webdav' version='1.0-beta-2' />
+    </compile>
+    <runtime>
+      <dependency group='postgresql' name='postgresql' version='9.1-901.jdbc4' />
+    </runtime>
+    <build>
+      <dependency group='net.sourceforge.saxon' name='saxon' version='9.1.0.8' />
+      <dependency group='net.sf.saxon' name='saxon-dom' version='8.7' />
+    </build>
+  </dependencies>
+  <plugins>
+    <compile>
+      <plugin group='org.grails.plugins' name='hibernate' version='2.0.3' />
+      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
+      <plugin group='org.grails.plugins' name='spring-security-core' version='1.2.7.2' />
+      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
+      <plugin group='org.grails.plugins' name='gmetrics' version='0.3.1' />
+      <plugin group='org.grails.plugins' name='jquery-ui' version='1.8.15' />
+      <plugin group='org.grails.plugins' name='cloud-foundry' version='1.2.2' />
+      <plugin group='org.grails.plugins' name='mail' version='1.0' />
+      <plugin group='org.grails.plugins' name='codenarc' version='0.15' />
+    </compile>
+    <runtime>
+      <plugin group='org.grails.plugins' name='modernizr' version='2.0.6' />
+      <plugin group='org.grails.plugins' name='svn' version='1.0.1' />
+    </runtime>
+    <build>
+      <plugin group='org.grails.plugins' name='release' version='2.0.2' />
+      <plugin group='org.grails.plugins' name='tomcat' version='2.0.3' />
+      <plugin group='org.grails.plugins' name='rest-client-builder' version='1.0.2' />
+    </build>
+  </plugins>
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>
