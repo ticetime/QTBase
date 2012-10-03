@@ -1,0 +1,64 @@
+.fillgraphicsEditor {
+    position: relative;
+    width: 500px;
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.textZone {
+    z-index: 1;
+    position: absolute;
+    border: solid 1px #808080;
+    background: rgba(245, 245, 245, 1);
+}
+
+.textZoneSupressButton {
+    background-color: transparent;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    border: 0;
+    display: inline-block;
+    color: #777777;
+    font-family: arial, serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 4px;
+    text-decoration: none;
+}
+
+.nonResizableTextArea {
+    resize: none;
+}
+
+.suggestedWords {
+    display: none;
+
+}
+
+.suggestedWordsList {
+    width: 492px;
+    border: solid 1px #808080;
+    display: inline-block;
+}
+
+.suggestedWord {
+    list-style: none;
+    border: solid 1px #FFD324;
+    background: #FFF6BF;
+    color: #817134;
+    margin: 5px;
+    float: left;
+    z-index: 1;
+}
+
+.highlighted {
+    background: rgba(181, 189, 255, 1);
+}
+
+.unHighlighted {
+    background: rgba(245, 245, 245, 1);
+}
+
