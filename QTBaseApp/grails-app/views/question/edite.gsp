@@ -30,7 +30,7 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="question_editeJS"/>
-  <g:external dir="js/eliot/tiny_mce/tiny_mce.js" plugin="eliot-tice-plugin"/>
+  <g:external dir="js/eliot/tiny_mce/tiny_mce.js" plugin="lms-common"/>
   <script type="text/javascript">
     tinyMCE.init({
                    // General options
@@ -63,7 +63,7 @@
 
 <body>
 
-<g:render template="/breadcrumps" plugin="eliot-tice-plugin"
+<g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <g:if test="${questionEnEdition}">
   <div class="portal-tabs">

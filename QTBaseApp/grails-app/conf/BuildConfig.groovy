@@ -31,7 +31,7 @@ grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 
 grails.plugin.location.'lms-common' = "../LmsCommon"
-grails.plugin.location.'eliot-tdbase-plugin' = "../QtBaseCommon"
+grails.plugin.location.'qt-base-common' = "../QtBaseCommon"
 
 
 grails.project.war.file = "target/${appName}.war"
@@ -55,6 +55,8 @@ grails.project.dependency.resolution = {
     grailsPlugins()
     grailsHome()
     grailsCentral()
+
+    mavenRepo "http://maven.springframework.org/milestone/"
 
     mavenRepo "http://repository-ticetime.forge.cloudbees.com/release"
     mavenRepo "http://repository-ticetime.forge.cloudbees.com/snapshot"

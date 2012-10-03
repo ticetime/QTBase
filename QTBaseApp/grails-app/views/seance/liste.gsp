@@ -41,7 +41,7 @@
 </head>
 
 <body>
-<g:render template="/breadcrumps" plugin="eliot-tice-plugin"
+<g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <g:if test="${flash.messageSuppressionCode}">
   <div class="portal-messages">

@@ -44,7 +44,7 @@
 </head>
 
 <body>
-  <g:render template="/breadcrumps" plugin="eliot-tice-plugin" model="[liens: liens]"/>
+  <g:render template="/breadcrumps" plugin="lms-common" model="[liens: liens]"/>
 
   <g:if test="${copies}">
     <div class="portal_pagination">

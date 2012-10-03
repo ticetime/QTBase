@@ -51,7 +51,7 @@
 
 <body>
 
-<g:render template="/breadcrumps" plugin="eliot-tice-plugin"
+<g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <div class="portal_pagination">
   <p class="nb_result">${copies.totalCount} élève(s)</p><g:paginate

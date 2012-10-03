@@ -43,7 +43,7 @@
 
 <body>
 
-<g:render template="/breadcrumps" plugin="eliot-tice-plugin"
+<g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <div class="portal-tabs">
   <span class="portal-tabs-famille-liens">

@@ -43,7 +43,7 @@
 
 <body>
 
-  <g:render template="/breadcrumps" plugin="eliot-tice-plugin" model="[liens: liens]"/>
+  <g:render template="/breadcrumps" plugin="lms-common" model="[liens: liens]"/>
 
 <div id="widgets">
 		  <g:render template="seance/w_seances" model="[seances:seances, titre:'Séances']"/>
