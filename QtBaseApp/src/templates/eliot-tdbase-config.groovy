@@ -67,13 +67,13 @@ eliot.portail.menu.liens = [
                 libelle: "ticetime"
         ],
         [
-                url: "https://github.com/ticetime/eliot-tdbase/wiki",
-                libelle: "eliot-tdbase sur Github"
+                url: "https://github.com/ticetime/QTBase/wiki",
+                libelle: "QTBase sur Github"
         ]
 ]
 eliot.portail.news = [
         "TDBase version ${appVersion} - environnement DEMO",
-        "Le projet est disponible sur <a href=\"https://github.com/ticetime/eliot-tdbase/wiki\" target=\"_blank\">Github</a> !",
+        "Le projet est disponible sur <a href=\"https://github.com/ticetime/QTBase/wiki\" target=\"_blank\">Github</a> !",
         "Login / mot de passe enseignant : ens1 / ens1",
         "Login / mot de passe eleve 1 : elv1 / elv1",
         "Login / mot de passe eleve 2 : elv2 / elv2",
@@ -94,7 +94,7 @@ eliot.manuels.documents.urlMap = [
 dataSource {
   pooled = false
   driverClassName = "org.postgresql.Driver"
-  url = "jdbc:postgresql://localhost:5432/eliot-tdbase"
+  url = "jdbc:postgresql://localhost:5432/QTBase"
   username = "eliot"
   password = "eliot"
   logSql = false

@@ -32,8 +32,8 @@ import org.lilie.services.eliot.tice.utils.UrlServeurResolutionEnum
 // L'URL d'accès à l'application
 //
 
-grails.serverURL = "http://demo.ticetime.com/eliot-tdbase"
-eliot.tdbase.nomApplication = "eliot-tdbase"
+grails.serverURL = "http://demo.ticetime.com/QTBase"
+eliot.tdbase.nomApplication = "QTBase"
 eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
 eliot.tdbase.urlServeur = "http://demo.ticetime.com/"
 
@@ -61,10 +61,10 @@ eliot.fichiers.maxsize.mega = 10
 eliot.portail.menu.affichage = true
 eliot.portail.menu.liens = [[url: "http://wwww.ticetime.com",
         libelle: "ticetime"],
-        [url: "https://github.com/ticetime/eliot-tdbase/wiki",
-                libelle: "eliot-tdbase sur Github"]]
+        [url: "https://github.com/ticetime/QTBase/wiki",
+                libelle: "QTBase sur Github"]]
 eliot.portail.news = ["Environnement DEMO",
-        "Le projet est disponible sur <a href=\"https://github.com/ticetime/eliot-tdbase/wiki\" target=\"_blank\">Github</a> !",
+        "Le projet est disponible sur <a href=\"https://github.com/ticetime/QTBase/wiki\" target=\"_blank\">Github</a> !",
         "Login / mot de passe enseignant : ens1 / ens1",
         "Login / mot de passe eleve 1 : elv1 / elv1",
         "Login / mot de passe eleve 2 : elv2 / elv2",
@@ -99,7 +99,7 @@ eliot.webservices.rest.client.notes.connexionTimeout = 10000 // ms
 dataSource {
   pooled = false
   driverClassName = "org.postgresql.Driver"
-  url = "jdbc:postgresql://localhost:5432/eliot-tdbase-demo"
+  url = "jdbc:postgresql://localhost:5432/QTBase-demo"
   username = "eliot"
   password = "eliot"
   logSql = false
@@ -108,8 +108,8 @@ dataSource {
 log4j = {
 
   appenders {
-    //file name:'file', file:'/appli/tomcat/logs/eliot-tdbase-app.log'
-    file name: 'file', file: '/tmp/eliot-tdbase-app.log'
+    //file name:'file', file:'/appli/tomcat/logs/QTBase-app.log'
+    file name: 'file', file: '/tmp/QTBase-app.log'
   }
 
   root {

@@ -40,8 +40,8 @@ class BootstrapService {
 
   static transactional = false
   public static final String DEMO_ENVIRONMENT = "demo"
-  private static final String DEFAULT_URL_ACCES_ENT = "http://localhost:8080/eliot-tdbase"
-  private static final String DEFAULT_URL_RETOUR_LOGOUT = "http://localhost:8080/eliot-tdbase"
+  private static final String DEFAULT_URL_ACCES_ENT = "http://localhost:8080/QTBase"
+  private static final String DEFAULT_URL_RETOUR_LOGOUT = "http://localhost:8080/QTBase"
 
 
 

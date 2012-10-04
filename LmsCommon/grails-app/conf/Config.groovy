@@ -47,8 +47,8 @@ environments {
     eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
     // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.user = "QTBase"
+    eliot.webservices.rest.client.notes.password = "QTBase"
     eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
   }
@@ -68,8 +68,8 @@ environments {
     eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
     // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.user = "QTBase"
+    eliot.webservices.rest.client.notes.password = "QTBase"
     eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
   }

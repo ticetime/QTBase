@@ -134,7 +134,7 @@ log4j = {
 grails.controllers.defaultScope = "session"
 
 grails.serverURL = "http://localhost:8080/${appName}"
-eliot.tdbase.nomApplication = "eliot-tdbase"
+eliot.tdbase.nomApplication = "QTBase"
 eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
 eliot.tdbase.urlServeur = "http//localhost:8080"
 
@@ -271,7 +271,7 @@ eliot.webservices.rest.client.operations = [[operationName: "getStructureChapitr
 environments {
   test {
     eliot.fichiers.racine = '/tmp'
-    eliot.tdbase.nomApplication = "eliot-tdbase"
+    eliot.tdbase.nomApplication = "QTBase"
     eliot.urlResolution.mode = UrlServeurResolutionEnum.ANNUAIRE_PORTEUR.name()
     //eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
     //eliot.tdbase.urlServeur = "http//localhost:8080"
@@ -287,8 +287,8 @@ environments {
     eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
     // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.user = "QTBase"
+    eliot.webservices.rest.client.notes.password = "QTBase"
     eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
 
@@ -309,7 +309,7 @@ environments {
             '/resultats/**': ["${FonctionEnum.PERS_REL_ELEVE.toRole()}",
                     'IS_AUTHENTICATED_FULLY']]
 
-    eliot.tdbase.nomApplication = "eliot-tdbase"
+    eliot.tdbase.nomApplication = "QTBase"
     eliot.urlResolution.mode = UrlServeurResolutionEnum.ANNUAIRE_PORTEUR.name()
     //eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
     //eliot.tdbase.urlServeur = "http//localhost:8080"
@@ -327,10 +327,10 @@ environments {
     eliot.portail.menu.affichage = true
     eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
             libelle: "ticetime"],
-            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
-                    libelle: "eliot-tdbase sur Github"]]
-    eliot.portail.news = ["TD Base version ${appVersion} - environnement DEV.",
-            "Le projet est disponible sur <a href=\"https://github.com/ticetime/eliot-tdbase/wiki\" target=\"_blank\">Github</a> !",
+            [url: "https://github.com/ticetime/QTBase/wiki",
+                    libelle: "QTBase sur Github"]]
+    eliot.portail.news = ["QTBase version ${appVersion} - environnement DEV.",
+            "Le projet est disponible sur <a href=\"https://github.com/ticetime/QTBase/wiki\" target=\"_blank\">Github</a> !",
             "Login / mot de passe enseignant : ens1 / ens1",
             "Login / mot de passe élève 1 : elv1 / elv1",
             "Login / mot de passe élève 2 : elv2 / elv2",
@@ -346,18 +346,18 @@ environments {
     eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
     // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.user = "QTBase"
+    eliot.webservices.rest.client.notes.password = "QTBase"
     eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
 
   }
   cf {
-    grails.serverURL = "http://eliot-tdbase.cloudfoundry.com"
-    eliot.tdbase.urlServeur = "http://eliot-tdbase.cloudfoundry.com"
-    eliot.tdbase.nomApplication = "eliot-tdbase"
+    grails.serverURL = "http://QTBase.cloudfoundry.com"
+    eliot.tdbase.urlServeur = "http://QTBase.cloudfoundry.com"
+    eliot.tdbase.nomApplication = "QTBase"
     eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
-    eliot.tdbase.urlServeur = "http//eliot-tdbase.cloudfoundry.com"
+    eliot.tdbase.urlServeur = "http//QTBase.cloudfoundry.com"
 
 
     grails.plugins.springsecurity.interceptUrlMap = ['/': ['IS_AUTHENTICATED_FULLY'],
@@ -389,11 +389,11 @@ environments {
     eliot.portail.menu.affichage = true
     eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
             libelle: "ticetime"],
-            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
-                    libelle: "eliot-tdbase sur Github"]]
+            [url: "https://github.com/ticetime/QTBase/wiki",
+                    libelle: "QTBase sur Github"]]
 
     eliot.portail.news = ["TDBase v2.0.4-SNAPSHOT on Cloudfoundry.",
-            "Le projet est disponible sur <a href=\"https://github.com/ticetime/eliot-tdbase/wiki\" target=\"_blank\">Github</a> !",
+            "Le projet est disponible sur <a href=\"https://github.com/ticetime/QTBase/wiki\" target=\"_blank\">Github</a> !",
             "Login / mot de passe enseignant : ens1 / ens1",
             "Login / mot de passe élève 1 : elv1 / elv1",
             "Login / mot de passe élève 2 : elv2 / elv2",
@@ -410,17 +410,17 @@ environments {
     eliot.webservices.rest.client.textes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.textes.uriPrefix = "/eliot-test-webservices/echanges/v2"
     // rest client config for notes
-    eliot.webservices.rest.client.notes.user = "eliot-tdbase"
-    eliot.webservices.rest.client.notes.password = "eliot-tdbase"
+    eliot.webservices.rest.client.notes.user = "QTBase"
+    eliot.webservices.rest.client.notes.password = "QTBase"
     eliot.webservices.rest.client.notes.urlServer = "http://localhost:8090"
     eliot.webservices.rest.client.notes.uriPrefix = "/eliot-test-webservices/api-rest/v2"
 
   }
   testlilie {
-    eliot.tdbase.nomApplication = "eliot-tdbase"
+    eliot.tdbase.nomApplication = "QTBase"
     eliot.urlResolution.mode = UrlServeurResolutionEnum.CONFIGURATION.name()
     eliot.tdbase.urlServeur = "http//localhost:8080"
-    // determine si eliot-tdbase doit s'executer en mode intégration Lilie
+    // determine si QTBase doit s'executer en mode intégration Lilie
     eliot.portail.lilie = true
     eliot.portail.lilieCasActive = true
     eliot.portail.continueAfterUnsuccessfullCasLilieAuthentication = true
@@ -435,8 +435,8 @@ environments {
     eliot.portail.menu.affichage = true
     eliot.portail.menu.liens = [[url: "http://www.ticetime.com",
             libelle: "ticetime"],
-            [url: "https://github.com/ticetime/eliot-tdbase/wiki",
-                    libelle: "eliot-tdbase sur Github"]]
+            [url: "https://github.com/ticetime/QTBase/wiki",
+                    libelle: "QTBase sur Github"]]
     eliot.portail.news = ["TDBase version ${appVersion} - environnement TESTLILIE ",
             "Login / mot de passe : voir base de test eliot/lilie",
             "Pierre Baudet : UT110000000000005027"]

@@ -48,7 +48,7 @@
   <div class="portal-menu">
     <ul id="portal-hz-menu">
       <li>
-        <a title="Accueil">Accueil TD Base</a>
+        <a title="Accueil">Accueil QTBase</a>
       </li>
     </ul>
   </div>

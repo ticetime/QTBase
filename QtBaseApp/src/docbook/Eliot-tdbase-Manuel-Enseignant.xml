@@ -95,7 +95,7 @@
         <sect1>
             <title>Éditions d'item et de sujet</title>
             <para>Éliot-tdbase est un outil permettant l'édition des items et des sujets par les enseignants. 
-                En ce sens, eliot-tdbase est un outil de création de ressources pédagogiques.</para>
+                En ce sens, QTBase est un outil de création de ressources pédagogiques.</para>
             <para>Les copies d'écran ci-dessous présentent les interfaces d'édition d'un item ou
                 d'un sujet.
             </para>    
@@ -184,7 +184,7 @@
         <title>Fonctionnalités principales pour les élèves</title>
         <sect1>
             <title>Travaille sur ses copies</title>
-            <para>L'élève, lorsqu'il se connecte à eliot-tdbase, accède à la liste des séances programmées le concernant. 
+            <para>L'élève, lorsqu'il se connecte à QTBase, accède à la liste des séances programmées le concernant.
             </para>  
             <para>
                 <inlinemediaobject>
