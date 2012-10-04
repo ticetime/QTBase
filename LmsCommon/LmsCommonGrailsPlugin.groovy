@@ -9,7 +9,6 @@ import org.lilie.services.eliot.tice.annuaire.impl.DefaultUtilisateurService
 import org.lilie.services.eliot.tice.annuaire.impl.LilieRoleUtilisateurService
 import org.lilie.services.eliot.tice.annuaire.impl.LilieUtilisateurService
 import org.lilie.services.eliot.tice.securite.CompteUtilisateur
-import org.lilie.services.eliot.tice.securite.DomainAutorite
 import org.lilie.services.eliot.tice.securite.rbac.CasContainerLilieAuthenticationFilter
 import org.lilie.services.eliot.tice.utils.EliotApplicationEnum
 import org.lilie.services.eliot.tice.utils.EliotUrlProvider

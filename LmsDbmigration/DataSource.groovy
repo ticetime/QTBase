@@ -26,52 +26,39 @@
  *  <http://www.cecill.info/licences.fr.html>.
  */
 
+dataSource {
+  driverClassName = "org.postgresql.Driver"
+  username = "qtbase"
+  password = "qtbase"
+}
 
+// environment specific settings
+environments {
+  development {
+    dataSource {
+      url = "jdbc:postgresql://localhost:5433/qtbase-dev"
+    }
+  }
+  test {
+    dataSource {
+      url = "jdbc:postgresql://localhost:5433/qtbase-test"
+    }
+  }
+  testH2 {
+    dataSource {
+      pooled = true
+      driverClassName = "org.h2.Driver"
+      username = "sa"
+      password = ""
 
-package org.lilie.services.eliot.tice.securite.acl
+      //dbCreate = "update"
+      url = "jdbc:h2:mem:qtbase-test-h2"
 
-/**
- * Interface pour désigner toute entité pouvant disposer de permissions sur des
- * objets à accès controlés
- * @author franck silvestre
- */
-public interface Autorite {
-
-  /**
-   * Méthode retournant le type de l'autoritePers1
-   *
-   * @return le type
-   */
-  public String getType()
-
-  /**
-   * Méthode retournant la chaine de caractère représentant l'autorité
-   *
-   * @return la chaine de caractère représentant l'autorité
-   */
-  public String getIdentifiant()
-
+    }
+  }
 
 }
 
-/**
- * Les types d'autorité supportés par Eliot
- */
-enum TypeAutorite {
-
-  PERSONNE("acteur"),
-  GROUPE_PERSONNE("groupe"),
-  ELIOT("eliot"),
-  ENT("ENT")
-
-  private TypeAutorite(String libelle) {
-    this.libelle = libelle
-  }
-
-  private String libelle
-
-  public getLibelle() {
-    return libelle
-  }
-
+liquibase {
+  changelogfile = "migrations/changelog-LmsDbmigration.xml"
 }

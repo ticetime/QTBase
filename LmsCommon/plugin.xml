@@ -103,7 +103,7 @@
       <dependency group='org.codehaus.groovy.modules.http-builder' name='http-builder' version='0.5.2' />
     </compile>
     <runtime>
-      <dependency group='org.lilie.services.eliot' name='eliot-tice-dbmigration-all' version='12.01-SNAPSHOT' />
+      <dependency group='org.lilie.services.eliot' name='lms-dbmigration' version='12.01-SNAPSHOT' />
       <dependency group='postgresql' name='postgresql' version='9.1-901.jdbc4' />
     </runtime>
   </dependencies>

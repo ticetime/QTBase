@@ -28,7 +28,6 @@
 
 package org.lilie.services.eliot.tice.annuaire
 
-import org.lilie.services.eliot.tice.securite.DomainAutorite
 import org.lilie.services.eliot.tice.scolarite.Etablissement
 import org.lilie.services.eliot.tice.scolarite.Regime
 
@@ -41,7 +40,6 @@ public class Personne {
 
   static final String NOM_TABLE = 'ent.personne'
 
-  DomainAutorite autorite
   String nom
   String prenom
   Civilite civilite
@@ -67,7 +65,6 @@ public class Personne {
     cache usage: 'read-write'
     version false
     id column: 'id', generator: 'sequence', params: [sequence: 'ent.personne_id_seq']
-    autorite fetch: 'join'
   }
 
   static transients = ['nomAffichage']

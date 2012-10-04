@@ -30,8 +30,7 @@ package org.lilie.services.eliot.tice.annuaire.impl
 
 import org.lilie.services.eliot.tice.annuaire.UtilisateurService
 import org.lilie.services.eliot.tice.annuaire.data.Utilisateur
-import org.lilie.services.eliot.tice.securite.DomainAutorite
-import org.lilie.services.eliot.tice.securite.acl.TypeAutorite
+
 import org.lilie.services.eliot.tice.annuaire.Personne
 import grails.plugins.springsecurity.SpringSecurityService
 
@@ -164,7 +163,6 @@ class LilieUtilisateurService implements UtilisateurService {
   private Utilisateur utilisateurForLoginAndPersonne(String login, Personne personne) {
     // creer l'utilisateur à retourner
 
-    DomainAutorite autorite = personne.autorite
     // le login est le password : utilisee uniquement quand CAS n'est pas actif
     // en mode Lilie quand on est en mode non CAS
     String encodedPassword = springSecurityService.encodePassword(
@@ -185,8 +183,7 @@ class LilieUtilisateurService implements UtilisateurService {
             dateNaissance: personne.dateNaissance,
             email: personne.email,
             sexe: personne.sexe,
-            personneId: personne.id,
-            autoriteId: autorite.id
+            personneId: personne.id
     )
     return utilisateur
   }

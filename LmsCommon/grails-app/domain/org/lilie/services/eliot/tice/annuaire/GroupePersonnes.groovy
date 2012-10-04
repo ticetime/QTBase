@@ -28,8 +28,6 @@
 
 package org.lilie.services.eliot.tice.annuaire
 
-import org.lilie.services.eliot.tice.securite.DomainAutorite
-import org.lilie.services.eliot.tice.securite.DomainItem
 import org.lilie.services.eliot.tice.scolarite.ProprietesScolarite
 
 /**
@@ -39,8 +37,7 @@ import org.lilie.services.eliot.tice.scolarite.ProprietesScolarite
 class GroupePersonnes {
   String nom
   boolean virtuel
-  DomainAutorite autorite
-  DomainItem item
+
   ProprietesScolarite proprietesScolarite
 
   static constraints = {
@@ -50,8 +47,6 @@ class GroupePersonnes {
     table('ent.groupe_personnes')
     id column: 'id', generator: 'sequence', params: [sequence: 'ent.groupe_personnes_id_seq']
     version false
-    autorite column: 'autorite_id'
-    item column: 'item_id'
     proprietesScolarite joinTable: [name: 'ent.propriete_scolarite', key: 'propriete_scolarite_id']
   }
 

@@ -36,10 +36,8 @@ import org.lilie.services.eliot.tice.annuaire.Personne
 import org.lilie.services.eliot.tice.annuaire.UtilisateurService
 import org.lilie.services.eliot.tice.annuaire.data.Utilisateur
 import org.lilie.services.eliot.tice.securite.CompteUtilisateur
-import org.lilie.services.eliot.tice.securite.DomainAutorite
-import org.lilie.services.eliot.tice.securite.acl.TypeAutorite
 import org.lilie.services.eliot.tice.utils.StringUtils
-import org.springframework.security.core.GrantedAuthority
+
 import org.springframework.transaction.annotation.Transactional
 
 /**
@@ -72,11 +70,6 @@ class DefaultUtilisateurService implements UtilisateurService {
 
     // cree l'autorite
     String nomEntiteCible = personneNomEntite
-    DomainAutorite domainAutorite = new DomainAutorite(
-            identifiant: "${nomEntiteCible}.${login}",
-            estActive: true,
-            type: TypeAutorite.PERSONNE.libelle
-    ).save(failOnError: true)
 
     // cree la personne
     Personne personne = new Personne(
@@ -84,15 +77,10 @@ class DefaultUtilisateurService implements UtilisateurService {
             prenom: prenom,
             email: email,
             dateNaissance: dateNaissance,
-            autorite: domainAutorite,
             nomNormalise: StringUtils.normalise(nom),
             prenomNormalise: StringUtils.normalise(prenom)
     ).save(failOnError: true)
 
-    // finit la mise à jour de l'autorite
-    domainAutorite.nomEntiteCible = personneNomEntite
-    domainAutorite.idEnregistrementCible = personne.id
-    domainAutorite.save(failOnError: true)
 
     // cree le compte utilisateur
     String encodedPassword = springSecurityService.encodePassword(
@@ -362,7 +350,6 @@ class DefaultUtilisateurService implements UtilisateurService {
     // creer l'utilisateur à retourner
 
     Personne personne = compteUtilisateur.personne
-    DomainAutorite autorite = personne.autorite
 
     Utilisateur utilisateur = new Utilisateur(
             login: compteUtilisateur.login,
@@ -379,8 +366,7 @@ class DefaultUtilisateurService implements UtilisateurService {
             dateNaissance: personne.dateNaissance,
             email: personne.email,
             sexe: personne.sexe,
-            personneId: personne.id,
-            autoriteId: autorite.id
+            personneId: personne.id
     )
     return utilisateur
   }

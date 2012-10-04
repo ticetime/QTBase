@@ -34,7 +34,6 @@ import org.lilie.services.eliot.tice.annuaire.Personne
 import org.lilie.services.eliot.tice.annuaire.UtilisateurService
 import org.lilie.services.eliot.tice.annuaire.data.Utilisateur
 import org.lilie.services.eliot.tice.securite.CompteUtilisateur
-import org.lilie.services.eliot.tice.securite.DomainAutorite
 import org.hibernate.SessionFactory
 import org.hibernate.stat.Statistics
 
@@ -75,9 +74,6 @@ class DefaultUtilisateurServiceIntegrationTests extends GroovyTestCase {
     )
 
     assertNotNull("Création de l'utilisateur a échouée", utilisateur1)
-    DomainAutorite domainAutorite = DomainAutorite.get(utilisateur1.autoriteId)
-    assertNotNull("La création de l'autorité a échouée", domainAutorite)
-    assertEquals("Le nom de l'entité n'est pas bon", "ent.personne", domainAutorite.nomEntiteCible)
 
     Personne personne = Personne.get(utilisateur1.personneId)
     assertNotNull("Personne non créée", personne)
@@ -113,7 +109,6 @@ class DefaultUtilisateurServiceIntegrationTests extends GroovyTestCase {
     assertNotNull(utilisateur1Copie)
 
     assertEquals(UTILISATEUR_1_NOM, utilisateur1Copie.nom)
-    assertNotNull(utilisateur1Copie.autoriteId)
     assertEquals(UTILISATEUR_1_LOGIN, utilisateur1Copie.login)
     assertNull(utilisateur1Copie.loginAlias)
 
@@ -123,7 +118,6 @@ class DefaultUtilisateurServiceIntegrationTests extends GroovyTestCase {
     assertNotNull(utilisateur1Copie2)
 
     assertEquals(UTILISATEUR_1_NOM, utilisateur1Copie2.nom)
-    assertNotNull(utilisateur1Copie2.autoriteId)
     assertEquals(UTILISATEUR_1_LOGIN, utilisateur1Copie2.login)
     assertEquals(UTILISATEUR_1_LOGIN_ALIAS, utilisateur1Copie2.loginAlias)
 

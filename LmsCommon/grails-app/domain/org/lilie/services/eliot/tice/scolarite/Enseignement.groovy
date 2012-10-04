@@ -28,14 +28,12 @@
 
 package org.lilie.services.eliot.tice.scolarite
 
-import org.lilie.services.eliot.tice.securite.DomainAutorite
 import groovy.transform.EqualsAndHashCode
 
 
 @EqualsAndHashCode
 class Enseignement implements Serializable {
 
-  DomainAutorite enseignant
   Service service
   Double nbHeures
   String origine = "AUTO"
@@ -55,11 +53,10 @@ class Enseignement implements Serializable {
    */
   boolean actif = true
 
-  static belongsTo = [enseignant: DomainAutorite, service: Service]
+  static belongsTo = [ service: Service]
 
   static constraints = {
     nbHeures(nullable: true)
-    enseignant(nullable: false)
     service(nullable: false)
   }
 //  static hasMany = [
@@ -68,7 +65,6 @@ class Enseignement implements Serializable {
 
   static mapping = {
     table 'ent.enseignement'
-    enseignant fetch: 'join'
     service  fetch: 'join'
     id column: 'id',
            generator: 'sequence',
@@ -76,7 +72,7 @@ class Enseignement implements Serializable {
   }
 
   def String toString() {
-    return "Enseignant : ${enseignant?.id}, Service : ${service?.id}";
+    return "Service : ${service?.id}";
   }
 
 

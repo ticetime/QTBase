@@ -37,7 +37,7 @@ import org.hibernate.stat.Statistics
 import org.lilie.services.eliot.tice.annuaire.Personne
 import org.lilie.services.eliot.tice.annuaire.UtilisateurService
 import org.lilie.services.eliot.tice.annuaire.data.Utilisateur
-import org.lilie.services.eliot.tice.securite.DomainAutorite
+
 
 /**
  *  Test la classe DefaultUtilisateurService
@@ -90,11 +90,9 @@ class CacheDomainIntegrationTests extends GroovyTestCase {
       Personne.withNewSession { org.hibernate.Session session ->
         println "new session ${session}"
         Personne personne1 = Personne.get(utilisateur1.personneId)
-        DomainAutorite domainAutorite = DomainAutorite.get(utilisateur1.autoriteId)
 
         assertEquals(utilisateur1.personneId, personne1.id)
 
-        assertEquals(utilisateur1.autoriteId, domainAutorite.id)
         println "new session ${session}"
       }
     }
@@ -105,10 +103,6 @@ class CacheDomainIntegrationTests extends GroovyTestCase {
 
         Personne personne2 = Personne.get(utilisateur1.personneId)
         assertEquals(utilisateur1.personneId, personne2.id)
-
-
-        DomainAutorite domainAutorite2 = DomainAutorite.get(utilisateur1.autoriteId)
-        assertEquals(utilisateur1.autoriteId, domainAutorite2.id)
 
         println "new session 2  ${session}"
 

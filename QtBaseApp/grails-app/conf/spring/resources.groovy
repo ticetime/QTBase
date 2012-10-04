@@ -47,7 +47,7 @@ beans = {
   // beans pour la migration des données
   liquibase(LiquibaseWrapper) {
     dataSource = ref("dataSource")
-    changeLog = "classpath:migrations/changelog-tice-dbmigration-all.xml"
+    changeLog = "classpath:migrations/changelog-LmsDbmigration.xml"
   }
 
   // bean pour l'import moodle xml
