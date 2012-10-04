@@ -54,12 +54,6 @@
     <resource>org.lilie.services.eliot.tice.scolarite.TypeIntervalleEnum</resource>
     <resource>org.lilie.services.eliot.tice.scolarite.TypePeriode</resource>
     <resource>org.lilie.services.eliot.tice.securite.CompteUtilisateur</resource>
-    <resource>org.lilie.services.eliot.tice.securite.DomainAutorisation</resource>
-    <resource>org.lilie.services.eliot.tice.securite.DomainAutorite</resource>
-    <resource>org.lilie.services.eliot.tice.securite.DomainItem</resource>
-    <resource>org.lilie.services.eliot.tice.securite.DomainPermission</resource>
-    <resource>org.lilie.services.eliot.tice.securite.Perimetre</resource>
-    <resource>org.lilie.services.eliot.tice.securite.PerimetreSecurite</resource>
     <resource>org.lilie.services.eliot.tice.AttachementDataStore</resource>
     <resource>org.lilie.services.eliot.tice.AttachementJobService</resource>
     <resource>org.lilie.services.eliot.tice.AttachementService</resource>
@@ -69,8 +63,6 @@
     <resource>org.lilie.services.eliot.tice.annuaire.data.Utilisateur</resource>
     <resource>org.lilie.services.eliot.tice.annuaire.impl.DefaultRoleUtilisateurService</resource>
     <resource>org.lilie.services.eliot.tice.annuaire.impl.DefaultUtilisateurService</resource>
-    <resource>org.lilie.services.eliot.tice.annuaire.impl.LilieRoleUtilisateurService</resource>
-    <resource>org.lilie.services.eliot.tice.annuaire.impl.LilieUtilisateurService</resource>
     <resource>org.lilie.services.eliot.tice.migrations.DbMigrationService</resource>
     <resource>org.lilie.services.eliot.tice.migrations.LiquibaseWrapper</resource>
     <resource>org.lilie.services.eliot.tice.scolarite.FonctionService</resource>

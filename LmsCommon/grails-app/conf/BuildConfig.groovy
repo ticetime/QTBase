@@ -57,7 +57,7 @@ grails.project.dependency.resolution = {
 
     runtime "postgresql:postgresql:9.1-901.jdbc4"
     compile group: 'org.liquibase', name: 'liquibase-core', version: '2.0.2'
-    runtime group: 'org.lilie.services.eliot', name: 'lms-dbmigration', version: "${versionTDBase}"
+    runtime group: 'org.lilie.services.eliot', name: 'LmsDbmigration', version: "${versionTDBase}"
     compile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.2') {
       excludes "commons-logging", "xml-apis", "groovy"
     }

@@ -82,7 +82,6 @@ public class Personne {
     dateNaissance(nullable: true)
     sexe(nullable: true)
     photo(nullable: true)
-    //autorite nullable: false //,unique: true géré en base
     etablissementRattachement(nullable: true)
     email(nullable: true)
     nomNormalise(nullable: true)

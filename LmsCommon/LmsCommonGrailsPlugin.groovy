@@ -6,8 +6,6 @@ import org.lilie.services.eliot.tice.DBAttachementDataStore
 import org.lilie.services.eliot.tice.annuaire.Personne
 import org.lilie.services.eliot.tice.annuaire.impl.DefaultRoleUtilisateurService
 import org.lilie.services.eliot.tice.annuaire.impl.DefaultUtilisateurService
-import org.lilie.services.eliot.tice.annuaire.impl.LilieRoleUtilisateurService
-import org.lilie.services.eliot.tice.annuaire.impl.LilieUtilisateurService
 import org.lilie.services.eliot.tice.securite.CompteUtilisateur
 import org.lilie.services.eliot.tice.securite.rbac.CasContainerLilieAuthenticationFilter
 import org.lilie.services.eliot.tice.utils.EliotApplicationEnum
@@ -76,13 +74,6 @@ class LmsCommonGrailsPlugin {
     //
     if (conf.eliot.portail.lilie) {
 
-      utilisateurService(LilieUtilisateurService) {
-        springSecurityService = ref("springSecurityService")
-      }
-
-      roleUtilisateurService(LilieRoleUtilisateurService) {
-        profilScolariteService = ref("profilScolariteService")
-      }
 
     } else {
 
@@ -279,12 +270,6 @@ class LmsCommonGrailsPlugin {
       }
     }
 
-    if (!mc.respondsTo(null, 'getAuthenticatedAutorite')) {
-      mc.getAuthenticatedAutorite = {->
-        if (!ctx.springSecurityService.isLoggedIn()) return null
-        DomainAutorite.get(ctx.springSecurityService.principal.autoriteId)
-      }
-    }
 
     // ajoute la mise à disposition du code porteur
     if (!mc.respondsTo(null, 'getCodePorteur')) {

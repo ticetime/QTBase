@@ -41,7 +41,6 @@ class EliotTiceUser extends GrailsUser {
 
   Long personneId
   Long compteUtilisateurId
-  Long autoriteId
   String nomAffichage
 
   /**
@@ -63,7 +62,6 @@ class EliotTiceUser extends GrailsUser {
             utilisateur.personneId
     )
     personneId = utilisateur.personneId
-    autoriteId = utilisateur.autoriteId
     compteUtilisateurId = utilisateur.compteUtilisateurId
     nomAffichage = "${utilisateur.personne.nomAffichage} (${utilisateur.login})"
   }

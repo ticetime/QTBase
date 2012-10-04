@@ -115,7 +115,6 @@ class DefaultUtilisateurService implements UtilisateurService {
         eq 'loginAlias', login
       }
       join 'personne'
-      join 'personne.autorite'
     }
     if (!compteUtilisateur) {
       return null
@@ -185,7 +184,6 @@ class DefaultUtilisateurService implements UtilisateurService {
         eq 'login', login
       }
       join 'personne'
-      join 'personne.autorite'
     }
     if (compteUtilisateur == null) {
       throw new IllegalStateException(
@@ -216,7 +214,6 @@ class DefaultUtilisateurService implements UtilisateurService {
         eq 'login', login
       }
       join 'personne'
-      join 'personne.autorite'
     }
     if (compteUtilisateur == null) {
       throw new IllegalStateException(
@@ -249,7 +246,6 @@ class DefaultUtilisateurService implements UtilisateurService {
         eq 'login', login
       }
       join 'personne'
-      join 'personne.autorite'
     }
     if (compteUtilisateur == null) {
       throw new IllegalStateException(
