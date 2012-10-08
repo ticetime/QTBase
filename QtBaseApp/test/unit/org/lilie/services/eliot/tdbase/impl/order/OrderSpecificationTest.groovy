@@ -46,8 +46,8 @@ class OrderSpecificationTest extends GroovyTestCase {
 
   void testEvaluate() {
 
-    def valuesReponse = [[text: "Wie", ordinal: "1"], [text: "heisst", ordinal: "2"], [text: "du ?", ordinal: "3"]];
-    def reponsesPossibles = [[text: "Wie", ordinal: "1"], [text: "heisst", ordinal: "2"], [text: "du ?", ordinal: "3"]];
+    def valuesReponse = [[text: "Wie héhé", ordinal: "1"], [text: "heisst", ordinal: "2"], [text: "du ?", ordinal: "3"]];
+    def reponsesPossibles = [[text: "Wie héhé", ordinal: "1"], [text: "heisst", ordinal: "2"], [text: "du ?", ordinal: "3"]];
 
     def spec = new ReponseOrderSpecification(reponsesPossibles: reponsesPossibles, valeursDeReponse: valuesReponse)
 

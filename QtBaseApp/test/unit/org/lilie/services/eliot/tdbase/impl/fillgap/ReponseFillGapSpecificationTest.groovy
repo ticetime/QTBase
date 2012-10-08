@@ -17,5 +17,20 @@ class ReponseFillGapSpecificationTest extends GroovyTestCase {
     def reponseSpec = new ReponseFillGapSpecification(valeursDeReponse: ["red", "arteries", "veins"], reponsesPossibles: reponsesPossibles);
 
     assertEquals(1f, reponseSpec.evaluate(1f), 0f);
+
+
   }
+
+  void testEvaluateWithAccentsAndSpace() {
+
+      def texteATrous = "The color of blood is {=réd red}. Major blood vessels are {~feet=arteries (arteres)=veins} and {=veins=arteries~hair~\\~moo\\}\\=\\{}."
+      def specification = new FillGapSpecification([texteATrous: texteATrous])
+      def reponsesPossibles = specification.texteATrousStructure.findAll {!it.textElement}
+      def reponseSpec = new ReponseFillGapSpecification(valeursDeReponse: ["réd red", "arteries (arteres)", "veins"], reponsesPossibles: reponsesPossibles);
+
+      assertEquals(1f, reponseSpec.evaluate(1f), 0f);
+
+
+    }
+
 }
