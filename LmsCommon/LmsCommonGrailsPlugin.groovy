@@ -130,6 +130,9 @@ class LmsCommonGrailsPlugin {
 
     // Configure l'annuaire d'opération de webservices REST
     //
+    def operations = conf.eliot.webservices.rest.client.operations
+
+    if (operations) {
 
     restOperationDirectory(RestOperationDirectory)
 
@@ -163,6 +166,7 @@ class LmsCommonGrailsPlugin {
       connexionTimeout = conTimeoutNotes
       restOperationDirectory = ref("restOperationDirectory")
       println "Auth Basic user for Notes Web services client REST : ${userNotes}"
+    }
     }
 
     // configure la gestion d'EliotUrlProvider
@@ -234,12 +238,13 @@ class LmsCommonGrailsPlugin {
     def conf = ConfigurationHolder.config
 
     def operations = conf.eliot.webservices.rest.client.operations
-    def restOperationDirectory = appCtx.restOperationDirectory
 
     if (operations) {
+      def restOperationDirectory = appCtx.restOperationDirectory
       restOperationDirectory.registerOperationsFromMaps(operations)
+      println "Web services REST client operations count : ${restOperationDirectory.operationCount()}"
     }
-    println "Web services REST client operations count : ${restOperationDirectory.operationCount()}"
+
   }
 
   def doWithDynamicMethods = { ctx ->
