@@ -29,7 +29,6 @@
 package org.lilie.services.eliot.tice.utils
 
 import org.lilie.services.eliot.tice.scolarite.FonctionEnum
-import org.codenarc.rule.basic.IntegerGetIntegerAstVisitor
 
 class PortailTagLibService {
 
