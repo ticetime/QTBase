@@ -11,8 +11,6 @@ class HomeController {
    */
   def index() {
 
-    def config = SpringSecurityUtils.securityConfig
-
     if (springSecurityService.isLoggedIn()) {
       redirect controller: 'accueil'
       return
