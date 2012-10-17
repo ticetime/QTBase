@@ -25,6 +25,8 @@ grails.project.war.file = "target/${appName}.war"
 
  grails.plugin.location.'lms-common' = "../LmsCommon"
  grails.plugin.location.'lms-subscription-app' = "../LmsSubscriptionApp"
+ grails.plugin.location.'qt-base-app' = "../QtBaseApp"
+ grails.plugin.location.'qt-base-common' = "../QtBaseCommon"
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies

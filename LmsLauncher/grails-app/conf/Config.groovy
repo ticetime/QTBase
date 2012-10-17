@@ -164,6 +164,25 @@ grails.plugins.springsecurity.errors.login.fail = "errors.login.fail"
          "${FonctionEnum.PERS_REL_ELEVE.name()}": "http://ticetime.github.com/eliot-tdbase/aide/webhelp/Manuel_Utilisateur_TDBase_Parent/content/index.html"]
 
 
+// set security rbac
+//
+grails.plugins.springsecurity.interceptUrlMap = [
+        '/p/**': ['IS_AUTHENTICATED_FULLY'],
+        '/dashboard/**': ["${FonctionEnum.ENS.toRole()}",
+                'IS_AUTHENTICATED_FULLY'],
+        '/sujet/**': ["${FonctionEnum.ENS.toRole()}",
+                'IS_AUTHENTICATED_FULLY'],
+        '/question/**': ["${FonctionEnum.ENS.toRole()}",
+                'IS_AUTHENTICATED_FULLY'],
+        '/seance/**': ["${FonctionEnum.ENS.toRole()}",
+                'IS_AUTHENTICATED_FULLY'],
+        '/activite/**': ["${FonctionEnum.ELEVE.toRole()}",
+                'IS_AUTHENTICATED_FULLY'],
+        '/resultats/**': ["${FonctionEnum.PERS_REL_ELEVE.toRole()}",
+                'IS_AUTHENTICATED_FULLY'],
+        '/maintenance/**': ["${FonctionEnum.CD.toRole()}",
+                'IS_AUTHENTICATED_FULLY']]
+
 //
 // Per environment config
 

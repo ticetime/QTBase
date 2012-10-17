@@ -16,7 +16,7 @@
   --}%
 
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
   <meta name="layout" content="lms"/>
@@ -27,28 +27,8 @@
           padding-bottom: 40px;
         }
       </style>
-  <title>Acueil</title>
+  <title>QTBase</title>
 </head>
-<style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-  </head>
 
   <body>
 
@@ -60,14 +40,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Lms Subscription</a>
+          <a class="brand" href="#">QTBase</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
+              <li class="active"><a href="#">Accueil</a></li>
+              <li><a href="#about">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">Action</a></li>
                   <li><a href="#">Another action</a></li>
@@ -79,10 +59,10 @@
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
+            <form class="navbar-form pull-right" action='${request.contextPath}${SpringSecurityUtils.securityConfig.apf.filterProcessesUrl}' method='POST' id='loginForm'>
+              <input class="span2" type="text" placeholder="Login" name='j_username' id='username'>
+              <input class="span2" type="password" placeholder="Password" name='j_password' id='password'>
+              <button type="submit" class="btn">Se connecter</button>
             </form>
           </div><!--/.nav-collapse -->
         </div>
@@ -94,26 +74,39 @@
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Bienvenue sur QTBase</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <p>QTBase est un outil pour les enseignants qui veulent que leurs élèves travaillent de manière interactive en ligne.</p>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Créer des sujets</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Créez</h2>
+          <p>En tant qu'enseignant, créer des sujets en ligne, créer des séances pour que vos élèves puissent travailler sur vos sujets. Récupérer les copies corrigées automatiquement et annotez les avant de les remettre aux élèves.</p>
         </div>
         <div class="span4">
-          <h2>Créer des séances</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Partagez</h2>
+          <p>Vous pouvez mettre à disposition vos ressources pédagogiques à l'ensemble de la communauté des enseignants QTBase. Ainsi faites bénéficier et bénéficiez de la création collectives des sujets et des questions.</p>
        </div>
         <div class="span4">
-          <h2>Faites travailler vos élèves</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Inscrivez vous</h2>
+          <p>Pour créer un compte enseignant, complétez le formulaire...</p>
+          <form action="/subscription/subscribe" class="signup" method="post">
+                    <div class="placeholding-input">
+                      <label for="signup-user-name" class="placeholder">Nom complet</label>
+                      <input type="text" id="signup-user-name" class="text-input" autocomplete="off" name="user[name]" maxlength="20">
+                    </div>
+                    <div class="placeholding-input">
+                      <label for="signup-user-email" class="placeholder">Adresse email</label>
+                      <input type="text" id="signup-user-email" class="text-input email-input" autocomplete="off" name="user[email]">
+                    </div>
+                    <div class="placeholding-input">
+                      <label for="signup-user-password" class="placeholder">Mot de passe</label>
+                      <input type="password" id="signup-user-password" class="text-input" name="user[user_password]">
+                    </div>
+                    <button type="submit" class="btn btn-warning">
+                      S'inscrire sur QTBase
+                    </button>
+                  </form>
         </div>
       </div>
 
