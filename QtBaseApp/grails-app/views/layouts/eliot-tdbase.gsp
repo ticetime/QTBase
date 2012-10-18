@@ -50,8 +50,9 @@
 
 <body>
 <g:render template="/menuPortail" plugin="lms-common" model="[homeController: 'home', homeAction:'index', moduleName:'QTBase']"/>
-
+<div class="container">
 <g:layoutBody/>
+</div>
 <r:layoutResources/>
 </body>
 </html>

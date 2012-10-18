@@ -36,7 +36,7 @@
 </head>
 
 <body>
-<div class="container">
+
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <g:if test="${flash.messageSuppressionCode}">
@@ -109,6 +109,5 @@
     Aucune séance
   </div>
 </g:else>
-</div>
 </body>
 </html>

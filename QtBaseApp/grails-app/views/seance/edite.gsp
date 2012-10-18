@@ -35,7 +35,6 @@
   <r:require module="eliot-tdbase-ui"/>
   <r:script>
     $(document).ready(function () {
-      $('#menu-item-seances').addClass('actif');
       $('select[name="proprietesScolariteSelectionId"]').focus();
       $(".datepicker").datetimepicker();
       var $confirmDialog = $("<div></div>")

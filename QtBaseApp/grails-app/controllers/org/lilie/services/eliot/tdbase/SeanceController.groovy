@@ -73,29 +73,37 @@ class SeanceController {
                                     absolute: true,
                                     params: [sujetId: modaliteActivite.sujetId])
       def strongCheck = grailsApplication.config.eliot.interfacage.strongCheck as Boolean
-      afficheLienCreationDevoir = modaliteActiviteService.canCreateNotesDevoirForModaliteActivite(modaliteActivite,
-                                                                                                  personne,
-                                                                                                  strongCheck)
-      afficheLienCreationActivite = modaliteActiviteService.canCreateTextesActiviteForModaliteActivite(modaliteActivite,
-                                                                                                       personne,
-                                                                                                       strongCheck)
-      if (!afficheLienCreationDevoir) {
-        afficheDevoirCree = modaliteActiviteService.modaliteActiviteHasNotesDevoir(modaliteActivite,
-                                                                                   personne,
-                                                                                   strongCheck)
-      } else {
-        services = notesService.findServicesEvaluablesByModaliteActivite(modaliteActivite,
-                                                                         personne,
-                                                                         codePorteur)
+      def interfaceNotes = grailsApplication.config.eliot.interfacage.notes
+      def interfaceTextes = grailsApplication.config.eliot.interfacage.textes
+
+      if (interfaceNotes) {
+        afficheLienCreationDevoir = modaliteActiviteService.canCreateNotesDevoirForModaliteActivite(modaliteActivite,
+                                                                                                    personne,
+                                                                                                    strongCheck)
+
+        if (!afficheLienCreationDevoir) {
+          afficheDevoirCree = modaliteActiviteService.modaliteActiviteHasNotesDevoir(modaliteActivite,
+                                                                                     personne,
+                                                                                     strongCheck)
+        } else {
+          services = notesService.findServicesEvaluablesByModaliteActivite(modaliteActivite,
+                                                                           personne,
+                                                                           codePorteur)
+        }
       }
-      if (!afficheLienCreationActivite) {
-        afficheActiviteCreee = modaliteActiviteService.modaliteActiviteHasTextesActivite(modaliteActivite,
-                                                                                         personne,
-                                                                                         strongCheck)
-      } else {
-        cahiers = cahierTextesService.findCahiersTextesInfoByModaliteActivite(modaliteActivite,
-                                                                              personne,
-                                                                              codePorteur)
+      if (interfaceTextes) {
+        afficheLienCreationActivite = modaliteActiviteService.canCreateTextesActiviteForModaliteActivite(modaliteActivite,
+                                                                                                                 personne,
+                                                                                                                 strongCheck)
+        if (!afficheLienCreationActivite) {
+          afficheActiviteCreee = modaliteActiviteService.modaliteActiviteHasTextesActivite(modaliteActivite,
+                                                                                           personne,
+                                                                                           strongCheck)
+        } else {
+          cahiers = cahierTextesService.findCahiersTextesInfoByModaliteActivite(modaliteActivite,
+                                                                                personne,
+                                                                                codePorteur)
+        }
       }
     }
     breadcrumpsService.manageBreadcrumps(params, message(code: "seance.edite.titre"), [services: services])
