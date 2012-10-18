@@ -1187,15 +1187,15 @@ Style for frontpage Widget
 	margin-left: 14px;
 	margin-bottom: 10px;
 }
-	.widget h1{
+	.widget h4{
 		margin: 0;
 		background-color:whitesmoke ;/*#f0f2f2*/
 		padding: 10px 5px 2px 15px;
 	}
-		.widget.sceances h1{background:whitesmoke url("../../images/eliot/picto-sceance.png") no-repeat 95% 12px;}
-		.widget.sujets h1{background:whitesmoke url("../../images/eliot/picto-sujet.png") no-repeat 95% 10px;}
-		.widget.items h1{background:whitesmoke url("../../images/eliot/picto-question.png") no-repeat 95% 10px;}
-		.widget.resultats h1{background:whitesmoke url("../../images/eliot/picto-result.png") no-repeat 95% 12px;}
+		.widget.sceances h4{background:whitesmoke url("../../images/eliot/picto-sceance.png") no-repeat 95% 12px;}
+		.widget.sujets h2{background:whitesmoke url("../../images/eliot/picto-sujet.png") no-repeat 95% 10px;}
+		.widget.items h2{background:whitesmoke url("../../images/eliot/picto-question.png") no-repeat 95% 10px;}
+		.widget.resultats h2{background:whitesmoke url("../../images/eliot/picto-result.png") no-repeat 95% 12px;}
 		
 	.widget .nb_result{
 		display: block;

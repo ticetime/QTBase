@@ -28,7 +28,7 @@
 
 
 <div class="widget sceances">
-  <h1><g:link action="liste" controller="seance">${titre}</g:link></h1>
+  <h4><g:link action="liste" controller="seance">${titre}</g:link></h4>
   <g:if test="${seances}">
   <p class="nb_result">${seances.totalCount} séance(s)
 	  <g:if test="${seances.totalCount>5}">

@@ -28,7 +28,7 @@
 
 
 <div class="widget sujets">
-  <h1><g:link action="recherche" controller="sujet" params="[patternAuteur: message(code: 'eliot.label.me')]">${titre}</g:link></h1>
+  <h4><g:link action="recherche" controller="sujet" params="[patternAuteur: message(code: 'eliot.label.me')]">${titre}</g:link></h4>
   <g:if test="${sujets}">
   <p class="nb_result">${sujets.totalCount} sujet(s)
   	<g:if test="${sujets.totalCount>5}">

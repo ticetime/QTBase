@@ -38,6 +38,7 @@
   <title><g:layoutTitle default="TDbase"/></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <r:require module="eliot-tdbase"/>
+  <r:require module="bootstrap"/>
   <r:layoutResources/>
   <g:layoutHead/>
 </head>

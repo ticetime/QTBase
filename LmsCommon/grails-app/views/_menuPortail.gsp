@@ -29,11 +29,6 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <g:link controller="$homeController" action="$homeAction" class="brand" href="#">${moduleName}</g:link>
           <div class="nav-collapse collapse">
             <ul class="nav">
@@ -51,7 +46,8 @@
                   </g:each>
             </ul>
             <ul class="nav pull-right">
-                <li><sec:loggedInUserInfo field="nomAffichage"/>  <g:link controller="logout">Déconnexion</g:link></li>
+                <li><a href="#"><sec:loggedInUserInfo field="nomAffichage"/></a></li>
+                <li><g:link controller="logout">Déconnexion</g:link></li>
             </ul>
           </div><!--/.nav-collapse -->
 

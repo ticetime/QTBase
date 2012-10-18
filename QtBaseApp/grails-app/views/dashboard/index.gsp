@@ -29,11 +29,6 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <r:script>
-    $(document).ready(function () {
-      $('#menu-item-accueil').addClass('actif');
-    });
-  </r:script>
   <title><g:message code="dashboard.index.head.title" /></title>
 </head>
 

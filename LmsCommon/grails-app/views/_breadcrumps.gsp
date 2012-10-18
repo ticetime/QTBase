@@ -26,16 +26,15 @@
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
 
-<div class="portal-breadcrumbs">
+<ul class="breadcrumb">
   <g:each in="${liens}" var="lien">
     <g:if test="${lien.index < liens.size()-1}">
-      <g:link action="${lien.action}" controller="${lien.controller}" params="${lien.params}">
+      <li><g:link action="${lien.action}" controller="${lien.controller}" params="${lien.params}">
         ${lien.libelle}
-      </g:link>
-       <span class="portal-bc-separator">&nbsp;</span>
+      </g:link> <span class="divider">/</span></li>
     </g:if>
     <g:else>
-       ${lien.libelle}
+       <li class="active">${lien.libelle}</li>
     </g:else>
   </g:each>
-</div>
+</ul>

@@ -41,9 +41,9 @@ modules = {
 
   'eliot-tice' {
     dependsOn 'jquery'
-    resource url: [dir: 'css/eliot', file: 'portal.css']
-    resource url: [dir: 'css/eliot', file: 'portal-menu.css']
-    resource url: [dir: 'js/eliot', file: 'portal-menu.js']
+    //resource url: [dir: 'css/eliot', file: 'portal.css']
+    //resource url: [dir: 'css/eliot', file: 'portal-menu.css']
+    //resource url: [dir: 'js/eliot', file: 'portal-menu.js']
 
   }
 
