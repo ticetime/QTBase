@@ -99,30 +99,29 @@
               id="${modaliteActivite.id}"><i class="icon-trash"></i> Supprimer la séance</g:link>  </li>
     </g:if>
     <g:else>
-      <li><i class="icon-pencil"></i> Corriger les copies</li> |
-      <li><i class="icon-trash"></i> Supprimer la séance</li>
+      <li class="disabled"><a href="#"><i class="icon-ban-circle"></i> Corriger les copies</a></li>
+      <li class="disabled"><a href="#"><i class="icon-ban-circle"></i> Supprimer la séance</a></li>
     </g:else>
   </ul>
   </div>
 </div>
 
 <g:hasErrors bean="${modaliteActivite}">
-  <div class="portal-messages">
-    <g:eachError>
-      <li class="error"><g:message error="${it}"/></li>
-    </g:eachError>
-  </div>
+  <g:eachError>
+  <div class="alert alert-error">
+    <g:message error="${it}"/>
+   </div>
+</g:eachError>
 </g:hasErrors>
 <g:if test="${flash.messageCode}">
-  <div class="portal-messages">
-    <li class="success"><g:message code="${flash.messageCode}"
-                                   class="portal-messages success"/></li>
+  <div class="alert alert-success">
+    <g:message code="${flash.messageCode}"
+                                   class="portal-messages success"/>
   </div>
 </g:if>
 <g:if test="${flash.messageTextesCode}">
-  <div class="portal-messages">
-    <li class="notice"><g:message code="${flash.messageTextesCode}"
-                                   class="portal-messages notice"/></li>
+  <div class="alert alert-info">
+    <g:message code="${flash.messageTextesCode}"/>
   </div>
 </g:if>
 

@@ -29,12 +29,6 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <r:script>
-    $(document).ready(function () {
-      $('#menu-item-sujets').addClass('actif');
-      initButtons();
-    });
-  </r:script>
   <title>
   <g:if test="${afficheFormulaire}">
   <g:message code="sujet.recherche.head.title" />
@@ -132,60 +126,64 @@
 
   <div class="portal-default_results-list sujet">
     <g:each in="${sujets}" status="i" var="sujetInstance">
-      <div class="${(i % 2) == 0 ? 'even' : 'odd'}" style="z-index: 0">
+      <div>
 
         <h1>${fieldValue(bean: sujetInstance, field: "titre")}</h1>
 
-        <button id="${sujetInstance.id}">Actions</button>
-        <ul id="menu_actions_${sujetInstance.id}" class="tdbase-menu-actions">
-          <li><g:link action="teste" id="${sujetInstance.id}">
+        <div class="btn-group" id="${sujetInstance.id}" style="display: inline-block;">
+          <button class="btn btn-primary dropdown-toggle btn-small" data-toggle="dropdown">
+                        Actions
+                        <span class="caret"></span>
+          </button>
+        <ul id="menu_actions_${sujetInstance.id}" class="dropdown-menu">
+          <li><g:link action="teste" id="${sujetInstance.id}" tabindex="-1">
             Tester
           </g:link>
           </li>
-          <li><g:link action="ajouteSeance" id="${sujetInstance.id}">
+          <li><g:link action="ajouteSeance" id="${sujetInstance.id}" tabindex="-1">
             Nouvelle&nbsp;séance
           </g:link>
           </li>
-          <li><hr/></li>
+          <li class="divider"></li>
           <g:if test="${artefactHelper.utilisateurPeutModifierArtefact(utilisateur, sujetInstance)}">
             <li><g:link action="edite"
-                        id="${sujetInstance.id}">Modifier</g:link></li>
+                        id="${sujetInstance.id}" tabindex="-1">Modifier</g:link></li>
           </g:if>
           <g:else>
-            <li>Modifier</li>
+            <li class="disabled"><a href="#" tabindex="-1">Modifier</a></li>
           </g:else>
           <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, sujetInstance)}">
             <li><g:link action="duplique"
                         id="${sujetInstance.id}">Dupliquer</g:link></li>
           </g:if>
           <g:else>
-            <li>Dupliquer</li>
+            <li class="disabled"><a href="#" tabindex="-1">Dupliquer</a></li>
           </g:else>
-          <li><hr/></li>
+          <li class="divider"></li>
           <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, sujetInstance)}">
             <li><g:link action="partage"
-                        id="${sujetInstance.id}">Partager</g:link></li>
+                        id="${sujetInstance.id}" tabindex="-1">Partager</g:link></li>
           </g:if>
           <g:else>
-            <li>Partager</li>
+            <li class="disabled"><a href="#" tabindex="-1">Partager</a></li>
           </g:else>
           <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, sujetInstance)}">
             <li><g:link action="exporter"
-                        id="${sujetInstance.id}">Exporter</g:link></li>
+                        id="${sujetInstance.id}" tabindex="-1">Exporter</g:link></li>
           </g:if>
           <g:else>
-            <li>Exporter</li>
+            <li class="disabled"><a href="#" tabindex="-1">Exporter</a></li>
           </g:else>
-          <li><hr/></li>
+          <li class="divider"></li>
           <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, sujetInstance)}">
             <li><g:link action="supprime"
-                        id="${sujetInstance.id}">Supprimer</g:link></li>
+                        id="${sujetInstance.id}" tabindex="-1">Supprimer</g:link></li>
           </g:if>
           <g:else>
-            <li>Supprimer</li>
+            <li class="disabled"><a href="#" tabindex="-1">Supprimer</a></li>
           </g:else>
         </ul>
-
+        </div>
         <p class="date">Mise à jour le ${sujetInstance.lastUpdated?.format('dd/MM/yy HH:mm')}</p>
 
         <p>
