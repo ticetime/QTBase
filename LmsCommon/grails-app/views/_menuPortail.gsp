@@ -25,25 +25,36 @@
   -  <http://www.gnu.org/licenses/> and
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
-<div id="portal-menuportail" style="margin-bottom:8px;margin-top: 8px;">
-  <div class="portal-menuportail-liens" style="float: left">
-    <g:each in="${grailsApplication.config.eliot.portail.menu.liens}" var="lien">
-      <g:if test="${lien.url}">
-        <a href="${lien.url}" target="_blank"
-           style="margin-left: 10px">${lien.libelle}</a>
-      </g:if>
-      <g:else>
-        <g:link action="${lien.action}" controller="${lien.controller}"
-                params="${lien.params}" style="margin-left: 10px">
-          ${lien.libelle}
-        </g:link>
-      </g:else>
-    </g:each>
-  </div>
-  <div class="portal-menuportail-connexion" style="text-align: right;">
-    <span style="margin-right: 10px"><sec:loggedInUserInfo field="nomAffichage"/></span>  <g:link controller="logout"
-                 style="margin-right: 10px">
-          Déconnexion
-        </g:link>
-  </div>
-</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <g:link controller="$homeController" action="$homeAction" class="brand" href="#">${moduleName}</g:link>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <g:each in="${grailsApplication.config.eliot.portail.menu.liens}" var="lien">
+                    <g:if test="${lien.url}">
+                      <li><a href="${lien.url}" target="_blank">${lien.libelle}</a></li>
+                    </g:if>
+                    <g:else>
+                      <li>
+                      <g:link action="${lien.action}" controller="${lien.controller}"
+                              params="${lien.params}">
+                        ${lien.libelle}</li>
+                      </g:link>
+                    </g:else>
+                  </g:each>
+            </ul>
+            <ul class="nav pull-right">
+                <li><sec:loggedInUserInfo field="nomAffichage"/>  <g:link controller="logout">Déconnexion</g:link></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+
+        </div>
+      </div>
+    </div>

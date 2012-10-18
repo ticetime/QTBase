@@ -43,61 +43,9 @@
 </head>
 
 <body>
+<g:render template="/menuPortail" plugin="lms-common" model="[homeController: 'home', homeAction:'index', moduleName:'QTBase']"/>
+
 <et:container class="container">
-  <g:if test="${grailsApplication.config.eliot.portail.menu.affichage}">
-    <g:render template="/menuPortail" plugin="lms-common"/>
-  </g:if>
-  <div class="portal-menu">
-    <ul id="portal-hz-menu">
-      <li id="menu-item-accueil">
-        <g:link controller="dashboard" action="index"
-                title="Accueil"
-                params="[bcInit: true]">Accueil QTBase</g:link>
-      </li>
-      <li id="menu-item-seances">
-        <g:link controller="seance" action="liste"
-                title="Liste des séances"
-                params="[bcInit: true]">Séances</g:link>
-      </li>
-      <li id="menu-item-sujets">
-        <a title="Sujets">Sujets</a>
-        <ul>
-          <li title="Nouveau">
-            <g:link controller="sujet" action="nouveau"
-                    title="Créer un nouveau sujet"
-                    params="[bcInit: true]">Nouveau</g:link>
-          </li>
-          <li title="Rechercher">
-            <g:link controller="sujet" action="recherche"
-                    title="Rechercher des sujets"
-                    params="[bcInit: true, patternAuteur: message(code:'eliot.label.me')]">Rechercher</g:link>
-          </li>
-        </ul>
-      </li>
-      <li id="menu-item-contributions">
-        <a title="Mes contributions">Items</a>
-        <ul>
-          <li title="Nouvelle">
-            <g:link controller="question"
-                    action="nouvelle"
-                    title="Créer un nouvel item"
-                    params="[bcInit: true]">
-              Nouveau
-            </g:link>
-          </li>
-          <li title="Rechercher">
-            <g:link controller="question" action="recherche"
-                    title="Rechercher des items"
-                    params="[bcInit: true, patternAuteur: message(code:'eliot.label.me')]">Rechercher</g:link>
-
-          </li>
-
-        </ul>
-      </li>
-    </ul>
-
-  </div>
-
   <g:if test="${SpringSecurityUtils.ifAllGranted(FonctionEnum.ENS.toRole())}">
     <et:manuelLink fonctionEnum="${FonctionEnum.ENS}"
                    class="portal-manuel"><g:message
