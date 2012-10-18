@@ -47,15 +47,15 @@
     <div class="portal-form_container recherche">
       <table>
         <tr>
-          <td class="label">
-            Titre :
+          <td class="control-label">
+            Titre
           </td>
           <td>
             <g:textField name="patternTitre" title="titre"
                          value="${rechercheCommand.patternTitre}"/>
           </td>
           <td width="20"/>
-          <td class="label">Type :
+          <td class="control-label">Type
           </td>
           <td>
             <g:select name="typeId" value="${rechercheCommand.typeId}"
@@ -66,15 +66,15 @@
           </td>
         </tr>
         <tr>
-          <td class="label">
-            Description :
+          <td class="control-label">
+            Description
           </td>
           <td>
             <g:textField name="patternPresentation" title="description"
                          value="${rechercheCommand.patternPresentation}"/>
           </td>
           <td width="20"/>
-          <td class="label">Matière :
+          <td class="control-label">Matière
           </td>
           <td>
             <g:select name="matiereId" value="${rechercheCommand.matiereId}"
@@ -85,14 +85,14 @@
           </td>
         </tr>
         <tr>
-          <td class="label">Auteur :
+          <td class="control-label">Auteur
           </td>
           <td>
             <g:textField name="patternAuteur" title="auteur"
                          value="${rechercheCommand.patternAuteur}"/>
           </td>
           <td width="20"/>
-          <td class="label">Niveau :
+          <td class="control-label">Niveau
           </td>
           <td>
             <g:select name="niveauId" value="${rechercheCommand.niveauId}"
@@ -107,7 +107,7 @@
     </div>
 
     <div class="form_actions recherche">
-      <g:actionSubmit value="Rechercher" action="recherche" class="button"
+      <g:actionSubmit value="Rechercher" action="recherche" class="btn btn-info"
                       title="Lancer la recherche"/>
     </div>
   </form>
