@@ -27,20 +27,21 @@
   --}%
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
   <r:script>
-    $(document).ready(function () {
-      $('#menu-item-seances').addClass('actif');
-      initButtons();
-    });
-  </r:script>
-  <title><g:message code="seance.liste.head.title"/></title>
+      $(document).ready(function () {
+        initButtons();
+      });
+    </r:script>
+  <title><g:message code="seance.liste.head.title" /></title>
 </head>
 
 <body>
+<div class="container">
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <g:if test="${flash.messageSuppressionCode}">
@@ -81,7 +82,6 @@
             Corriger les copies
           </g:link>
           </li>
-          <li><hr/></li>
           <li><g:link action="edite" controller="seance"
                       id="${seance.id}">
             Modifier
@@ -109,6 +109,6 @@
     Aucune séance
   </div>
 </g:else>
-
+</div>
 </body>
 </html>

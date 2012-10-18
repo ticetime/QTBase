@@ -20,6 +20,25 @@ import org.lilie.services.eliot.tice.scolarite.FonctionEnum
 import org.lilie.services.eliot.tice.utils.EliotApplicationEnum
 import org.lilie.services.eliot.tice.utils.UrlServeurResolutionEnum
 
+//
+//  External configs
+//
+
+ // File loaded if it is in the  classpath
+ grails.config.locations = ["classpath:${appName}-config.groovy"]
+
+ // Common config for all applications
+ def eliotcommonsConfigLocation = System.properties["eliot-commons.config.location"]
+ if (eliotcommonsConfigLocation) {
+   grails.config.locations << ("file:" + eliotcommonsConfigLocation)
+ }
+
+// Application config file
+ def appConfigLocation = System.properties["${appName}.config.location"]
+ if (appConfigLocation) {
+   grails.config.locations << "file:" + appConfigLocation
+ }
+
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
@@ -124,24 +143,7 @@ grails.plugins.springsecurity.errors.login.fail = "errors.login.fail"
  eliot.requestHeaderPorteur = "ENT_PORTEUR"
  eliot.defaultCodePorteur = "WWW"
 
-//
-//  External configs
-//
 
- // File loaded if it is in the  classpath
- grails.config.locations = ["classpath:${appName}-config.groovy"]
-
- // Common config for all applications
- def eliotcommonsConfigLocation = System.properties["eliot-commons.config.location"]
- if (eliotcommonsConfigLocation) {
-   grails.config.locations << ("file:" + eliotcommonsConfigLocation)
- }
-
-// Application config file
- def appConfigLocation = System.properties["${appName}.config.location"]
- if (appConfigLocation) {
-   grails.config.locations << "file:" + appConfigLocation
- }
 
 //
 // Misc
