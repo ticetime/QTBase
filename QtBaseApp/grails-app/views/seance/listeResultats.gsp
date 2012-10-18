@@ -35,7 +35,6 @@
   <r:require modules="eliot-tdbase-ui"/>
   <r:script>
     $(document).ready(function () {
-      $('#menu-item-seances').addClass('actif');
       var $confirmDialog = $("<div></div>")
             			    .html('Êtes vous sur de vouloir supprimer la séance avec toutes les copies associées ?')
             			    .dialog({
@@ -62,20 +61,23 @@
 <body>
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
-<div class="portal-tabs">
-  <span class="portal-tabs-famille-liens">
-    <g:link action="edite" controller="seance" class="modify"
-            id="${seance.id}">Modifier la séance</g:link>
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+    <li><g:link action="edite" controller="seance" class="modify"
+            id="${seance.id}"><i class="icon-pencil"></i> Modifier la séance</g:link></li>
     <g:if test="${grailsApplication.config.eliot.interfacage.notes}">
-      <g:if test="${afficheLienMiseAjourNote}">|
-        <g:link action="updateNotesDevoir" controller="seance" class="share"
+      <g:if test="${afficheLienMiseAjourNote}">
+        <li><g:link action="updateNotesDevoir" controller="seance" class="share"
                 title="Mise à jour des notes du devoir lié à la séance"
-                id="${seance.id}">Mettre à jour les notes</g:link>
+                id="${seance.id}"><i class="icon-upload"></i> Mettre à jour les notes</g:link></li>
       </g:if>
-    </g:if>|
-    <g:link action="supprime" controller="seance" class="delete"
-            id="${seance.id}">Supprimer la séance</g:link>
-  </span>
+    </g:if>
+    <li><g:link action="supprime" controller="seance" class="delete"
+            id="${seance.id}"><i class="icon-trash"></i> Supprimer la séance</g:link></li>
+    </ul>
+  </div>
 </div>
 
 <div class="portal-messages">

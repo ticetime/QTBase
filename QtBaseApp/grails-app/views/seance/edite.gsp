@@ -88,19 +88,22 @@
 <body>
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
-<div class="portal-tabs">
-  <span class="portal-tabs-famille-liens">
+
+<div class="navbar">
+  <div class="navbar-inner">
+  <ul class="nav">
     <g:if test="${modaliteActivite.id}">
-      <g:link action="listeResultats" controller="seance" class="modify"
-              id="${modaliteActivite.id}">Corriger les copies</g:link> |
-      <g:link action="supprime" controller="seance" class="delete delete-actif"
-              id="${modaliteActivite.id}">Supprimer la séance</g:link>
+      <li><g:link action="listeResultats" controller="seance" class="modify"
+              id="${modaliteActivite.id}"><i class="icon-pencil"></i> Corriger les copies</g:link> </li>
+      <li><g:link action="supprime" controller="seance" class="delete delete-actif"
+              id="${modaliteActivite.id}"><i class="icon-trash"></i> Supprimer la séance</g:link>  </li>
     </g:if>
     <g:else>
-      <span class="modify">Corriger les copies</span> |
-      <span class="delete">Supprimer la séance</span>
+      <li><i class="icon-pencil"></i> Corriger les copies</li> |
+      <li><i class="icon-trash"></i> Supprimer la séance</li>
     </g:else>
-  </span>
+  </ul>
+  </div>
 </div>
 
 <g:hasErrors bean="${modaliteActivite}">
@@ -124,16 +127,18 @@
 </g:if>
 
 
-<g:form method="post" controller="seance" action="edite">
-  <div class="portal-form_container edite" style="width: 69%;">
-    <table>
-
-      <tr>
-        <td class="label">Classe/groupe<span class="obligatoire">*</span>&nbsp;:
-        </td>
-        <td>
+<g:form method="post" controller="seance" action="edite" class="form-horizontal">
+  <div class="control-group">
+          <label class="control-label" for="sujet">Sujet</label>
+          <div class="controls">
+            <input disabled="true" type="text" value="${modaliteActivite.sujet.titre}" id="sujet" class="input-xxlarge">
+          </div>
+    </div>
+  <div class="control-group">
+        <label class="control-label" for="proprietesScolariteSelectionId">Classe/groupe<span class="obligatoire">*</span></label>
+        <div class="controls">
           <g:if test="${modaliteActivite.structureEnseignement}">
-            <strong>${modaliteActivite.structureEnseignement.nomAffichage}</strong>
+            <input type="text" value="${modaliteActivite.structureEnseignement.nomAffichage}" disabled="true" id="proprietesScolariteSelectionId">
           </g:if>
           <g:else>
             <g:select name="proprietesScolariteSelectionId"
@@ -142,131 +147,49 @@
                       optionKey="id"
                       optionValue="structureEnseignementNomAffichage"/>
           </g:else>
-        </td>
-      </tr>
-      <tr>
-        <td class="label">Sujet&nbsp;:</td>
-        <td>
-          <strong>${modaliteActivite.sujet.titre}</strong> <br/>
-        </td>
-      </tr>
-      <tr>
-        <td class="label">Début&nbsp;:</td>
-        <td>
+        </div>
+    </div>
+
+  <div class="control-group">
+    <label class="control-label" for="dateDebut">Début</label>
+        <div class="controls">
           <g:textField name="dateDebut"
                        value="${modaliteActivite.dateDebut.format('dd/MM/yyyy HH:mm')}"
                        class="datepicker short"/>
-        </td>
-      </tr>
-      <tr>
-        <td class="label">Fin&nbsp;:</td>
-        <td>
+        </div>
+        <label class="control-label" for="dateFin">Fin</label>
+          <div class="controls">
           <g:textField name="dateFin"
                        value="${modaliteActivite.dateFin.format('dd/MM/yyyy HH:mm')}"
                        class="datepicker short"/>
-        </td>
-      </tr>
-      <tr>
-        <td class="label"></td>
-        <td>
+          </div>
+  </div>
+  <div class="control-group">
+        <div class="controls">
+        <label class="checkbox">
           <g:checkBox name="copieAmeliorable" title="améliorable"
-                      checked="${modaliteActivite.copieAmeliorable}"/> <span
-                class="label">Copie&nbsp;améliorable</span>
-        </td>
-      </tr>
+                      checked="${modaliteActivite.copieAmeliorable}"/> Copie&nbsp;améliorable
+        </label>
+        </div>
+  </div>
+  <div class="control-group">
+
       <g:if test="${lienBookmarkable}">
-        <tr>
-          <td class="label">Permalien&nbsp;:</td>
-          <td>
-            ${lienBookmarkable}
-          </td>
-        </tr>
-      </g:if>
-      <g:if test="${grailsApplication.config.eliot.interfacage.notes}">
-        <tr>
-          <td class="label"></td>
-          <td>
-            <g:if test="${afficheLienCreationDevoir}">
-              <a id="gestionEvaluation" class="button inform"
-                 title="Créer un devoir dans Notes">Créer un devoir dans Notes</a>
 
-              <table id="edition_devoir"
-                     style="display: ${modaliteActivite.evaluationId ? 'table' : 'none'}">
-                <tr>
-                  <td class="label"
-                      style="width: 110px;">Classe/groupe&nbsp;-&nbsp;Matière&nbsp;:</td>
-                  <td><g:select name="serviceId"
-                                noSelection="${['null': 'Faites votre choix...']}"
-                                from="${services}"
-                                optionKey="id"
-                                optionValue="libelle"/></td>
-                </tr>
-
-              </table>
-            </g:if>
-            <g:if test="${afficheDevoirCree}">
-              <span class="label"><g:message code="seance.label.devoirlie" /></span>
-            </g:if>
-          </td>
-        </tr>
+          <label class="control-label" for="permalien">Permalien</label>
+          <div class="controls">
+            <input disabled="true" id="permalien" type="text" value="${lienBookmarkable}" class="input-xxlarge">
+          </div>
       </g:if>
-      <g:if test="${grailsApplication.config.eliot.interfacage.textes}">
-        <tr>
-          <td class="label"></td>
-          <td>
-            <g:if test="${afficheLienCreationActivite}">
-
-              <a id="gestionActivite" class="button inform"
-                 title="Créer une activité dans le cahier de textes">
-                Créer une activité dans le Cahier de textes</a>
-              <table id="edition_activite"
-                     style="display: ${modaliteActivite.activiteId ? 'table' : 'none'}">
-                <tr>
-                  <td class="label"
-                      style="width: 110px;">Cahier&nbsp;de&nbsp;textes<span
-                          class="obligatoire">*</span>&nbsp;:</td>
-                  <td><g:select name="cahierId"
-                                noSelection="${['null': 'Faites votre choix...']}"
-                                from="${cahiers}"
-                                optionKey="id"
-                                optionValue="nom"/>
-                    <span id="spinner" class="spinner" style="display:none;">
-                      <g:message code="spinner.alt"
-                                 default="Loading&hellip;"/></span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="label" style="width: 110px;">Chapitre&nbsp;:</td>
-                  <td id="selectChapitres">
-                    <g:render template="selectChapitres"
-                              model="[chapitres: chapitres]"/>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="label" style="width: 110px;">Contexte&nbsp;:</td>
-                  <td><g:select name="activiteContexteId"
-                                from="${ContexteActivite.values()}"
-                                valueMessagePrefix="textes.activite.contexte"/></td>
-                </tr>
-              </table>
-            </g:if>
-            <g:if test="${afficheActiviteCreee}">
-              <span class="label"><g:message code="seance.label.activitetextesliee" /></span>
-            </g:if>
-          </td>
-        </tr>
-      </g:if>
-    </table>
   </div>
   <g:hiddenField name="id" value="${modaliteActivite.id}"/>
   <g:hiddenField id="sujetId" name="sujet.id"
                  value="${modaliteActivite.sujet?.id}"/>
-  <div class="form_actions edite">
-    <g:actionSubmit value="Enregistrer" class="button"
+  <div class="form-actions">
+    <g:actionSubmit value="Enregistrer" class="btn btn-primary"
                     action="enregistre"
                     title="Enregistrer"/>
   </div>
-  <br/><br/><br/><br/><br/>
 </g:form>
 
 </body>
