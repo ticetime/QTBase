@@ -65,16 +65,16 @@
 <div class="navbar">
   <div class="navbar-inner">
     <ul class="nav">
-    <li><g:link action="edite" controller="seance" class="modify"
+    <li><g:link action="edite" controller="seance"
             id="${seance.id}"><i class="icon-pencil"></i> Modifier la séance</g:link></li>
     <g:if test="${grailsApplication.config.eliot.interfacage.notes}">
       <g:if test="${afficheLienMiseAjourNote}">
-        <li><g:link action="updateNotesDevoir" controller="seance" class="share"
+        <li><g:link action="updateNotesDevoir" controller="seance"
                 title="Mise à jour des notes du devoir lié à la séance"
                 id="${seance.id}"><i class="icon-upload"></i> Mettre à jour les notes</g:link></li>
       </g:if>
     </g:if>
-    <li><g:link action="supprime" controller="seance" class="delete"
+    <li><g:link action="supprime" controller="seance"
             id="${seance.id}"><i class="icon-trash"></i> Supprimer la séance</g:link></li>
     </ul>
   </div>
@@ -91,7 +91,8 @@
       <g:message code="${flash.messageErreurNotesCode}"/>
     </li>
   </g:if>
-  <li class="notice">
+</div>
+  <div class="well well-small">
     Groupe : ${seance.groupeLibelle}<br/>
     Sujet : ${seance.sujet.titre} <br/>
     Séance du ${seance.dateDebut.format('dd/MM/yy HH:mm')} au  ${seance.dateFin.format('dd/MM/yy HH:mm')}<br/><br/>
@@ -101,15 +102,14 @@
     <g:else>
       <strong>Aucun élève n'a rendu sa copie</strong>
     </g:else>
-  </li>
-</div>
-<br/>
+  </div>
+
 <g:if test="${copies}">
-  <div class="portal-default_table">
-    <table>
+
+    <table class="table table-striped table-bordered">
       <thead>
       <tr>
-        <th style="text-align: left">Élève</th>
+        <th>Élève</th>
         <th>Note finale</th>
         <th>Note auto.</th>
         <th>Note prof.</th>
@@ -120,8 +120,8 @@
 
       <tbody>
       <g:each in="${copies}" status="i" var="copie">
-        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-          <td style="text-align: left">
+        <tr>
+          <td>
             ${copie.eleve.nomAffichage}
           </td>
           <td>
@@ -146,7 +146,7 @@
             ${copie.dateRemise?.format('dd/MM/yy  à HH:mm')}
           </td>
           <td>
-            <g:link class="button work" action="visualiseCopie"
+            <g:link class="btn btn-primary" action="visualiseCopie"
                     controller="seance"
                     id="${seance.id}" title="Corriger la copie"
                     params="[max: 1, offset: i]">
@@ -158,8 +158,8 @@
 
       <g:if test="${elevesSansCopies}">
         <g:each in="${elevesSansCopies}" var="eleve">
-          <tr class="sanscopies">
-            <td style="text-align: left;font-style: normal;">${eleve.nomAffichage}</td>
+          <tr style="font-style: italic;background-color: #dcdcdc;">
+            <td>${eleve.nomAffichage}</td>
             <td></td>
             <td></td>
             <td></td>
@@ -173,14 +173,7 @@
 
       </tbody>
     </table>
-  </div>
 </g:if>
-<g:else>
-  <!--
-     <div class="portal_pagination">
-      <p class="nb_result">Aucun élève n'a rendu sa copie</p>
-    </div>
-   -->
-</g:else>
+
 </body>
 </html>
