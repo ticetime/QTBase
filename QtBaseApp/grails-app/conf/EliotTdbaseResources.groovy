@@ -37,7 +37,7 @@ modules = {
 
   'eliot-tdbase-ui' {
     dependsOn 'eliot-tice-ui','eliot-tdbase'
-    //resource url: [dir: 'js/eliot', file: 'eliot-tdbase-ui.js']
+    resource url: [dir: 'js/eliot', file: 'eliot-tdbase-ui.js']
     //resource url: [dir: 'css/eliot', file: 'tdbase-ui.css']
   }
 

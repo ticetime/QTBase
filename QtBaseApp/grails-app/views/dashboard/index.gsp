@@ -25,22 +25,26 @@
   -  <http://www.gnu.org/licenses/> and
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <title><g:message code="dashboard.index.head.title" /></title>
+  <title><g:message code="dashboard.index.head.title"/></title>
 </head>
 
 <body>
-<g:render template="/breadcrumps" plugin="lms-common"
-          model="[liens: liens]"/>
-
-<div id="widgets">
-	<g:render template="/seance/w_seances" model="[seances:seances, titre:'Mes séances en cours']"/>
-	<g:render template="/sujet/w_sujets" model="[sujets:sujets, titre:'Mes sujets récents']"/>
-	<g:render template="/question/w_questions" model="[items:items, titre:'Mes items récents']"/>
+<div class="container">
+  <g:render template="/breadcrumps" plugin="lms-common"
+            model="[liens: liens]"/>
+  <div id="widgets">
+    <g:render template="/seance/w_seances"
+              model="[seances: seances, titre: 'Mes séances en cours']"/>
+    <g:render template="/sujet/w_sujets"
+              model="[sujets: sujets, titre: 'Mes sujets récents']"/>
+    <g:render template="/question/w_questions"
+              model="[items: items, titre: 'Mes items récents']"/>
+  </div>
 </div>
-
 </body>
 </html>
