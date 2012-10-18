@@ -32,11 +32,6 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <r:script>
-      $(document).ready(function () {
-        initButtons();
-      });
-    </r:script>
   <title><g:message code="seance.liste.head.title" /></title>
 </head>
 
@@ -71,25 +66,30 @@
 
   <div class="portal-default_results-list sceance">
     <g:each in="${seances}" status="i" var="seance">
-      <div class="${(i % 2) == 0 ? 'even' : 'odd'}">
+      <div>
         <h1>${seance.sujet.titre}</h1>
 
-        <button id="${seance.id}">Actions</button>
+        <div class="btn-group" id="${seance.id}" style="display: inline-block;">
+          <button class="btn btn-primary dropdown-toggle btn-small" data-toggle="dropdown">
+              Actions
+              <span class="caret"></span>
+          </button>
         <ul id="menu_actions_${seance.id}"
-            class="tdbase-menu-actions">
+            class="dropdown-menu">
           <li><g:link action="listeResultats" controller="seance"
-                      id="${seance.id}">
+                      id="${seance.id}" tabindex="-1">
             Corriger les copies
           </g:link>
           </li>
+          <li class="divider"></li>
           <li><g:link action="edite" controller="seance"
-                      id="${seance.id}">
+                      id="${seance.id}" tabindex="-1">
             Modifier
           </g:link>
           </li>
 
         </ul>
-
+      </div>
         <p><strong>» Groupe :</strong><b>${seance.groupeLibelle}</b></p>
 
         <p>

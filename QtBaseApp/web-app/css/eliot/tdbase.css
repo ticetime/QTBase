@@ -324,7 +324,7 @@ div.portal-default_results-list>div:first-child {
     border-top: 1px solid #e5e5e5;
 }
 
-div.portal-default_results-list>div button,
+/*div.portal-default_results-list>div button,
 div.portal-default_results-list>div .button {
     top: -1px;
     margin: 0 0 0 10px;
@@ -351,7 +351,7 @@ div.portal-default_results-list.partiel>div button {
 
 div.portal-default_results-list .tdbase-menu-actions {
     position: absolute;
-    /*margin-left: -97px;*/
+    *//*margin-left: -97px;*//*
 }
 
 div.portal-default_results-list>div .tdbase-menu-actions {
@@ -368,7 +368,7 @@ div.portal-default_results-list .tdbase-menu-actions {
 
 div.portal-default_results-list .tdbase-menu-actions.top {
     top: 2px;
-}
+}*/
 
 div.portal-default_results-list h1 {
     padding-left: 35px;
