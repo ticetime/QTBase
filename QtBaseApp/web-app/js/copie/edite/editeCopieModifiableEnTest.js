@@ -27,9 +27,6 @@
  */
 $(document).ready(function () {
 
-    $('#menu-item-sujets').addClass('actif');
-    initButtons();
-
     $("#hb_enregistre_copie").hide()
 
     $('#date_enregistrement').ajaxError(function () {

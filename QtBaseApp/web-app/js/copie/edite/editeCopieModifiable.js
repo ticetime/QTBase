@@ -26,7 +26,6 @@
  *  <http://www.cecill.info/licences.fr.html>.
  */
 $(document).ready(function () {
-    $('#menu-item-seances').addClass('actif');
 
     $("#hb_enregistre_copie").hide()
 

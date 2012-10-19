@@ -45,86 +45,90 @@
 
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
-<div class="portal-tabs">
-  <span class="portal-tabs-famille-liens">
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
     <g:if test="${artefactHelper.utilisateurPeutModifierArtefact(utilisateur, sujet)}">
-      <g:link action="edite" controller="sujet" class="modify"
-              id="${sujet.id}">Modifier le sujet</g:link> |
-      <g:link action="editeProprietes" controller="sujet" class="modify"
-              id="${sujet.id}">Modifier les propriétés du sujet</g:link>
+      <li><g:link action="edite" controller="sujet"
+              id="${sujet.id}"><i class="icon-pencil"></i> Modifier le sujet</g:link></li>
+      <li><g:link action="editeProprietes" controller="sujet"
+              id="${sujet.id}"><i class="icon-wrench"></i> Modifier les propriétés du sujet</g:link></li>
     </g:if>
     <g:else>
-      <span class="modify">Modifier le sujet</span> |
-      <span class="modify">Modifier les propriétés du sujet</span>
+      <li><a href="#"><i class="icon-ban-circle"></i> Modifier le sujet</a></li>
+      <li><a href="#"><i class="icon-ban-circle"></i> Modifier les propriétés du sujet</a></li>
     </g:else>
-  </span>
-  <span class="portal-tabs-famille-liens">
-    <button id="toolbar_${sujet.id}">Actions</button>
-    <ul id="menu_actions_toolbar_${sujet.id}"
-        class="tdbase-menu-actions">
-      <li><g:link action="reinitialiseCopieTest" id="${copie.id}">
-        Réinitialiser la copie
-      </g:link>
-      </li>
-      <li><g:link action="ajouteSeance" id="${sujet.id}">
-        Nouvelle&nbsp;séance
-      </g:link>
-      </li>
-      <li><hr/></li>
-      <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, sujet)}">
-        <li><g:link action="duplique"
-                    id="${sujet.id}">Dupliquer</g:link></li>
-      </g:if>
-      <g:else>
-        <li>Dupliquer</li>
-      </g:else>
-      <li><hr/></li>
-      <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, sujet)}">
-        <li><g:link action="partage"
-                    id="${sujet.id}">Partager</g:link></li>
-      </g:if>
-      <g:else>
-        <li>Partager</li>
-      </g:else>
-      <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, sujet)}">
-        <li><g:link action="exporter" id="${sujet.id}">Exporter</g:link></li>
-      </g:if>
-      <g:else>
-        <li>Exporter</li>
-      </g:else>
-      <li><hr/></li>
-      <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, sujet)}">
-        <li><g:link action="supprime"
-                    id="${sujet.id}">Supprimer</g:link></li>
-      </g:if>
-      <g:else>
-        <li>Supprimer</li>
-      </g:else>
+      <li class="dropdown" id="toolbar_${sujet.id}">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon-cog"></i>
+              <b class="caret"></b>
+            </a>
+          <ul id="menu_actions_toolbar_${sujet.id}"
+              class="dropdown-menu">
+            <li><g:link action="reinitialiseCopieTest" id="${copie.id}">
+              Réinitialiser la copie
+            </g:link>
+            </li>
+            <li><g:link action="ajouteSeance" id="${sujet.id}">
+              Nouvelle&nbsp;séance
+            </g:link>
+            </li>
+            <li class="divider"></li>
+            <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, sujet)}">
+              <li><g:link action="duplique"
+                          id="${sujet.id}">Dupliquer</g:link></li>
+            </g:if>
+            <g:else>
+              <li class="disabled"><a href="#">Dupliquer</a></li>
+            </g:else>
+            <li class="divider"></li>
+            <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, sujet)}">
+              <li><g:link action="partage"
+                          id="${sujet.id}">Partager</g:link></li>
+            </g:if>
+            <g:else>
+              <li class="disabled"><a href="#">Partager</a></li>
+            </g:else>
+            <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, sujet)}">
+              <li><g:link action="exporter" id="${sujet.id}">Exporter</g:link></li>
+            </g:if>
+            <g:else>
+              <li class="disabled"><a href="#">Exporter</a></li>
+            </g:else>
+            <li class="divider"></li>
+            <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, sujet)}">
+              <li><g:link action="supprime"
+                          id="${sujet.id}">Supprimer</g:link></li>
+            </g:if>
+            <g:else>
+              <li class="disabled"><a href="#">Supprimer</a></li>
+            </g:else>
+          </ul>
+        </li>
     </ul>
-  </span>
+  </div>
+
 </div>
 <g:hasErrors bean="${copie}">
-  <div class="portal-messages">
     <g:eachError>
-      <li class="error"><g:message error="${it}"/></li>
+      <div class="alert alert-error">
+        <g:message error="${it}"/>
+      </div>
     </g:eachError>
-  </div>
 </g:hasErrors>
 <g:if test="${request.messageCode}">
-  <div class="portal-messages">
-    <li class="success"><g:message code="${request.messageCode}"
-                                   class="portal-messages success"/></li>
+  <div class="alert alert-success">
+   <g:message code="${request.messageCode}"/>
   </div>
 </g:if>
 
 <g:if test="${flash.messageCode}">
-  <div class="portal-messages">
-    <li class="notice"><g:message code="${flash.messageCode}"/></li>
+  <div class="alert alert-info">
+    <g:message code="${flash.messageCode}"/>
   </div>
 </g:if>
 
-<div class="portal-messages">
-  <li class="notice">
+<div class="alert alert-info">
     Date dernier enregistrement : <span
           id="date_enregistrement">${copie.dateEnregistrement?.format(message(code: 'default.date.format'))}</span>
     <g:if test="${copie.dateRemise}">
@@ -135,7 +139,6 @@
       / <g:formatNumber number="${copie.maxPoints}" format="##0.00"/>
       &nbsp;&nbsp;(copie remise le ${copie.dateRemise.format('dd/MM/yy  à HH:mm')})
     </g:if>
-  </li>
 </div>
 
 

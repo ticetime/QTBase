@@ -80,18 +80,17 @@
   </div>
 </div>
 
-<div class="portal-messages">
   <g:if test="${flash.messageCode}">
-    <li class="success">
+    <div class="alert alert-success">
       <g:message code="${flash.messageCode}" args="${flash.messageArgs}"/>
-    </li>
+    </div>
   </g:if>
   <g:if test="${flash.messageErreurNotesCode}">
-    <li class="error">
+    <div class="alert alert-error">
       <g:message code="${flash.messageErreurNotesCode}"/>
-    </li>
+    </div>
   </g:if>
-</div>
+
   <div class="well well-small">
     Groupe : ${seance.groupeLibelle}<br/>
     Sujet : ${seance.sujet.titre} <br/>

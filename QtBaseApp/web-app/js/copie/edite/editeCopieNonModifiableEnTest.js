@@ -26,8 +26,6 @@
  *  <http://www.cecill.info/licences.fr.html>.
  */
 $(document).ready(function () {
-    $('#menu-item-sujets').addClass('actif');
-    initButtons();
     var copieEdite = new SeanceCopieCommon()
     copieEdite.deactivateFormElements()
 
