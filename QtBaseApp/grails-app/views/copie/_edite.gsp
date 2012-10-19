@@ -33,7 +33,7 @@
 <g:form method="post" class="edite">
   <g:hiddenField name="copie.id" value="${copie.id}"/>
 
-  <h1 class="tdbase-sujet-titre">${sujet.titre}</h1>
+  <h2>${sujet.titre}</h2>
   <g:set var="indexReponseNonVide" value="0"/>
   <g:set var="indexQuestion" value="1"/>
   <g:set var="exericeEnCours" value="${null}"/>
@@ -59,7 +59,7 @@
      <!-- -------------------------------- -->
      <div class="tdbase-sujet-edition-question">
       <g:if test="${question.type.interaction}">
-        <h1>Question ${indexQuestion}</h1>
+        <h3>Question ${indexQuestion}</h3>
         <g:set var="indexQuestion" value="${indexQuestion.toInteger() + 1}"/>
         <div class="tdbase-sujet-edition-question-points">
           <div id="SujetSequenceQuestions-${sujetQuestion.id}">
@@ -102,7 +102,7 @@
      <!-- -------------------------------- -->
      <div class="tdbase-sujet-edition-question">
       <g:if test="${question.type.interaction}">
-        <h2>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h2>
+        <h3>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h3>
         <g:set var="indexQuestionInExercice"
                value="${indexQuestionInExercice.toInteger() + 1}"/>
         <div class="tdbase-sujet-edition-question-points">
@@ -151,12 +151,12 @@
       <g:set var="etaitDansUnExercice" value="${true}"/>
       <div class="exercice" id="exercice_${indexExercice}">
 
-      <h1>Exercice ${indexExercice}</h1>
+      <h3>Exercice ${indexExercice}</h3>
 
       <div class="tdbase-sujet-edition-question">
 
       <g:if test="${question.type.interaction}">
-        <h2>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h2>
+        <h3>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h3>
         <g:set var="indexQuestionInExercice"
                value="${indexQuestionInExercice.toInteger() + 1}"/>
         <div class="tdbase-sujet-edition-question-points">
@@ -205,16 +205,16 @@
     <g:hiddenField name="nombreReponsesNonVides"
                    value="${indexReponseNonVide}"/>
     <div class="bottom">
-      <div class="form_actions">
+      <div class="form-actions">
         <g:submitToRemote action="enregistreLaCopie"
                           id="hb_enregistre_copie"
                           update="date_enregistrement"/>
         <g:actionSubmit value="Enregistrer la copie" action="enregistreLaCopie"
-                        class="button"
+                        class="btn"
                         title="Enregistrer la copie sans la rendre"/>
         <g:actionSubmit value="Enregistrer et rendre la copie"
                         action="rendLaCopie"
-                        class="button"
+                        class="btn btn-primary"
                         title="Enregistrer et rendre la copie"/>
       </div>
     </div>
