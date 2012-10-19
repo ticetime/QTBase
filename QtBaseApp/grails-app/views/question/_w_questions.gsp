@@ -53,7 +53,7 @@
 	  	<p class="none">Aucun items.</p>
 	  </g:else>
 	  
-	  <g:link controller="question" class="add" action="nouvelle">Créer un item</g:link></div>
+	  <g:link controller="question" class="btn btn-primary" action="nouvelle"><i class="icon-plus icon-white"></i> Créer un item</g:link></div>
  
 	     
 

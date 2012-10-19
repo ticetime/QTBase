@@ -51,7 +51,7 @@
 	  	<p class="nb_result">${sujets.totalCount} sujet(s)</p>
 	  	<p class="none">Aucun sujets.</p>
 	</g:else>
-	  <g:link controller="sujet" class="add" action="nouveau">Créer un sujet</g:link></div>
+	  <g:link controller="sujet" class="btn btn-primary" action="nouveau"><i class="icon-plus icon-white"></i> Créer un sujet</g:link></div>
 	  
 	
 	
