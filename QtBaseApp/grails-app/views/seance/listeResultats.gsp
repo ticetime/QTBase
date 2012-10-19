@@ -36,7 +36,7 @@
   <r:script>
     $(document).ready(function () {
       var $confirmDialog = $("<div></div>")
-            			    .html('Êtes vous sur de vouloir supprimer la séance avec toutes les copies associées ?')
+            			    .html('Êtes vous sur de vouloir supprimer la séance avec ses copies associées ?')
             			    .dialog({
             					autoOpen: false,
             				    title: "Suppression de la séance",
@@ -74,7 +74,7 @@
                 id="${seance.id}"><i class="icon-upload"></i> Mettre à jour les notes</g:link></li>
       </g:if>
     </g:if>
-    <li><g:link action="supprime" controller="seance"
+    <li><g:link action="supprime" controller="seance" class="delete"
             id="${seance.id}"><i class="icon-trash"></i> Supprimer la séance</g:link></li>
     </ul>
   </div>

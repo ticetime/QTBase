@@ -38,7 +38,7 @@
       $('select[name="proprietesScolariteSelectionId"]').focus();
       $(".datepicker").datetimepicker();
       var $confirmDialog = $("<div></div>")
-      							.html('Êtes vous sur de vouloir supprimer la séance avec toutes les copies associées ?')
+      							.html('Êtes vous sur de vouloir supprimer la séance avec ses copies associées ?')
       							.dialog({
       								autoOpen: false,
       								title: "Suppression de la séance",
@@ -95,7 +95,7 @@
     <g:if test="${modaliteActivite.id}">
       <li><g:link action="listeResultats" controller="seance" class="modify"
               id="${modaliteActivite.id}"><i class="icon-pencil"></i> Corriger les copies</g:link> </li>
-      <li><g:link action="supprime" controller="seance" class="delete delete-actif"
+      <li><g:link action="supprime" controller="seance" class="delete-actif"
               id="${modaliteActivite.id}"><i class="icon-trash"></i> Supprimer la séance</g:link>  </li>
     </g:if>
     <g:else>

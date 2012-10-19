@@ -53,6 +53,9 @@ class BreadcrumpsService {
     if (params."${Breadcrumps.PARAM_BREADCRUMPS_INIT}") {
       breadcrumps.initialise()
       params.remove(Breadcrumps.PARAM_BREADCRUMPS_INIT)
+    } else if(params."${Breadcrumps.PARAM_BREADCRUMPS_KEEP_FIRST_LINK}") {
+      breadcrumps.initialise(true)
+      params.remove(Breadcrumps.PARAM_BREADCRUMPS_KEEP_FIRST_LINK)
     }
     if (params."${Breadcrumps.PARAM_BREADCRUMPS_INDEX}") {
       onClikSurLienBreadcrumps(params."${Breadcrumps.PARAM_BREADCRUMPS_INDEX}" as Integer)

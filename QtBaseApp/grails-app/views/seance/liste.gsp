@@ -40,29 +40,24 @@
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <g:if test="${flash.messageSuppressionCode}">
-  <div class="portal-messages">
-    <li class="success">
-      <g:message code="${flash.messageSuppressionCode}"
-                 class="portal-messages success"/>
+  <div class="alert alert-success">
+      <g:message code="${flash.messageSuppressionCode}"/>
       <g:if test="${flash.messageSuppressionTextesCode}">
-        <g:message code="${flash.messageSuppressionTextesCode}"
-                   class="portal-messages success"/>
+        <g:message code="${flash.messageSuppressionTextesCode}"/>
       </g:if>
       <g:if test="${flash.messageSuppressionNotesCode}">
-        <g:message code="${flash.messageSuppressionNotesCode}"
-                   class="portal-messages success"/>
+        <g:message code="${flash.messageSuppressionNotesCode}"/>
       </g:if>
     </li>
   </div>
 </g:if>
 <g:if test="${seances}">
-  <div class="portal_pagination">
-    <p class="nb_result">${seances.totalCount} résultat(s)</p>
+    <div class="well well-small">${seances.totalCount} résultat(s)</div>
     <g:if test="${affichePager}">
-      <div class="pager">Page(s) : <g:paginate
-              total="${seances.totalCount}"></g:paginate></div>
+      <div><g:paginate
+              total="${seances.totalCount}"></g:paginate>
+      </div>
     </g:if>
-  </div>
 
   <div class="portal-default_results-list sceance">
     <g:each in="${seances}" status="i" var="seance">
@@ -70,8 +65,8 @@
         <h1>${seance.sujet.titre}</h1>
 
         <div class="btn-group" id="${seance.id}" style="display: inline-block;">
-          <button class="btn btn-primary dropdown-toggle btn-small" data-toggle="dropdown">
-              Actions
+          <button class="btn dropdown-toggle btn-small" data-toggle="dropdown">
+              <i class="icon-cog"></i>
               <span class="caret"></span>
           </button>
         <ul id="menu_actions_${seance.id}"
@@ -105,7 +100,7 @@
 
 </g:if>
 <g:else>
-  <div class="portal_pagination">
+  <div class="well well-small">
     Aucune séance
   </div>
 </g:else>

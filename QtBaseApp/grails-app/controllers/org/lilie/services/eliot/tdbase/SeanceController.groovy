@@ -36,6 +36,7 @@ import org.lilie.services.eliot.tice.scolarite.ProfilScolariteService
 import org.lilie.services.eliot.tice.scolarite.ProprietesScolarite
 import org.lilie.services.eliot.tice.utils.BreadcrumpsService
 import org.lilie.services.eliot.tice.utils.NumberUtils
+import org.lilie.services.eliot.tice.utils.Breadcrumps
 
 class SeanceController {
 
@@ -65,7 +66,7 @@ class SeanceController {
     List<ChapitreInfo> chapitres = []
     if (params.creation) {
       modaliteActivite = new ModaliteActivite(enseignant: personne)
-      params.bcInit = true
+      params."${Breadcrumps.PARAM_BREADCRUMPS_KEEP_FIRST_LINK}" = true
     } else {
       modaliteActivite = ModaliteActivite.get(params.id)
       lienBookmarkable = createLink(controller: "accueil", action: "activite",
@@ -162,7 +163,7 @@ class SeanceController {
       flash.messageCode = "seance.enregistre.succes"
       tryInsertActiviteForModaliteActivite(modaliteActivite, params, personne)
       tryInsertDevoirForModaliteActivite(modaliteActivite, params, personne)
-      redirect(action: "edite", id: modaliteActivite.id, params: [bcInit: true])
+      redirect(action: "edite", id: modaliteActivite.id, params: [bcKeep1: true])
     } else {
       def proprietesScolarite = profilScolariteService.findProprietesScolariteWithStructureForPersonne(personne)
       render(view: '/seance/edite', model: [liens: breadcrumpsService.liens,
@@ -207,7 +208,7 @@ class SeanceController {
     modaliteActiviteService.supprimeModaliteActivite(seance,
                                                      personne)
     flash.messageSuppressionCode = "seance.suppression.succes"
-    redirect(action: "liste", params: [bcInit: true])
+    redirect(action: "liste", params: [bcKeep1 : true])
   }
 
   /**

@@ -107,6 +107,12 @@
     </div>
 
     <div class="form_actions recherche">
+      <g:if test="${sujets}">
+                          ${sujets.totalCount} résultat(s)
+                      </g:if>
+                      <g:else>
+                        Aucun résultat
+                      </g:else>
       <g:actionSubmit value="Rechercher" action="recherche" class="btn"
                       title="Lancer la recherche"/>
     </div>
@@ -115,12 +121,10 @@
 
 <g:if test="${sujets}">
 
-  <div class="portal_pagination">
-    <p class="nb_result">${sujets.totalCount} résultat(s)</p>
-
+  <div>
     <g:if test="${affichePager}">
-      <div class="pager">Page(s) : <g:paginate total="${sujets.totalCount}"
-                                               params="${rechercheCommand?.toParams()}"></g:paginate></div>
+      <g:paginate total="${sujets.totalCount}"
+               params="${rechercheCommand?.toParams()}"></g:paginate>
     </g:if>
   </div>
 
@@ -201,11 +205,6 @@
   </div>
 
 </g:if>
-<g:else>
-  <div class="portal_pagination">
-    <p class="nb_result">Aucun résultat</p>
-  </div>
-</g:else>
 
 </body>
 </html>

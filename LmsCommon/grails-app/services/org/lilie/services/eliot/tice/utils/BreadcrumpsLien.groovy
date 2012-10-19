@@ -48,6 +48,7 @@ class BreadcrumpsLien {
 class Breadcrumps {
 
   static final String PARAM_BREADCRUMPS_INIT = "bcInit"
+  static final String PARAM_BREADCRUMPS_KEEP_FIRST_LINK = "bcKeep1"
   static final String PARAM_BREADCRUMPS_INDEX = "bcIdx"
 
   List<BreadcrumpsLien> liens = []
@@ -56,9 +57,19 @@ class Breadcrumps {
   /**
    * Initialise le breadcrump
    */
-  synchronized def initialise() {
+  synchronized def initialise(Boolean keepFirstLink) {
+    def firstElt = null
+    if (liens) {
+      firstElt = liens[0]
+    }
     liens = []
     proprietes = [:]
+    if (firstElt && keepFirstLink) {
+      liens << firstElt
+      if (firstElt.proprietes)  {
+        proprietes << firstElt.proprietes
+      }
+    }
   }
 
   /**
