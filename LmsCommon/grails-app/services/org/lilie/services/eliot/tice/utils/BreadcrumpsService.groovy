@@ -50,13 +50,16 @@ class BreadcrumpsService {
    * @param libelle le libelle du lien à mettre dans le breadcrump si nécessaire
    */
   def manageBreadcrumps(Map params, String libelle, Map proprietes = null) {
+    if (params."${Breadcrumps.PARAM_BREADCRUMPS_IGNORE}") {
+      // do nothing with the breadcrumps
+      params.remove(Breadcrumps.PARAM_BREADCRUMPS_IGNORE)
+      return
+    }
     if (params."${Breadcrumps.PARAM_BREADCRUMPS_INIT}") {
       breadcrumps.initialise()
       params.remove(Breadcrumps.PARAM_BREADCRUMPS_INIT)
-    } else if(params."${Breadcrumps.PARAM_BREADCRUMPS_KEEP_FIRST_LINK}") {
-      breadcrumps.initialise(true)
-      params.remove(Breadcrumps.PARAM_BREADCRUMPS_KEEP_FIRST_LINK)
     }
+
     if (params."${Breadcrumps.PARAM_BREADCRUMPS_INDEX}") {
       onClikSurLienBreadcrumps(params."${Breadcrumps.PARAM_BREADCRUMPS_INDEX}" as Integer)
     } else {
@@ -64,8 +67,7 @@ class BreadcrumpsService {
                             params.controller,
                             libelle,
                             params,
-                            proprietes
-      )
+                            proprietes)
     }
   }
 
@@ -89,8 +91,8 @@ class BreadcrumpsService {
 
   /**
    * Modifie la valeur d'une propriete
-   * @param nom  le nom de la propriete
-   * @param valeur  la valeur de la propriete
+   * @param nom le nom de la propriete
+   * @param valeur la valeur de la propriete
    */
   def setValeurPropriete(String nom, def valeur) {
     breadcrumps.setValeurPropriete(nom, valeur)
