@@ -124,6 +124,9 @@ log4j = {
 //
 // Technical config
 //
+
+grails.plugins.twitterbootstrap.fixtaglib = true
+
 grails.controllers.defaultScope = "session"
 
 grails.serverURL = "http://localhost:8080/${appName}"

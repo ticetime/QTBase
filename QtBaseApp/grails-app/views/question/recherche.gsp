@@ -31,12 +31,6 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <r:script>
-    $(document).ready(function () {
-      $('#menu-item-contributions').addClass('actif');
-      initButtons();
-    });
-  </r:script>
   <title>
   <g:if test="${afficheFormulaire}">
    <g:message code="question.recherche.head.title" />
@@ -61,15 +55,15 @@
     <div class="portal-form_container recherche">
       <table>
         <tr>
-          <td class="label">
-            Titre :
+          <td class="control-label">
+            Titre
           </td>
           <td>
             <g:textField name="patternTitre" title="titre"
                          value="${rechercheCommand.patternTitre}"/>
           </td>
 
-          <td class="label">Type :
+          <td class="control-label">Type
           </td>
           <td>
             <g:select name="typeId" value="${rechercheCommand.typeId}"
@@ -80,14 +74,14 @@
           </td>
         </tr>
         <tr>
-          <td class="label">
-            Contenu :
+          <td class="control-label">
+            Contenu
           </td>
           <td>
             <g:textField name="patternSpecification" title="contenu"
                          value="${rechercheCommand.patternSpecification}"/>
           </td>
-          <td class="label">Matière :
+          <td class="control-label">Matière
           </td>
           <td>
             <g:select name="matiereId" value="${rechercheCommand.matiereId}"
@@ -98,14 +92,14 @@
           </td>
         </tr>
         <tr>
-          <td class="label">Auteur :
+          <td class="control-label">Auteur
           </td>
           <td>
             <g:textField name="patternAuteur" title="auteur"
                                     value="${rechercheCommand.patternAuteur}"/>
           </td>
 
-          <td class="label">Niveau :
+          <td class="control-label">Niveau
           </td>
           <td>
             <g:select name="niveauId" value="${rechercheCommand.niveauId}"
@@ -118,36 +112,40 @@
 
       </table>
     </div>
-
     <div class="form_actions recherche">
+      <g:if test="${questions}">
+                    ${questions.totalCount} résultat(s)
+                </g:if>
+                <g:else>
+                  Aucun résultat
+                </g:else>
       <g:hiddenField name="sujetId" value="${sujet?.id}"/>
+
       <g:actionSubmit value="Rechercher" action="recherche"
-                      title="Lancer la recherche" class="button"/>
+                      title="Lancer la recherche" class="btn"/>
     </div>
   </form>
 </g:if>
 <g:if test="${questions}">
-
-  <div class="portal_pagination ${afficheFormulaire ? 'partiel' : ''} ">
-
-    <p class="nb_result">${questions.totalCount} résultat(s)</p>
+  <div class="${afficheFormulaire ? 'partiel' : ''} ">
     <g:if test="${afficherPager}">
-      <div class="pager">
-        Page(s) : <g:paginate
+        <g:paginate
                 total="${questions.totalCount}"
                 params="${rechercheCommand?.toParams()}"></g:paginate>
-      </div>
-    </g:if>
+      </g:if>
   </div>
 
   <div class="portal-default_results-list question  ${sujet ? 'partiel' : ''}">
     <g:each in="${questions}" status="i" var="questionInstance">
-      <div class="${(i % 2) == 0 ? 'even' : 'odd'}" style="z-index: 0">
+      <div>
         <h1>${fieldValue(bean: questionInstance, field: "titre")}</h1>
 
-        <button id="${questionInstance.id}">Actions</button>
-        <ul id="menu_actions_${questionInstance.id}"
-            class="tdbase-menu-actions">
+        <div class="btn-group" id="${questionInstance.id}" style="display: inline-block;">
+          <button class="btn dropdown-toggle btn-small" data-toggle="dropdown">
+              <i class="icon-cog"></i>
+              <span class="caret"></span>
+          </button>
+          <ul id="menu_actions_${questionInstance.id}" class="dropdown-menu">
           <li><g:link action="detail"
                       controller="question${questionInstance.type.code}"
                       id="${questionInstance.id}"
@@ -170,7 +168,7 @@
                         id="${questionInstance.id}">Modifier</g:link></li>
           </g:if>
           <g:else>
-            <li>Modifier</li>
+            <li class="disabled"><a href="#">Modifier</a></li>
           </g:else>
           <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, questionInstance) && afficheLiensModifier}">
             <li><g:link action="duplique"
@@ -178,35 +176,35 @@
                         id="${questionInstance.id}">Dupliquer</g:link></li>
           </g:if>
           <g:else>
-            <li>Dupliquer</li>
+            <li class="disabled"><a href="#">Dupliquer</a></li>
           </g:else>
-          <li><hr/></li>
+          <li class="divider"></li>
           <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, questionInstance) && afficheLiensModifier}">
             <li><g:link action="partage"
                         controller="question${questionInstance.type.code}"
                         id="${questionInstance.id}">Partager</g:link></li>
           </g:if>
           <g:else>
-            <li>Partager</li>
+            <li class="disabled"><a href="#">Partager</a></li>
           </g:else>
           <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, questionInstance)}">
             <li><g:link action="exporter" controller="question"
                         id="${questionInstance.id}">Exporter</g:link></li>
           </g:if>
           <g:else>
-            <li>Exporter</li>
+            <li class="disabled"><a href="#">Exporter</a></li>
           </g:else>
-          <li><hr/></li>
+          <li class="divider"></li>
           <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, questionInstance) && afficheLiensModifier}">
             <li><g:link action="supprime"
                         controller="question${questionInstance.type.code}"
                         id="${questionInstance.id}">Supprimer</g:link></li>
           </g:if>
           <g:else>
-            <li>Supprimer</li>
+            <li class="disabled"><a href="#">Supprimer</a></li>
           </g:else>
         </ul>
-
+        </div>
         <p class="date">Mise à jour le ${questionInstance.lastUpdated?.format('dd/MM/yy HH:mm')}</p>
 
         <p>
@@ -221,11 +219,7 @@
   </div>
 
 </g:if>
-<g:else>
-  <div class="portal_pagination">
-    <p class="nb_result">Aucun résultat</p>
-  </div>
-</g:else>
+
 
 </body>
 </html>

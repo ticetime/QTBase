@@ -107,7 +107,7 @@
     </div>
 
     <div class="form_actions recherche">
-      <g:actionSubmit value="Rechercher" action="recherche" class="btn btn-info"
+      <g:actionSubmit value="Rechercher" action="recherche" class="btn"
                       title="Lancer la recherche"/>
     </div>
   </form>
@@ -131,9 +131,9 @@
         <h1>${fieldValue(bean: sujetInstance, field: "titre")}</h1>
 
         <div class="btn-group" id="${sujetInstance.id}" style="display: inline-block;">
-          <button class="btn btn-primary dropdown-toggle btn-small" data-toggle="dropdown">
-                        Actions
-                        <span class="caret"></span>
+          <button class="btn dropdown-toggle btn-small" data-toggle="dropdown">
+              <i class="icon-cog"></i>
+              <span class="caret"></span>
           </button>
         <ul id="menu_actions_${sujetInstance.id}" class="dropdown-menu">
           <li><g:link action="teste" id="${sujetInstance.id}" tabindex="-1">
