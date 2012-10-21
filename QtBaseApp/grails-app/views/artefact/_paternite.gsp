@@ -26,12 +26,14 @@
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
 
-<tr>
-  <td class="label">Paternité&nbsp;:</td>
-  <td>
+<div class="control-group">
+  <label class="control-label">Paternité</label>
+
+  <div class="controls">
     <span id="paternite"></span>
-  </td>
-</tr>
+  </div>
+</div>
+
 
 <r:script>
 $(document).ready(function () {
