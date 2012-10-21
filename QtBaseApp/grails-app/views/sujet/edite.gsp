@@ -42,6 +42,12 @@
       });
     });
   </r:script>
+  <style type="text/css">
+    h3 {
+      display: inline;
+      margin-right: 20px;
+    }
+  </style>
   <title><g:message code="sujet.edite.head.title"/></title>
 </head>
 

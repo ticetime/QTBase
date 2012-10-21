@@ -51,8 +51,8 @@
                   </g:each>
             </ul>
             <ul class="nav pull-right">
-                <li><a href="#"><sec:loggedInUserInfo field="nomAffichage"/></a></li>
-                <li><g:link controller="logout">Déconnexion</g:link></li>
+                <li><a href="#"><i class="icon-user icon-white"></i> <sec:loggedInUserInfo field="nomAffichage"/></a></li>
+                <li><g:link controller="logout"><i class="icon-off icon-white"></i> Déconnexion</g:link></li>
             </ul>
           </div><!--/.nav-collapse -->
 
