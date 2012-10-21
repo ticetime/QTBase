@@ -34,14 +34,12 @@
   <r:require module="eliot-tdbase-ui"/>
   <r:script>
     $(document).ready(function() {
-      $('#menu-item-sujets').addClass('actif');
 
       $(".editinplace").editInPlace({
         default_text:"",
       	bg_out: "#fff",
         url: "${g.createLink(controller: 'sujet', action: 'updatePoints')}"
       });
-      initButtons();
     });
   </r:script>
   <title><g:message code="sujet.edite.head.title"/></title>
@@ -52,17 +50,20 @@
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 
-  <div class="portal-tabs">
-    <span class="portal-tabs-famille-liens">
-      <g:link action="ajouteElement" controller="sujet" class="add"
-              id="${sujet.id}">Ajouter un item</g:link> |
-      <g:link action="editeProprietes" controller="sujet" class="modify"
-              id="${sujet.id}">Modifier les propriétés du sujet</g:link>
-    </span>
-    <span class="portal-tabs-famille-liens">
-      <button id="toolbar_${sujet.id}">Actions</button>
+  <div class="navbar">
+    <div class="navbar-inner">
+    <ul class="nav">
+      <li><g:link action="ajouteElement" controller="sujet"
+              id="${sujet.id}"><i class="icon-plus"></i> Ajouter un item</g:link></li>
+      <li><g:link action="editeProprietes" controller="sujet"
+              id="${sujet.id}"><i class="icon-wrench"></i> Modifier les propriétés du sujet</g:link></li>
+      <li class="dropdown" id="toolbar_${sujet.id}">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-cog"></i>
+                    <b class="caret"></b>
+                  </a>
       <ul id="menu_actions_toolbar_${sujet.id}"
-          class="tdbase-menu-actions">
+          class="dropdown-menu">
         <li><g:link action="teste" id="${sujet.id}">
           Tester
         </g:link>
@@ -71,62 +72,57 @@
           Nouvelle&nbsp;séance
         </g:link>
         </li>
-        <li><hr/></li>
+        <li class="divider"></li>
         <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, sujet)}">
           <li><g:link action="duplique"
                       id="${sujet.id}">Dupliquer</g:link></li>
         </g:if>
         <g:else>
-          <li>Dupliquer</li>
+          <li class="disabled"><a href="#">Dupliquer</a></li>
         </g:else>
-        <li><hr/></li>
+        <li class="divider"></li>
         <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, sujet)}">
           <li><g:link action="partage"
                       id="${sujet.id}">Partager</g:link></li>
         </g:if>
         <g:else>
-          <li>Partager</li>
+          <li class="disabled"><a href="#">Partager</a></li>
         </g:else>
         <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, sujet)}">
           <li><g:link action="exporter" id="${sujet.id}">Exporter</g:link></li>
         </g:if>
         <g:else>
-          <li>Exporter</li>
+          <li class="disabled"><a href="#">Exporter</a></li>
         </g:else>
 
-        <li><hr/></li>
+        <li class="divider"></li>
         <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, sujet)}">
           <li><g:link action="supprime"
                       id="${sujet.id}">Supprimer</g:link></li>
         </g:if>
         <g:else>
-          <li>Supprimer</li>
+          <li class="disabled"><a href="#">Supprimer</a></li>
         </g:else>
       </ul>
-    </span>
+    </ul>
+    </div>
   </div>
 
 
 <g:hasErrors bean="${sujet}">
-  <div class="portal-messages">
     <g:eachError>
-      <li class="error"><g:message error="${it}"/></li>
+      <div class="alert alert-error"><g:message error="${it}"/></div>
     </g:eachError>
-  </div>
 </g:hasErrors>
 <g:if test="${flash.messageCode}">
-  <div class="portal-messages">
-    <li class="success"><g:message code="${flash.messageCode}"
-                                   args="${flash.messageArgs}"
-                                   class="portal-messages success"/></li>
-  </div>
+    <div class="alert alert-success"><g:message code="${flash.messageCode}"
+                                   args="${flash.messageArgs}"/></div>
 </g:if>
 
-  <div class="portal-form_container edite full">
-    <span class="title">${sujet.titre}</span>
-  </div>
+
 
 <g:if test="${sujet}">
+  <h2>${sujet.titre}</h2>
   <div class="tdbase-sujet-edition">
     <g:set var="indexQuestion" value="1"/>
     <g:set var="indexExercice" value="1"/>
@@ -134,19 +130,23 @@
       <g:set var="question" value="${sujetQuestion.question}"/>
       <div class="tdbase-sujet-edition-question">
         <g:if test="${question.estComposite()}">
-          <h1>Exercice ${indexExercice}</h1>
+          <h3>Exercice ${indexExercice}</h3>
         </g:if>
         <g:elseif test="${question.type.interaction}">
-          <h1>Question ${indexQuestion}</h1>
+          <h3>Question ${indexQuestion}</h3>
           <g:set var="indexQuestion" value="${indexQuestion.toInteger() + 1}"/>
         </g:elseif>
         <g:else>
-          <h1>${question.type.nom}</h1>
+          <h3>${question.type.nom}</h3>
         </g:else>
 
-        <button id="${sujetQuestion.id}">Actions</button>
+        <div class="btn-group" id="${sujetQuestion.id}" style="display: inline-block;margin-bottom: 20px;">
+          <button class="btn dropdown-toggle btn-small" data-toggle="dropdown">
+                        <i class="icon-cog"></i>
+                        <span class="caret"></span>
+                    </button>
         <ul id="menu_actions_${sujetQuestion.id}"
-            class="tdbase-menu-actions">
+            class="dropdown-menu">
           <g:if test="${artefactHelper.utilisateurPeutModifierArtefact(utilisateur, sujetQuestion.question)}">
             <li><g:link action="edite"
                         controller="question${sujetQuestion.question.type.code}"
@@ -154,7 +154,7 @@
             </g:link></li>
           </g:if>
           <g:else>
-            <li>Modifier</li>
+            <li class="disabled"><a href="#">Modifier</a></li>
           </g:else>
           <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, sujetQuestion.question)}">
             <li><g:link action="dupliqueDansSujet"
@@ -162,9 +162,9 @@
                         id="${sujetQuestion.id}">Dupliquer&nbsp;et&nbsp;modifier</g:link></li>
           </g:if>
           <g:else>
-            <li>Dupliquer&nbsp;et&nbsp;modifier</li>
+            <li class="disabled"><a href="#">Dupliquer&nbsp;et&nbsp;modifier</a></li>
           </g:else>
-          <li><hr/></li>
+          <li class="divider"></li>
           <li>
             <g:if test="${rang > 0}">
               <g:link action="remonteElement" controller="sujet"
@@ -173,7 +173,7 @@
               </g:link>
             </g:if>
             <g:else>
-              Déplacer&nbsp;vers&nbsp;le&nbsp;haut
+              <li class="disabled"><a href="#">Déplacer&nbsp;vers&nbsp;le&nbsp;haut</a></li>
             </g:else>
           </li>
           <li>
@@ -184,10 +184,10 @@
               </g:link>
             </g:if>
             <g:else>
-              Déplacer&nbsp;vers&nbsp;le&nbsp;bas
+              <li class="disabled"><a href="#">Déplacer&nbsp;vers&nbsp;le&nbsp;bas</a></li>
             </g:else>
           </li>
-          <li><hr/></li>
+          <li class="divider"></li>
           <li>
             <g:link action="ajouteElement" controller="sujet"
                     id="${sujet.id}" params="[direction: 'avant',
@@ -201,22 +201,23 @@
               Insérer&nbsp;un&nbsp;item&nbsp;après
             </g:link>
           </li>
-          <li><hr/></li>
+          <li class="divider"></li>
           <li><g:link action="supprimeFromSujet" controller="sujet"
                       id="${sujetQuestion.id}">
             Retirer</g:link></li>
 
-          <li><hr/></li>
+          <li class="divider"></li>
 
           <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, sujetQuestion.question)}">
             <li><g:link action="exporter" controller="question"
                         id="${sujetQuestion.question.id}">Exporter</g:link></li>
           </g:if>
           <g:else>
-            <li>Exporter</li>
+            <li class="disabled"><a href="#">Exporter</a></li>
           </g:else>
 
         </ul>
+        </div>
 
         <g:if test="${question.estComposite()}">
           <div class="tdbase-sujet-edition-question-preview">
@@ -228,14 +229,12 @@
         </g:if>
         <g:else>
           <g:if test="${question.type.interaction}">
-            <div class="tdbase-sujet-edition-question-points">
-              <div class="editinplace"
+              <div class="editinplace" style="display: inline-block; float: none;"
                    id="SujetSequenceQuestions-${sujetQuestion.id}"
                    title="Cliquez pour modifier le barème...">
                 ${NumberUtils.formatFloat(sujetQuestion.points)}
               </div>
-              <span class="point">point(s)</span>
-            </div>
+              <span style="margin-left: 15px">point(s)</span>
           </g:if>
           <div class="tdbase-sujet-edition-question-preview">
             <g:render
