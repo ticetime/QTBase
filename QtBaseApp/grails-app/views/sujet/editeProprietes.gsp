@@ -43,6 +43,70 @@
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 
+<g:if test="${sujet.id}">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav">
+      <g:if test="${artefactHelper.utilisateurPeutModifierArtefact(utilisateur, sujet)}">
+        <li><g:link action="edite" controller="sujet"
+                id="${sujet.id}"><i class="icon-pencil"></i> Modifier le sujet</g:link></li>
+      </g:if>
+      <g:else>
+        <li><a href="#"><i class="icon-ban-circle"></i> Modifier le sujet</a></li>
+      </g:else>
+        <li class="dropdown" id="toolbar_${sujet.id}">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon-cog"></i>
+                <b class="caret"></b>
+              </a>
+            <ul id="menu_actions_toolbar_${sujet.id}"
+                class="dropdown-menu">
+              <li><g:link action="teste" id="${sujet.id}">
+                        Tester
+                      </g:link>
+              </li>
+              <li><g:link action="ajouteSeance" id="${sujet.id}">
+                Nouvelle&nbsp;séance
+              </g:link>
+              </li>
+              <li class="divider"></li>
+              <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, sujet)}">
+                <li><g:link action="duplique"
+                            id="${sujet.id}">Dupliquer</g:link></li>
+              </g:if>
+              <g:else>
+                <li class="disabled"><a href="#">Dupliquer</a></li>
+              </g:else>
+              <li class="divider"></li>
+              <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, sujet)}">
+                <li><g:link action="partage"
+                            id="${sujet.id}">Partager</g:link></li>
+              </g:if>
+              <g:else>
+                <li class="disabled"><a href="#">Partager</a></li>
+              </g:else>
+              <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, sujet)}">
+                <li><g:link action="exporter" id="${sujet.id}">Exporter</g:link></li>
+              </g:if>
+              <g:else>
+                <li class="disabled"><a href="#">Exporter</a></li>
+              </g:else>
+              <li class="divider"></li>
+              <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, sujet)}">
+                <li><g:link action="supprime"
+                            id="${sujet.id}">Supprimer</g:link></li>
+              </g:if>
+              <g:else>
+                <li class="disabled"><a href="#">Supprimer</a></li>
+              </g:else>
+            </ul>
+          </li>
+      </ul>
+    </div>
+
+  </div>
+</g:if>
+
 <g:if test="${flash.messageCode}">
   <div class="alert alert-success">
     <g:message code="${flash.messageCode}"/>
