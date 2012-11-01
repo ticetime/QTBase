@@ -43,6 +43,11 @@
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 
+<g:if test="${flash.messageCode}">
+  <div class="alert alert-success">
+    <g:message code="${flash.messageCode}"/>
+  </div>
+</g:if>
 <g:hasErrors bean="${sujet}">
     <g:eachError>
       <div class="alert alert-error"><g:message error="${it}"/></div>

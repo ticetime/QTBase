@@ -152,7 +152,7 @@ class SujetController {
     sujet = sujetService.updateProprietes(sujet, params, proprietaire)
     if (!sujet.hasErrors()) {
       flash.messageCode = "sujet.enregistre.succes"
-      redirect(action: 'detailProprietes', id: sujet.id)
+      redirect(action: 'editeProprietes', id: sujet.id)
       return
     }
     render(view: "editeProprietes", model: [liens: breadcrumpsService.liens,
@@ -162,20 +162,7 @@ class SujetController {
             niveaux: profilScolariteService.findNiveauxForPersonne(proprietaire)])
   }
 
-  /**
-   *
-   */
-  def detailProprietes() {
-    breadcrumpsService.manageBreadcrumps(params, message(code: "sujet.detailproprietes.titre"))
-    Personne personne = authenticatedPersonne
-    Sujet sujet = Sujet.get(params.id)
-    [liens: breadcrumpsService.liens,
-            sujet: sujet,
-            peutSupprimerSujet: artefactAutorisationService.utilisateurPeutSupprimerArtefact(personne, sujet),
-            peutPartagerSujet: artefactAutorisationService.utilisateurPeutPartageArtefact(personne, sujet),
-            artefactHelper: artefactAutorisationService,
-            utilisateur: personne]
-  }
+
 
   /**
    *
