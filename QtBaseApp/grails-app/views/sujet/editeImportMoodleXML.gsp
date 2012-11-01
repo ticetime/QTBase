@@ -34,7 +34,6 @@
   <r:require modules="jquery"/>
   <r:script>
     $(document).ready(function () {
-      $('#menu-item-sujets').addClass('actif');
       $("form").attr('enctype', 'multipart/form-data');
     });
   </r:script>
@@ -46,47 +45,43 @@
           model="[liens: liens]"/>
 
 <g:if test="${flash.errorMessageCode}">
-  <div class="portal-messages">
-    <li class="error"><g:message code="${flash.errorMessageCode}"
-                                   class="portal-messages error"/></li>
+  <div class="alert alert-error">
+    <g:message code="${flash.errorMessageCode}"/>
   </div>
 </g:if>
 
-<form method="post" action="#" class="sujet">
-  <div class="portal-form_container edite">
-    <table>
-      <tr>
-        <td class="label">Mati&egrave;re&nbsp;:</td>
-        <td>
+<form method="post" action="#" class="form-horizontal">
+  <div class="control-group">
+
+        <label class="control-label" for="matiereId">Mati&egrave;re</label>
+        <div class="controls">
           <g:select name="matiereId" value="${sujet.matiere?.id}"
                     noSelection="${['null': g.message(code:"default.select.null")]}"
                     from="${matieres}"
                     optionKey="id"
                     optionValue="libelleLong"/>
-        </td>
-      </tr>
-      <tr>
-        <td class="label">Niveau&nbsp;:</td>
-        <td>
+        </div>
+    </div>
+  <div class="control-group">
+        <label class="control-label" for="niveauId">Niveau</label>
+        <div class="controls">
           <g:select name="niveauId" value="${sujet.niveau?.id}"
                     noSelection="${['null': g.message(code:"default.select.null")]}"
                     from="${niveaux}"
                     optionKey="id"
                     optionValue="libelleLong"/>
-        </td>
-      </tr>
-      <tr>
-        <td class="label">Fichier&nbsp;:</td>
-        <td id="fichier_import_td">
+        </div>
+    </div>
+  <div class="control-group">
+    <label class="control-label">Fichier</label>
+        <div class="controls" >
           <input type="file" name="fichierImport">
-        </td>
-      </tr>
-    </table>
+        </div>
   </div>
   <g:hiddenField name="sujetId" value="${sujet.id}"/>
-  <div class="form_actions">
+  <div class="form-actions">
     <g:actionSubmit value="Importer" action="importMoodleXML"
-                    class="button"
+                    class="btn btn-primary"
                     title="Importer"/>
   </div>
 </form>
