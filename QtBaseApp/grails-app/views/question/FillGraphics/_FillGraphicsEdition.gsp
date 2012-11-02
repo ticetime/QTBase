@@ -30,15 +30,15 @@
 <g:set var="specifobject" value="${question.specificationObject}"/>
 
 <tr>
-    <td class="label"><g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:</td>
+    <td class="control-label"><g:message code="question.propriete.libelle"/><span class="obligatoire">*</span></td>
     <td>
-        <g:textField name="specifobject.libelle" value="${specifobject.libelle}"
+        <g:textField name="specifobject.libelle" value="${specifobject.libelle}" class="input-xxlarge"
                      size="75"/>
     </td>
 </tr>
 
 <tr>
-    <td class="label">R&eacute;ponse:</td>
+    <td class="control-label">R&eacute;ponse</td>
     <td id="reponseDisclaimer">
         <span>${message(code: 'question.reponses.disclaimer')}</span>
     </td>
@@ -61,7 +61,7 @@
                               controller="questionFillGraphics"
                               update="fillgraphicsEditor"
                               onComplete="afterTextZoneAdded()"
-                              class="button"/>
+                              class="btn"/>
 
             <div id="fillgraphicsEditor" class="fillgraphicsEditor">
                 <g:render
@@ -73,15 +73,15 @@
 </tr>
 
 <tr>
-    <td class="label">Montrer les mots:</td>
+    <td class="control-label">Montrer les mots</td>
     <td><g:checkBox name="specifobject.montrerLesMots" checked="${specifobject.montrerLesMots}"/></td>
 </tr>
 <tr>
-    <td class="label">Correction:</td>
+    <td class="control-label">Correction</td>
     <td>
         <g:textArea
                 name="specifobject.correction"
-                rows="10" cols="55"
+                rows="10" cols="55" class="input-xxlarge"
                 value="${specifobject.correction}"/>
     </td>
 </tr>
