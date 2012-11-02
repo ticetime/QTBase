@@ -50,11 +50,22 @@
                     </g:else>
                   </g:each>
             </ul>
+          <sec:ifLoggedIn>
             <ul class="nav pull-right">
                 <li><a href="#"><i class="icon-user icon-white"></i> <sec:loggedInUserInfo field="nomAffichage"/></a></li>
                 <li><g:link controller="logout"><i class="icon-off icon-white"></i> Déconnexion</g:link></li>
             </ul>
+          </sec:ifLoggedIn>
+          <sec:ifNotLoggedIn>
+          <form class="navbar-form pull-right" action='${request.contextPath}${SpringSecurityUtils.securityConfig.apf.filterProcessesUrl}' method='POST' id='loginForm'>
+                                  <input class="span2" type="text" placeholder="Login" name='j_username' id='username'>
+                                  <input class="span2" type="password" placeholder="Password" name='j_password' id='password'>
+                                  <button type="submit" class="btn">Se connecter</button>
+                                </form>
+          </sec:ifNotLoggedIn>
           </div><!--/.nav-collapse -->
+
+
 
         </div>
       </div>

@@ -45,19 +45,7 @@
             <ul class="nav">
               <li class="active"><a href="#">Accueil</a></li>
               <li><a href="#about">A propos</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
+              <li><a href="mailto:contact@ticetime.com">Contact</a></li>
             </ul>
             <form class="navbar-form pull-right" action='${request.contextPath}${SpringSecurityUtils.securityConfig.apf.filterProcessesUrl}' method='POST' id='loginForm'>
               <input class="span2" type="text" placeholder="Login" name='j_username' id='username'>

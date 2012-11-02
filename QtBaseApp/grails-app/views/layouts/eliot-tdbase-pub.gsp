@@ -34,27 +34,27 @@
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><g:layoutTitle default="TDbase"/></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+            body {
+              padding-top: 60px;
+              padding-bottom: 40px;
+            }
+          </style>
   <r:require module="eliot-tdbase"/>
-  <g:layoutHead/>
+  <r:require module="bootstrap"/>
   <r:layoutResources/>
+  <g:layoutHead/>
 </head>
 
 <body>
-<et:container class="container">
-  <div class="portal-menu">
-    <ul id="portal-hz-menu">
-      <li>
-        <a title="Accueil">Accueil QTBase</a>
-      </li>
-    </ul>
-  </div>
-  <g:layoutBody/>
-
-</et:container>
+<g:render template="/menuPortail" plugin="lms-common" model="[homeController: 'home', homeAction:'index', moduleName:'QTBase']"/>
+<div class="container">
+<g:layoutBody/>
+</div>
 <r:layoutResources/>
 
 </body>
