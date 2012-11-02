@@ -29,21 +29,21 @@
 
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-  <td class="label">Auteur<span class="obligatoire">*</span>&nbsp;:</td>
+  <td class="control-label">Auteur<span class="obligatoire">*</span></td>
   <td>
     <input size="75" type="text" value="${specifobject.auteur}"
-           name="specifobject.auteur"/>
+           name="specifobject.auteur" class="input-xlarge"/>
   </td>
 </tr>
 <tr>
-  <td class="label">Source<span class="obligatoire">*</span>&nbsp;:</td>
+  <td class="control-label">Source<span class="obligatoire">*</span></td>
   <td>
     <input size="75" type="text" value="${specifobject.source}"
-           name="specifobject.source"/>
+           name="specifobject.source" class="input-xlarge"/>
   </td>
 </tr>
 <tr>
-  <td class="label">Type&nbsp;:</td>
+  <td class="control-label">Type</td>
   <td>
     <g:select name="specifobject.type"
               from="${org.lilie.services.eliot.tdbase.impl.document.DocumentTypeEnum.values()}"
@@ -53,25 +53,25 @@
   </td>
 </tr>
 <tr>
-  <td class="label">URL externe<span class="obligatoire">*</span>&nbsp;:</td>
+  <td class="control-label">URL externe<span class="obligatoire">*</span></td>
   <td>
-    <input size="75" type="text" value="${specifobject.urlExterne}"
+    <input size="75" type="text" value="${specifobject.urlExterne}" class="input-xxlarge"
            name="specifobject.urlExterne"/>
   </td>
 </tr>
 <tr>
-  <td class="label">OU</td>
+  <td class="control-label">OU</td>
   <td>&nbsp;</td>
 </tr>
 <tr>
-  <td class="label">Fichier<span class="obligatoire">*</span>&nbsp;:</td>
+  <td class="control-label">Fichier<span class="obligatoire">*</span></td>
   <td id="specifobject_fichier">
     <g:render template="/question/Document/DocumentEditionFichier"
               model="[specifobject:specifobject]"/>
   </td>
 </tr>
 <tr>
-  <td class="label">Affichage&nbsp;:</td>
+  <td class="control-label">Affichage</td>
   <td>
     <g:checkBox name="specifobject.estInsereDansLeSujet"
                 title="Le document est inséré dans le sujet"
@@ -80,13 +80,13 @@
   </td>
 </tr>
 <tr>
-  <td class="label">
-    Présentation&nbsp;:
+  <td class="control-label">
+    Présentation
   </td>
   <td>
     <g:textArea
             name="specifobject.presentation"
             rows="4" cols="55"
-            value="${specifobject.presentation}"/>
+            value="${specifobject.presentation}" class="input-xxlarge"/>
   </td>
 </tr>

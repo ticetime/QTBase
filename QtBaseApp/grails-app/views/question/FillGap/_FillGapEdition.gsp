@@ -28,34 +28,30 @@
 
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-    <td class="label">
-      <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:
+    <td class="control-label">
+      <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>
     </td>
     <td>
         <g:textArea
                 name="specifobject.libelle"
-                rows="3" cols="55"
+                rows="3" cols="55" class="input-xxlarge"
                 value="${specifobject.libelle}"/>
     </td>
 </tr>
 
 <tr>
-    <td class="label">R&eacute;ponse<span class="obligatoire">*</span>&nbsp;:</td>
+    <td class="control-label">R&eacute;ponse<span class="obligatoire">*</span></td>
     <td>
-    </td>
-</tr>
-<tr>
-    <td colspan="2">
         <g:textArea
                 name="specifobject.texteATrous"
-                rows="10" cols="55"
+                rows="10" cols="55" class="input-xxlarge"
                 value="${specifobject.texteATrous}">
             <g:message code="question.fillgap.texteatrous"/>
         </g:textArea>
     </td>
 </tr>
 <tr>
-    <td class="label">Mode de saisie<span class="obligatoire">*</span>&nbsp;:</td>
+    <td class="control-label">Mode de saisie<span class="obligatoire">*</span></td>
     <td>
         <g:radioGroup name="specifobject.modeDeSaisie"
                       labels="['Montrer les mots','Saisie libre', 'Menu déroulant']"
@@ -67,15 +63,11 @@
     </td>
 </tr>
 <tr>
-    <td class="label">Correction:</td>
+    <td class="control-label">Correction</td>
     <td>
-    </td>
-</tr>
-<tr>
-    <td colspan="2">
         <g:textArea
                 name="specifobject.correction"
-                rows="10" cols="55"
+                rows="10" cols="55" class="input-xxlarge"
                 value="${specifobject.correction}"><g:message code="question.fillgap.correction"/>
         </g:textArea>
     </td>

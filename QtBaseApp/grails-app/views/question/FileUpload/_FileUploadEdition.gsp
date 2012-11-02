@@ -28,35 +28,31 @@
 
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-  <td class="label">
-    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:
+  <td class="control-label">
+    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>
   </td>
   <td>
     <g:textArea
             name="specifobject.libelle"
             rows="3" cols="55"
-            value="${specifobject.libelle}"/>
+            value="${specifobject.libelle}" class="input-xxlarge"/>
   </td>
 </tr>
 <tr>
-  <td class="label">Fichier&nbsp;correction&nbsp;:</td>
+  <td class="control-label">Fichier&nbsp;correction</td>
   <td id="specifobject_fichier">
     <g:render template="/question/FileUpload/FileUploadEditionFichier"
               model="[specifobject:specifobject]"/>
   </td>
 </tr>
 <tr>
-  <td class="label">
-    Correction:
+  <td class="control-label">
+    Correction
   </td>
   <td>
-  </td>
-</tr>
-<tr>
-  <td colspan="2">
     <g:textArea
             name="specifobject.correction"
-            rows="5" cols="55"
+            rows="5" cols="55"  class="input-xxlarge"
             value="${specifobject.correction}"/>
   </td>
 </tr>

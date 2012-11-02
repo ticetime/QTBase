@@ -39,7 +39,7 @@
   <g:submitToRemote action="supprimeAttachement"
                     controller="questionFileUpload"
                     update="specifobject_fichier"
-                    value="Suppr" class="button"/>
+                    value="Suppr" class="btn"/>
   <br/>
 </g:if>
 <g:else>
