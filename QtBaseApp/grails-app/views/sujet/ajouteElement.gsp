@@ -34,7 +34,6 @@
   <r:require modules="jquery"/>
   <r:script>
     $(document).ready(function () {
-      $('#menu-item-sujets').addClass('actif');
       $("select").change(function () {
         var currentForm = "#form_" + (this).id
         $(currentForm).submit();
@@ -50,7 +49,7 @@
           model="[liens: liens]"/>
 <g:render template="/sujet/listeElements" model="[sujet: sujet]"/>
 <div class="add-item">
-  <h1>Créer et ajouter un item</h1>
+  <h4>Créer et ajouter un item</h4>
   <ul>
     <li>
       <g:link action="edite"
@@ -82,7 +81,7 @@
     </li>
   </ul>
 
-  <h1>Rechercher et ajouter un item</h1>
+  <h4>Rechercher et ajouter un item</h4>
   <ul>
     <li>
       <g:link action="recherche" controller="question"
@@ -110,8 +109,8 @@
     </li>
   </ul>
 
-  <h1><g:link action="editeImportMoodleXML" controller="sujet"
-              id="${sujet.id}">Importer et ajouter un quiz Moodle...</g:link></h1>
+  <h4><g:link action="editeImportMoodleXML" controller="sujet"
+              id="${sujet.id}">Importer et ajouter un quiz Moodle...</g:link></h4>
 
 </div>
 
