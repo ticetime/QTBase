@@ -27,20 +27,20 @@
   --}%
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-  <td class="label">
-    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:
+  <td class="control-label">
+    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>
   </td>
   <td>
     <g:textArea
             name="specifobject.libelle"
-            rows="3" cols="55"
+            rows="3" cols="55" class="input-xxlarge"
             value="${specifobject.libelle}"
     />
   </td>
 </tr>
 <tr>
-  <td class="label">
-    R&eacute;ponse(s)<span class="obligatoire">*</span>&nbsp;:
+  <td class="control-label">
+    R&eacute;ponse(s)<span class="obligatoire">*</span>
   </td>
   <td>
     <table>
@@ -52,24 +52,24 @@
         <td style="vertical-align: bottom;">
           <g:submitToRemote title="Ajouter une réponse possible" value="Ajouter"
                             action="ajouteReponse" controller="questionBooleanMatch"
-                            update="specifobject_reponses" class="button"/>
+                            update="specifobject_reponses" class="btn"/>
         </td>
       </tr>
     </table>
   </td>
 </tr>
 <tr>
-    <td class="label">Mode d'évalutation (Tout ou rien):</td>
+    <td class="control-label">Mode d'évalutation (Tout ou rien)</td>
     <td><g:checkBox name="specifobject.toutOuRien" checked="${specifobject.toutOuRien}"/></td>
 </tr>
 <tr>
-  <td class="label">
-    Correction:
+  <td class="control-label">
+    Correction
   </td>
   <td>
      <g:textArea
             name="specifobject.correction"
-            rows="3" cols="55"
+            rows="3" cols="55" class="input-xxlarge"
             value="${specifobject.correction}"
     />
   </td>
