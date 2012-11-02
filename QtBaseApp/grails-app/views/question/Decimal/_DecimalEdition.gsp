@@ -27,35 +27,35 @@
   --}%
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-  <td class="label">
-    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:
+  <td class="control-label">
+    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>
   </td>
   <td>
     <g:textArea
             name="specifobject.libelle"
-            rows="3" cols="55"
+            rows="3" cols="55" class="input-xxlarge"
             value="${specifobject.libelle}"
     />
   </td>
 </tr>
 <tr>
-  <td class="label">
-    R&eacute;ponse<span class="obligatoire">*</span>&nbsp;:
+  <td class="control-label">
+    R&eacute;ponse<span class="obligatoire">*</span>
   </td>
   <td>
-    <g:textField name="specifobject.valeur" value="${specifobject.valeurAffichage}" class="micro" size="10"/> (Nombre décimal)
+    <g:textField name="specifobject.valeur" value="${specifobject.valeurAffichage}" class="input-mini" size="10"/> (Nombre décimal)
     &nbsp;&nbsp;Unité&nbsp;
-    <g:textField name="specifobject.unite" value="${specifobject.unite}" class="micro" size="10"/>
+    <g:textField name="specifobject.unite" value="${specifobject.unite}" class="input-mini" size="10"/>
     &nbsp;&nbsp;Précision&nbsp;
-    <g:textField name="specifobject.precision" value="${specifobject.precisionAffichage}" class="micro" size="10"/>
+    <g:textField name="specifobject.precision" value="${specifobject.precisionAffichage}" class="input-mini" size="10"/>
   </td>
 </tr>
 <tr>
-  <td class="label">Correction&nbsp;:</td>
+  <td class="control-label">Correction</td>
   <td>
      <g:textArea
             name="specifobject.correction"
-            rows="3" cols="55"
+            rows="3" cols="55" class="input-xxlarge"
             value="${specifobject.correction}"
     />
   </td>
