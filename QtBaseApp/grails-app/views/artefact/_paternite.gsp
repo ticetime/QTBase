@@ -26,13 +26,11 @@
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
 
-<div class="control-group">
-  <label class="control-label">Paternité</label>
 
-  <div class="controls">
+  <div class="alert alert-info ">
     <span id="paternite"></span>
   </div>
-</div>
+
 
 
 <r:script>

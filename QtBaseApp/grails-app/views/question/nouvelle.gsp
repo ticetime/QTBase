@@ -34,7 +34,6 @@
   <r:require modules="jquery"/>
   <r:script>
     $(document).ready(function() {
-      $('#menu-item-contributions').addClass('actif');
       $("select").change(function() {
         $("form").submit();
       })

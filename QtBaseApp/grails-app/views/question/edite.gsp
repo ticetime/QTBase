@@ -54,12 +54,15 @@
   </script>
   <r:script>
     $(document).ready(function () {
-      $('#menu-item-contributions').addClass('actif');
       $('#question\\.titre').focus();
       $("form").attr('enctype', 'multipart/form-data');
-      initButtons()
     });
   </r:script>
+  <style type='text/css'>
+    tr {
+      padding: 10px;
+    }
+    </style>
   <title><g:message code="question.edite.head.title"/></title>
 </head>
 
@@ -67,89 +70,93 @@
 
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
-<g:if test="${questionEnEdition}">
-  <div class="portal-tabs">
 
-    <span class="portal-tabs-famille-liens">
+<g:if test="${questionEnEdition}">
+  <div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
   <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, question)}">
-    <g:link action="partage" class="share"
-            id="${question.id}">Partager l'item</g:link>&nbsp; |
+    <li><g:link action="partage"
+            id="${question.id}"><i class="icon-share"></i> Partager l'item</g:link></li>
   </g:if>
   <g:else>
-    <span class="share">Partager l'item</span>&nbsp;| &nbsp;
+    <li class="disabled"><a href="#"><i class="icon-ban-circle"></i> Partager l'item</a></li>
   </g:else>
-  </span>
-  </span>
-  <span class="portal-tabs-famille-liens">
-    <button id="${question.id}">Actions</button>
+    <li class="dropdown" id="${question.id}">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-cog"></i>
+                    <b class="caret"></b>
+                  </a>
     <ul id="menu_actions_${question.id}"
-        class="tdbase-menu-actions">
+        class="dropdown-menu">
       <li><g:link action="detail" controller="question${question.type.code}"
                   id="${question.id}">Aperçu</g:link></li>
-      <li><hr/></li>
+      <li class="divider"></li>
       <g:if test="${artefactHelper.utilisateurPeutDupliquerArtefact(utilisateur, question)}">
         <li><g:link action="duplique"
                     controller="question${question.type.code}"
                     id="${question.id}">Dupliquer</g:link></li>
       </g:if>
       <g:else>
-        <li>Dupliquer</li>
+        <li class="disabled"><a href="#">Dupliquer</a></li>
       </g:else>
-      <li><hr/></li>
+      <li class="divider"></li>
       <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, question)}">
         <li><g:link action="exporter" controller="question"
                     id="${question.id}">Exporter</g:link></li>
       </g:if>
       <g:else>
-        <li>Exporter</li>
+        <li class="disabled"><a href="#">Exporter</a></li>
       </g:else>
-      <li><hr/></li>
+      <li class="divider"></li>
       <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, question)}">
         <li><g:link action="supprime"
                     controller="question${question.type.code}"
                     id="${question.id}">Supprimer</g:link></li>
       </g:if>
       <g:else>
-        <li>Supprimer</li>
+        <li class="disabled"><a href="#">Supprimer</a></li>
       </g:else>
     </ul>
-  </span>
-
+    </li>
+    </ul>
+  </div>
   </div>
 </g:if>
 <g:else>
-  <div class="portal-tabs">
-    <span class="portal-tabs-famille-liens">
-                <span class="share">Partager l'item</span>&nbsp;| &nbsp;
-            </span>
-            </span>
-            <span class="portal-tabs-famille-liens">
-              <button id="${question.id}">Actions</button>
-  <ul id="menu_actions_${question.id}"
-      class="tdbase-menu-actions">
-    <li>Aperçu</li>
-    <li><hr/></li>
-    <li>Dupliquer</li>
-    <li>Exporter</li>
-    <li><hr/></li>
-    <li>Supprimer</li>
-  </ul>
-  </span>
-  </div>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <ul class="nav">
+      <li class="disabled"><a href="#"><i class="icon-ban-circle"></i> Partager l'item</a></li>
+      <li class="dropdown" id="${question.id}">
+      <ul id="menu_actions_${question.id}"
+          class="dropdown-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <i class="icon-cog"></i>
+                      <b class="caret"></b>
+                    </a>
+        <li><li class="disabled"><a href="#">Aperçu</a></li>
+        <li class="divider"></li>
+          <li class="disabled"><a href="#">Dupliquer</a></li>
+        <li class="divider"></li>
+          <li class="disabled"><a href="#">Exporter</a></li>
+        <li class="divider"></li>
+          <li class="disabled"><a href="#">Supprimer</a></li>
+      </ul>
+      </li>
+      </ul>
+    </div>
+    </div>
 </g:else>
 <g:hasErrors bean="${question}">
-  <div class="portal-messages">
     <g:eachError>
-      <li class="error"><g:message error="${it}"/></li>
+      <div class="alert alert-error"><g:message error="${it}"/></div>
     </g:eachError>
-  </div>
 </g:hasErrors>
 <g:if test="${flash.messageCode}">
-  <div class="portal-messages">
-    <li class="success"><g:message code="${flash.messageCode}"
+    <div class="alert alert-success"><g:message code="${flash.messageCode}"
                                    args="${flash.messageArgs}"
-                                   class="portal-messages success"/></li>
-  </div>
+                                   class="portal-messages success"/></div>
 </g:if>
 
 <g:if test="${sujet}">
@@ -157,26 +164,29 @@
 </g:if>
 
 <g:form method="post" controller="question${question.type.code}"
-        class="question">
-  <div class="portal-form_container edite" style="width: 69%;">
+        class="form-horizontal">
+
     <p style="font-style: italic; margin-bottom: 2em"><span class="obligatoire">*</span> indique une information obligatoire</p>
+
+    <div class="control-group">
     <table>
       <tr>
-        <td class="label title">Titre<span class="obligatoire">*</span>&nbsp;:</td>
+        <td class="control-label title">Titre<span class="obligatoire">*</span></td>
         <td>
-          <input size="75" type="text" value="${question.titre}"
-                 name="titre" id="question.titre"/><br/><br/>
+          <input type="text" value="${question.titre}" class="input-xxlarge"
+                 name="titre" id="question.titre"/>
         </td>
       </tr>
       <tr>
-        <td class="label">Type :</td>
+        <td class="control-label">Type</td>
         <td>
-          ${question.type.nom}
+          <input type="text" value="${question.type.nom}"
+                           disabled="true"/>
         </td>
       </tr>
       <g:if test="${!question.id && sujet}">
         <tr>
-          <td class="label">Mati&egrave;re :</td>
+          <td class="control-label">Mati&egrave;re</td>
           <td>
             <g:select name="matiere.id" value="${sujet.matiereId}"
                       noSelection="${['null': g.message(code:"default.select.null")]}"
@@ -186,7 +196,7 @@
           </td>
         </tr>
         <tr>
-          <td class="label">Niveau :</td>
+          <td class="control-label">Niveau</td>
           <td>
             <g:select name="niveau.id" value="${sujet.niveauId}"
                       noSelection="${['null': g.message(code:"default.select.null")]}"
@@ -198,7 +208,7 @@
       </g:if>
       <g:else>
         <tr>
-          <td class="label">Mati&egrave;re :</td>
+          <td class="control-label">Mati&egrave;re</td>
           <td>
             <g:select name="matiere.id" value="${question.matiereId}"
                       noSelection="${['null': g.message(code:"default.select.null")]}"
@@ -208,7 +218,7 @@
           </td>
         </tr>
         <tr>
-          <td class="label">Niveau :</td>
+          <td class="control-label">Niveau</td>
           <td>
             <g:select name="niveau.id" value="${question.niveauId}"
                       noSelection="${['null': g.message(code:"default.select.null")]}"
@@ -219,51 +229,66 @@
         </tr>
       </g:else>
       <tr>
-        <td class="label"><g:message code="question.propriete.principalAttachement"/>&nbsp;:</td>
+        <td class="control-label"><g:message code="question.propriete.principalAttachement"/></td>
         <td id="question_fichier">
           <g:render template="/question/QuestionEditionFichier"
                     model="[question: question, attachementsSujet: attachementsSujets]"/>
 
         </td>
       </tr>
+      </table>
+    </div>
+  <div class="control-group">
+      <table>
       <g:render
               template="/question/${question.type.code}/${question.type.code}Edition"
               model="[question: question]"/>
+      </table>
+      </div>
+  <div class="control-group">
+      <table>
       <tr>
-        <td class="label">Partage :</td>
+        <td class="control-label"></td>
         <td>
+          <div class="alert alert-info">
           <g:if test="${question.estPartage()}">
             <a href="${question.copyrightsType.lien}"
                target="_blank">${question.copyrightsType.presentation}</a>
           </g:if>
           <g:else>
-            cet item n'est pas partagé
+            Cet item n'est pas partagé
           </g:else>
+          </div>
         </td>
       </tr>
       <g:if test="${question.paternite}">
+        <tr>
+          <td class="control-label"></td>
+          <td>
         <g:render template="/artefact/paternite"
                   model="[paternite: question.paternite]"/>
+          </td>
+        </tr>
       </g:if>
     </table>
-  </div>
+    </div>
   <g:hiddenField name="id" value="${question.id}"/>
   <g:hiddenField name="type.id" value="${question.typeId}"/>
 
-  <div class="form_actions">
+  <div class="form-actions">
     <g:hiddenField name="sujetId" value="${sujet?.id}"/>
     <g:if test="${sujet && !question.id}">
 
       <g:actionSubmit value="Enregistrer et insérer dans le sujet"
                       action="enregistreInsertNouvelItem"
                       title="Enregistrer et insérer dans le sujet"
-                      class="button"/>
+                      class="btn btn-primary"/>
     </g:if>
     <g:else>
       <g:actionSubmit value="Enregistrer"
                       action="enregistre"
                       title="Enregistrer"
-                      class="button"/>
+                      class="btn btn-primary"/>
 
     </g:else>
   </div>
