@@ -27,20 +27,20 @@
   --}%
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-  <td class="label">
-    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:
+  <td class="control-label">
+    <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>
   </td>
   <td>
     <g:textArea
             name="specifobject.libelle"
             rows="3" cols="55"
-            value="${specifobject.libelle}"
+            value="${specifobject.libelle}" class="input-xxlarge"
     />
   </td>
 </tr>
 <tr>
-  <td class="label">
-    R&eacute;ponses<span class="obligatoire">*</span>&nbsp;:
+  <td class="control-label">
+    R&eacute;ponses<span class="obligatoire">*</span>
   </td>
   <td>
     <table>
@@ -53,26 +53,26 @@
           <g:submitToRemote title="Ajouter une réponse possible" value="Ajouter"
                             action="ajouteReponse"
                             controller="questionExclusiveChoice"
-                            update="specifobject_reponses" class="button"/>
+                            update="specifobject_reponses" class="btn"/>
         </td>
       </tr>
     </table>
   </td>
 </tr>
 <tr>
-    <td class="label">Présentation&nbsp;aléatoire&nbsp;:</td>
+    <td class="control-label">Présentation&nbsp;aléatoire</td>
     <td><g:checkBox name="specifobject.shuffled"
                     checked="${specifobject.shuffled}"/></td>
 </tr>
 <tr>
-  <td class="label">
-    Correction&nbsp;:
+  <td class="control-label">
+    Correction
   </td>
   <td>
      <g:textArea
             name="specifobject.correction"
             rows="3" cols="55"
-            value="${specifobject.correction}"
+            value="${specifobject.correction}"  class="input-xxlarge"
     />
   </td>
 </tr>

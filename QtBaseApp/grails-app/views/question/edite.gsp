@@ -59,8 +59,9 @@
     });
   </r:script>
   <style type='text/css'>
-    tr {
-      padding: 10px;
+    td {
+      padding-right: 1em;
+      margin-bottom: 1em;
     }
     </style>
   <title><g:message code="question.edite.head.title"/></title>

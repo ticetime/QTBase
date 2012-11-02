@@ -30,14 +30,14 @@
     <g:radio name="specifobject.indexBonneReponse"
              value="${reponse.id}" checked="${reponse.id == specifobject.indexBonneReponse}"/>
 
-    <g:textField name="specifobject.reponses[${i}].libelleReponse" class="short"
+    <g:textField name="specifobject.reponses[${i}].libelleReponse" class="input-xlarge"
                  value="${reponse.libelleReponse}"/>
 
     <g:hiddenField name="specifobject.reponses[${i}].id" value="${reponse.id}"/>
 
     &nbsp;
     <g:submitToRemote id="${i}" value="Suppr" title="Supprimer la réponse" action="supprimeReponse"
-                      controller="questionExclusiveChoice" update="specifobject_reponses" class="button"/>
+                      controller="questionExclusiveChoice" update="specifobject_reponses" class="btn"/>
     <br/>
 </g:each>
 <g:hiddenField name="specifobject.reponses.size" value="${specifobject.reponses?.size()}"/>
