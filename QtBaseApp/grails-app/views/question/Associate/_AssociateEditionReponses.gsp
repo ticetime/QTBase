@@ -28,14 +28,14 @@
 
 <g:each status="i" in="${specifobject.associations}" var="association">
 
-    <g:textField name="specifobject.associations[${i}].participant1" class="veryshort"
+    <g:textField name="specifobject.associations[${i}].participant1" class="input-large"
                  value="${association.participant1}" maxlength="30"/>
     &nbsp;
-    <g:textField name="specifobject.associations[${i}].participant2" class="veryshort" maxlength="30"
+    <g:textField name="specifobject.associations[${i}].participant2" class="input-large" maxlength="30"
                  value="${association.participant2}"/>
     &nbsp;
     <g:submitToRemote id="${i}" value="Suppr" title="Supprimer l'associaction" action="supprimeAssociation"
-                      controller="questionAssociate" update="associate_reponses" class="button"/>
+                      controller="questionAssociate" update="associate_reponses" class="btn"/>
     <br/>
 </g:each>
 
