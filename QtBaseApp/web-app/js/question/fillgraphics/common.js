@@ -34,7 +34,7 @@ function Common() {
     this.resizeFillgraphicsEditor = function () {
 
         $('.imageContainer').each(function () {
-            var height = $(this).css('height');
+            var height = $(this).height
             $(this).parents('.fillgraphicsEditor').css('height', height);
         });
     }
