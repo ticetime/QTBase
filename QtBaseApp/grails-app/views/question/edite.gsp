@@ -237,17 +237,11 @@
 
         </td>
       </tr>
-      </table>
-    </div>
-  <div class="control-group">
-      <table>
+      <tr><td colspan="2"><hr/></td> </tr>
       <g:render
               template="/question/${question.type.code}/${question.type.code}Edition"
               model="[question: question]"/>
-      </table>
-      </div>
-  <div class="control-group">
-      <table>
+      <tr><td colspan="2"><hr/></td> </tr>
       <tr>
         <td class="control-label"></td>
         <td>

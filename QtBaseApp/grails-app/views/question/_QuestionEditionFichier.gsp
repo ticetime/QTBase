@@ -38,7 +38,7 @@
   <g:submitToRemote action="supprimePrincipalAttachement"
                     controller="question${question.type.code}"
                     update="question_fichier"
-                    value="Suppr" class="button"/>
+                    value="Suppr" class="btn"/>
   <br/>
 </g:if>
 <g:else>
