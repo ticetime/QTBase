@@ -29,17 +29,17 @@
 <g:set var="specifobject" value="${question.specificationObject}"/>
 
 <tr>
-    <td class="label">Détail&nbsp;:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
       <strong><g:message code="question.propriete.libelle"/></strong>
         <p>${specifobject.libelle}</p>
         <g:each status="i" in="${specifobject.orderedItems}" var="orderedItem">
-            <g:textField name="specifobject.orderedItems[${i}].text" size="30"
-                         value="${orderedItem.text}" disabled="true"  style="margin-top: 5px; margin-bottom: 5px;"
+            <g:textField name="specifobject.orderedItems[${i}].text" class="input-xlarge"
+                         value="${orderedItem.text}" disabled="true"  style="width: 270px; margin-top:1em;"
            />
         </g:each>
       <br/><br/>
-        <strong>Correction :</strong>
+        <strong>Correction</strong>
       <p>${specifobject.correction} </p>
     </td>
 </tr>
