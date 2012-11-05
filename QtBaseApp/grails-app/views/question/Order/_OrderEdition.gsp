@@ -36,19 +36,19 @@
 
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-    <td class="label">
-      <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:
+    <td class="control-label">
+      <g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>
     </td>
     <td>
         <g:textArea
                 name="specifobject.libelle"
-                rows="3" cols="55"
+                rows="3" cols="55" class="input-xxlarge"
                 value="${specifobject.libelle}"/>
     </td>
 </tr>
 <tr>
-    <td class="label">
-        R&eacute;ponses<span class="obligatoire">*</span>&nbsp;:
+    <td class="control-label">
+        R&eacute;ponses<span class="obligatoire">*</span>
     </td>
     <td>
       <table>
@@ -62,20 +62,20 @@
                                   action="ajouteItem"
                                   controller="questionOrder"
                                   update="order_reponses"
-                                  class="button"/>
+                                  class="btn"/>
             </td>
         </tr>
       </table>
     </td>
 </tr>
 <tr>
-    <td class="label">
-        Correction:
+    <td class="control-label">
+        Correction
     </td>
     <td>
         <g:textArea
                 name="specifobject.correction"
-                rows="3" cols="55"
+                rows="3" cols="55" class="input-xxlarge"
                 value="${specifobject.correction}"/>
     </td>
 </tr>

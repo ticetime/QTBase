@@ -27,14 +27,14 @@
   --}%
 <g:each status="i" in="${specifobject.orderedItems}" var="orderedItem">
     &nbsp;
-    <g:textField name="specifobject.orderedItems[${i}].text" class="short"
+    <g:textField name="specifobject.orderedItems[${i}].text" class="input-xlarge"
                  value="${orderedItem.text}" maxlength="50" style="margin-top: 5px; margin-bottom: 5px;"/>
     &nbsp;
 
     <g:hiddenField name="specifobject.orderedItems[${i}].ordinal" value="${i+1}"/>
 
     <g:submitToRemote id="${i}" value="Suppr" title="Supprimer l'element" action="supprimeItem"
-                      controller="questionOrder" update="order_reponses" class="button"/>
+                      controller="questionOrder" update="order_reponses" class="btn"/>
     <br/>
 </g:each>
 
