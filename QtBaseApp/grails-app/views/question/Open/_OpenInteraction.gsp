@@ -30,7 +30,7 @@
 
 
 <p class="title"><strong>${questionspecifobject.libelle}</strong></p>
-<g:textArea cols="55" rows="${questionspecifobject.nombreLignesReponse}"
+<g:textArea cols="55" rows="${questionspecifobject.nombreLignesReponse}" class="input-xxlarge"
             name="reponsesCopie.listeReponses[${indexReponse}].specificationObject.valeurReponse"
             value="${reponsespecifobject?.valeurReponse}"/>
 

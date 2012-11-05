@@ -93,8 +93,8 @@
         <td class="control-label">Partage</td>
         <td>
           <g:if test="${question.estPartage()}">
-            <a href="${question.copyrightsType.lien}"
-               target="_blank">${question.copyrightsType.presentation}</a>
+            <a href="${question.copyrightsType.lien}" title="${question.copyrightsType.presentation}"
+               target="_blank">${question.copyrightsType.code} ...</a>
           </g:if>
           <g:else>
             cette question n'est pas partagée
@@ -102,8 +102,13 @@
         </td>
       </tr>
       <g:if test="${question.paternite}">
+       <tr>
+         <td class="control-label"></td>
+         <td>
         <g:render template="/artefact/paternite"
                   model="[paternite: question.paternite]"/>
+         </td>
+        </tr>
       </g:if>
     </table>
   </td>

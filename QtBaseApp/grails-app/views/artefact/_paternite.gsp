@@ -38,8 +38,8 @@ $(document).ready(function () {
     var paterniteObj = ${paternite};
     var nbItems = paterniteObj.paterniteItems.length
     var paterniteHtml = ""
-    var strPub1 = " a publié l'oeuvre réutilisée par la présente le  "
-    var strPub2 = " a publié cette oeuvre le "
+    var strPub1 = " a partagé l'oeuvre réutilisée par la présente le  "
+    var strPub2 = " a partagé cette oeuvre le "
     for (i = 0 ; i < nbItems ; i++) {
        var strPub = strPub1 ;
        var paterniteItem = paterniteObj.paterniteItems[i];

@@ -28,7 +28,7 @@
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <div class="item">
     <p class="title"><strong>${specifobject.libelle}</strong></p>
-    <g:textArea cols="55" rows="${specifobject.nombreLignesReponse}"
+    <g:textArea cols="55" rows="${specifobject.nombreLignesReponse}" class="input-xxlarge"
                 name="listeQuestions[${indexQuestion}].specifobject.correction"
                 value="Champ saisie de la réponse" disabled="true"/>
     <br/>
