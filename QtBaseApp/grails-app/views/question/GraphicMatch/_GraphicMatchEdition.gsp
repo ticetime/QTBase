@@ -31,14 +31,14 @@
 <g:set var="specifobject" value="${question.specificationObject}"/>
 
 <tr>
-    <td class="label"><g:message code="question.propriete.libelle"/><span class="obligatoire">*</span>&nbsp;:</td>
+    <td class="control-label"><g:message code="question.propriete.libelle"/><span class="obligatoire">*</span></td>
     <td>
         <g:textField name="specifobject.libelle" value="${specifobject.libelle}"
-                     size="75"/>
+                     size="75" class="input-xxlarge"/>
     </td>
 </tr>
 <tr>
-    <td class="label">R&eacute;ponse&nbsp;:</td>
+    <td class="control-label">R&eacute;ponse</td>
 
     <td id="reponseDisclaimer">
         <span>${message(code: 'question.reponses.disclaimer')}</span>
@@ -62,7 +62,7 @@
                               controller="questionGraphicMatch"
                               update="graphicMatchEditor"
                               onComplete="afterHotspotAdded()"
-                              class="button"/>
+                              class="btn"/>
 
             <div  class="graphicMatchEditor" id="graphicMatchEditor">
 
@@ -73,11 +73,11 @@
     </td>
 </tr>
 <tr>
-    <td class="label">Correction:</td>
+    <td class="control-label">Correction</td>
     <td>
         <g:textArea
                 name="specifobject.correction"
-                rows="10" cols="55"
+                rows="10" cols="55" class="input-xxlarge"
                 value="${specifobject.correction}"/>
     </td>
 </tr>
