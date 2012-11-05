@@ -28,17 +28,17 @@
 <g:set var="specifobject" value="${question.specificationObject}"/>
 
 <tr>
-    <td class="label">Détail&nbsp:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
         <strong><g:message code="question.propriete.libelle"/></strong>
 
         <p>${specifobject.libelle}</p>
 
-        <strong>Texte à trous :</strong>
+        <strong>Texte à trous</strong>
 
         <p>${specifobject.texteATrous}</p>
 
-        <strong>Mode de saisie :</strong>
+        <strong>Mode de saisie</strong>
 
         <p>
             <g:radioGroup name="specifobject.modeDeSaisie"
@@ -49,7 +49,7 @@
             </g:radioGroup>
         </p>
 
-        <strong>Correction :</strong> ${specifobject.correction}
+        <strong>Correction</strong><br/> ${specifobject.correction}
 
     </td>
 </tr>

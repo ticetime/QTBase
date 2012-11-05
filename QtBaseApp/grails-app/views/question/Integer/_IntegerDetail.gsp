@@ -26,14 +26,14 @@
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
 <tr>
-    <td class="label">Détail&nbsp;:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
         <g:set var="specifobject" value="${question.specificationObject}"/>
         ${specifobject.libelle} <br/>
-        <strong>Valeur :</strong>${specifobject.valeur}<br/>
+        <strong>Valeur</strong> ${specifobject.valeur}<br/>
         <g:if test="${specifobject.unite}">
-            <strong>Unité :</strong>${specifobject.unite}<br/>
+            <strong>Unité</strong> ${specifobject.unite}<br/>
         </g:if>
-        <strong>Correction :</strong> ${specifobject.correction}
+        <strong>Correction</strong><br/> ${specifobject.correction}
     </td>
 </tr>

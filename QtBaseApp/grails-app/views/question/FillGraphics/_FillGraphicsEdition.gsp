@@ -81,7 +81,7 @@
     <td>
         <g:textArea
                 name="specifobject.correction"
-                rows="10" cols="55" class="input-xxlarge"
+                rows="5" cols="55" class="input-xxlarge"
                 value="${specifobject.correction}"/>
     </td>
 </tr>

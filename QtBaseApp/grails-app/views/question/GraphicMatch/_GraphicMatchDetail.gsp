@@ -30,7 +30,7 @@
 
 
 <tr>
-    <td class="label">Détail&nbsp;:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
 
         ${specifobject.libelle}
@@ -67,6 +67,6 @@
                 </g:each>
             </div>
         </div>
-        <strong>Correction :</strong> ${specifobject.correction}
+        <strong>Correction</strong><br/> ${specifobject.correction}
     </td>
 </tr>
