@@ -26,7 +26,7 @@
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
 <tr>
-    <td class="label">Détail&nbsp;:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
         <g:set var="specifobject" value="${question.specificationObject}"/>
         <strong><g:message code="question.propriete.libelle"/></strong><p>${specifobject.libelle}</p>
@@ -40,7 +40,7 @@
             <br/>
         </g:each>
         <br/>
-        <strong>Correction :</strong> 
+        <strong>Correction</strong>
         <p>${specifobject.correction}</p>
     </td>
 </tr>
