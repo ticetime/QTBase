@@ -27,7 +27,7 @@
   --}%
 
 <tr>
-    <td class="label">Détail&nbsp;:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
         <g:set var="specifobject" value="${question.specificationObject}"/>
         <strong>${specifobject.libelle}</strong> <br/>
@@ -40,7 +40,7 @@
             <br/>
         </g:each>
        	</div>
-        <p><strong>Présentation aléatoire :</strong> ${specifobject.shuffled ? 'oui' : 'non'}<br/>
-        <strong>Correction :</strong> ${specifobject.correction}</p>
+        <p><strong>Présentation aléatoire</strong> ${specifobject.shuffled ? 'oui' : 'non'}<br/>
+        <strong>Correction</strong><br/> ${specifobject.correction}</p>
     </td>
 </tr>
