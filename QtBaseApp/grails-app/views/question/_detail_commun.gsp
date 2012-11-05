@@ -29,7 +29,7 @@
 <form action="#" class="form-horizontal">
 <table class="control-group">
   <tr>
-  <td style="width: 60%; vertical-align: top;">
+  <td style="width: 55%; vertical-align: top;">
     <table>
       <tr>
         <td class="control-label">Type</td>
@@ -43,7 +43,7 @@
 
     </table>
   </td>
-  <td style="width: 40%; vertical-align: top;">
+  <td style="width: 45%; vertical-align: top;">
     <table>
       <tr>
         <td class="control-label"><g:message code="question.propriete.principalAttachement"/></td>
