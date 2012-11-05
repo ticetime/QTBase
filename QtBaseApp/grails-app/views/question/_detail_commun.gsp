@@ -25,12 +25,14 @@
   -  <http://www.gnu.org/licenses/> and
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
-<h1>${question.titre}</h1>
-<table><tr>
+<h3>${question.titre}</h3>
+<form action="#" class="form-horizontal">
+<table class="control-group">
+  <tr>
   <td style="width: 60%; vertical-align: top;">
     <table>
       <tr>
-        <td class="label">Type&nbsp;:</td>
+        <td class="control-label">Type</td>
         <td>
           ${question.type.nom}
         </td>
@@ -44,7 +46,7 @@
   <td style="width: 40%; vertical-align: top;">
     <table>
       <tr>
-        <td class="label"><g:message code="question.propriete.principalAttachement"/>&nbsp;:</td>
+        <td class="control-label"><g:message code="question.propriete.principalAttachement"/></td>
         <td>
           <g:if test="${question.principalAttachement}">
             <g:link action="viewAttachement" controller="attachement"
@@ -56,39 +58,39 @@
         </td>
       </tr>
       <tr>
-        <td class="label">Titre&nbsp;:</td>
+        <td class="control-label">Titre</td>
         <td>
           ${question.titre}
         </td>
       </tr>
       <tr>
-        <td class="label">Auteur&nbsp;:</td>
+        <td class="control-label">Auteur</td>
         <td>
           ${question.proprietaire.prenom} ${question.proprietaire.nom}
         </td>
       </tr>
       <tr>
-        <td class="label">Type&nbsp;:</td>
+        <td class="control-label">Type</td>
         <td>
           ${question.type.nom}
         </td>
       </tr>
 
       <tr>
-        <td class="label">Mati&egrave;re&nbsp;:</td>
+        <td class="control-label">Mati&egrave;re</td>
         <td>
           ${question.matiere?.libelleLong}
         </td>
       </tr>
       <tr>
-        <td class="label">Niveau&nbsp;:</td>
+        <td class="control-label">Niveau</td>
         <td>
           ${question.niveau?.libelleLong}
         </td>
       </tr>
 
       <tr>
-        <td class="label">Partage&nbsp;:</td>
+        <td class="control-label">Partage</td>
         <td>
           <g:if test="${question.estPartage()}">
             <a href="${question.copyrightsType.lien}"
@@ -106,3 +108,4 @@
     </table>
   </td>
 </tr></table>
+</form>

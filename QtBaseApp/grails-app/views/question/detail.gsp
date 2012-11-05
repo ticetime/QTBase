@@ -32,12 +32,16 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <r:script>
-    $(document).ready(function () {
-      $('#menu-item-contributions').addClass('actif');
-      initButtons();
-    });
-  </r:script>
+  <style type='text/css'>
+      h3 {
+        margin-left: 1em;
+      }
+      .form-horizontal .control-label {
+        font-weight: bold;
+        width: 90px;
+      }
+
+      </style>
   <title><g:message code="question.detail.head.title" /></title>
 </head>
 
@@ -47,22 +51,24 @@
           model="[liens: liens]"/>
 
 <g:if test="${sujet == null}">
-  <div class="portal-tabs">
-
-    <span class="portal-tabs-famille-liens">
+  <div class="navbar">
+   <div class="navbar-inner">
+     <ul class="nav">
   <g:if test="${artefactHelper.utilisateurPeutModifierArtefact(utilisateur, question)}">
-    <g:link action="edite" class="modify"
-            id="${question.id}">Modifier l'item</g:link>&nbsp; |
+    <li><g:link action="edite"
+            id="${question.id}"><i class="icon-pencil"></i>Modifier l'item</g:link></li>
   </g:if>
   <g:else>
-    <span class="modify">Modifier l'item</span>&nbsp;| &nbsp;
+    <li class="disabled"><a href="#"><i class="icon-ban-circle"></i>Modifier l'item</a></li>
   </g:else>
-  </span>
-  </span>
-  <span class="portal-tabs-famille-liens">
-    <button id="${question.id}">Actions</button>
+  <li>
+  <li class="dropdown" id="${question.id}">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                           <i class="icon-cog"></i>
+                           <b class="caret"></b>
+                         </a>
     <ul id="menu_actions_${question.id}"
-        class="tdbase-menu-actions">
+        class="dropdown-menu">
       <g:if test="${sujet}">
         <li><g:link action="insert"
                     controller="question${question.type.code}"
@@ -78,44 +84,44 @@
                     id="${question.id}">Dupliquer</g:link></li>
       </g:if>
       <g:else>
-        <li>Dupliquer</li>
+        <li class="disabled"><a href="#">Dupliquer</a></li>
       </g:else>
-      <li><hr/></li>
+      <li class="divider"></li>
       <g:if test="${artefactHelper.utilisateurPeutPartageArtefact(utilisateur, question)}">
         <li><g:link action="partage"
                     controller="question${question.type.code}"
                     id="${question.id}">Partager</g:link></li>
       </g:if>
       <g:else>
-        <li>Partager</li>
+        <li class="disabled"><a href="#">Partager</a></li>
       </g:else>
       <g:if test="${artefactHelper.utilisateurPeutExporterArtefact(utilisateur, question)}">
         <li><g:link action="exporter" controller="question"
                     id="${question.id}">Exporter</g:link></li>
       </g:if>
       <g:else>
-        <li>Exporter</li>
+        <li class="disabled"><a href="#">Exporter</a></li>
       </g:else>
-      <li><hr/></li>
+      <li class="divider"></li>
       <g:if test="${artefactHelper.utilisateurPeutSupprimerArtefact(utilisateur, question)}">
         <li><g:link action="supprime"
                     controller="question${question.type.code}"
                     id="${question.id}">Supprimer</g:link></li>
       </g:if>
       <g:else>
-        <li>Supprimer</li>
+        <li class="disabled"><a href="#">Supprimer</a></li>
       </g:else>
     </ul>
-  </span>
-
+    </li>
+  </ul>
+  </div>
   </div>
 </g:if>
 
 <g:if test="${flash.messageCode}">
-  <div class="portal-messages">
-    <li class="success"><g:message code="${flash.messageCode}"
-                                   args="${flash.messageArgs}"
-                                   class="portal-messages success"/></li>
+  <div class="alert alert-success">
+    <g:message code="${flash.messageCode}"
+                                   args="${flash.messageArgs}"/>
   </div>
 </g:if>
 
@@ -131,14 +137,13 @@
 </div>
 
 <g:if test="${sujet && !flash.messageCode}">
-<div class="form_actions edite" style="width: 69%">
+<div class="form-actions" style="width: 69%">
 
     <g:link action="insert"
             title="Insérer dans le sujet" id="${question.id}"
-            params="[sujetId: sujet?.id]" class="button">
+            params="[sujetId: sujet?.id]" class="btn">
       Insérer dans le sujet
     </g:link>
-  <br/><br/><br/><br/><br/><br/>
 </div>
 </g:if>
 
