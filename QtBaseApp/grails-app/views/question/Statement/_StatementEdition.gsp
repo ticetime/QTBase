@@ -27,15 +27,11 @@
   --}%
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-    <td class="label">Énoncé<span class="obligatoire">*</span>&nbsp;:</td>
+    <td class="control-label">Énoncé<span class="obligatoire">*</span></td>
     <td>
-    </td>
-</tr>
-<tr>
-    <td colspan="2">
         <g:textArea
                 name="specifobject.enonce"
-                rows="20" cols="55"
+                rows="20" cols="55" class="input-xxlarge"
                 value="${specifobject.enonce}"
                 id="specifobject.enonce"/>
     </td>
