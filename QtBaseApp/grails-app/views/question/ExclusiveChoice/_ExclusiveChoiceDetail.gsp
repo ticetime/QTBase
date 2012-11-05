@@ -26,10 +26,11 @@
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
 <tr>
-    <td class="label">Détail&nbsp;:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
         <g:set var="specifobject" value="${question.specificationObject}"/>
-        ${specifobject.libelle} <br/>
+        <strong>${specifobject.libelle}</strong>
+        <p>
         <g:each in="${specifobject.reponses}" var="reponse" status="i">
             &nbsp;
             <g:radio name="specifobject.indexBonneReponse" checked="${reponse.id == specifobject.indexBonneReponse}"
@@ -37,7 +38,8 @@
             ${reponse.libelleReponse}
             <br/>
         </g:each>
-        <strong>Présentation aléatoire :</strong> ${specifobject.shuffled ? 'oui' : 'non'}<br/>
-        <strong>Correction :</strong> ${specifobject.correction}
+        </p>
+        <strong>Présentation aléatoire</strong> ${specifobject.shuffled ? 'oui' : 'non'}<br/>
+        <strong>Correction</strong><br/> ${specifobject.correction}
     </td>
 </tr>

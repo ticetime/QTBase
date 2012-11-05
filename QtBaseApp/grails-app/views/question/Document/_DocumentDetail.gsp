@@ -32,24 +32,24 @@
 </r:script>
 
 <tr>
-  <td class="label">Détail&nbsp;:</td>
+  <td class="control-label">Détail</td>
 
   <td class="detail">
     <table>
       <tr>
-        <td><strong>Auteur&nbsp;:</strong></td>
+        <td><strong>Auteur</strong></td>
         <td>${specifobject.auteur}</td>
       </tr>
       <tr>
-        <td><strong>Source&nbsp;:</strong></td>
+        <td><strong>Source</strong></td>
         <td>${specifobject.source}</td>
       </tr>
       <tr>
-        <td><strong>Type&nbsp;:</strong></td>
+        <td><strong>Type</strong></td>
         <td>${specifobject.type}</td>
       </tr>
       <tr>
-        <td><strong>URL&nbsp;externe&nbsp;:</strong></td>
+        <td><strong>URL&nbsp;externe</strong></td>
         <td>
           <g:if test="${specifobject.urlExterne}">
             <a href="${specifobject.urlExterne}" target="_blank">
@@ -59,7 +59,7 @@
         </td>
       </tr>
       <tr>
-        <td><strong>Fichier&nbsp;:</strong></td>
+        <td><strong>Fichier</strong></td>
         <td>
           <g:if test="${specifobject.questionAttachementId}">
             <g:set var="attachement"
@@ -79,7 +79,7 @@
         </td>
       </tr>
       <tr>
-        <td><strong>Affichage&nbsp;:</strong></td>
+        <td><strong>Affichage</strong></td>
         <td>
           <g:checkBox name="specifobject.estInsereDansLeSujet"
                       title="Le document est inséré dans le sujet"
@@ -89,7 +89,7 @@
         </td>
       </tr>
       <tr>
-        <td><strong>Présentation&nbsp;:</strong></td>
+        <td><strong>Présentation</strong></td>
         <td>${specifobject.presentation}</td>
       </tr>
     </table>

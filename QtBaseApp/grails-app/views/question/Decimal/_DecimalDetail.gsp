@@ -27,14 +27,15 @@
   --}%
 <g:set var="specifobject" value="${question.specificationObject}"/>
 <tr>
-    <td class="label">Détail&nbsp;:</td>
+    <td class="control-label">Détail</td>
     <td class="detail">
-        ${specifobject.libelle} <br/>
-        ${specifobject.valeurAffichage}<br/>
+        <strong>${specifobject.libelle}</strong>
+        <p>${specifobject.valeurAffichage}</p>
         <g:if test="${specifobject.unite}">
-            <strong>Unité :</strong>&nbsp;${specifobject.unite}</br>
+            <strong>Unité</strong>&nbsp;${specifobject.unite}<br/>
         </g:if>
-        <strong>Précision :</strong> ${specifobject.precisionAffichage}<br/>
-        <strong>Correction :</strong> ${specifobject.correction}
+        <strong>Précision</strong> ${specifobject.precisionAffichage}<br/>
+        <strong>Correction</strong>
+          <p>${specifobject.correction}</p>
     </td>
 </tr>
