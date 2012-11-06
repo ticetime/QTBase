@@ -29,25 +29,18 @@
 <%@ page import="org.lilie.services.eliot.tice.utils.NumberUtils" %>
 
 <g:set var="sujet" value="${copie.sujet}"/>
-<div class="portal-form_container corrige visualise">
-  <ul>
-    <li class="name">${copie.eleve.nomAffichage}</li>
-    <li class="notice"><span
-            class="label">Appréciation :</span><em>${copie.correctionAnnotation}</em>
-    </li>
-    <li><span
-            class="label">Modulation :</span>  ${NumberUtils.formatFloat(copie.pointsModulation)}
-    </li>
-    <li class="note"><span
-            class="label">Note :</span>      <strong>${NumberUtils.formatFloat(copie.correctionNoteFinale ?: 0)}</strong> / ${NumberUtils.formatFloat(copie.maxPoints ?: 0)}
-    </li>
-  </ul>
+<div class="well well-small">
+
+    <h4>${copie.eleve.nomAffichage}</h4>
+    <p>Appréciation : <strong>${copie.correctionAnnotation}</strong> <br/>
+      Modulation :  ${NumberUtils.formatFloat(copie.pointsModulation)} <br/>
+      Note : <strong>${NumberUtils.formatFloat(copie.correctionNoteFinale ?: 0)}</strong> / ${NumberUtils.formatFloat(copie.maxPoints ?: 0)}</p>
 
 </div>
 
 <g:if test="${copie.modaliteActivite.estOuverte()}">
   <g:if test="${copie.dateRemise}">
-    <div class="portal-messages notice">
+    <div class="alert alert-info">
       Note (correction automatique) :
       <g:formatNumber number="${copie.correctionNoteAutomatique}"
                       format="##0.00"/>
@@ -56,13 +49,13 @@
     </div>
   </g:if>
   <g:if test="${!copie.estModifiable()}">
-    <div class="portal-messages notice">
+    <div class="alert alert-info">
       La copie n'est plus modifiable.
     </div>
   </g:if>
 </g:if>
 <form method="post" class="visualise">
-  <h1 class="tdbase-sujet-titre">${sujet.titre}</h1>
+  <h2>${sujet.titre}</h2>
 <g:set var="indexReponseNonVide" value="0"/>
 <g:set var="indexQuestion" value="1"/>
 <g:set var="exericeEnCours" value="${null}"/>
@@ -88,7 +81,7 @@
    <!-- -------------------------------- -->
    <div class="tdbase-sujet-edition-question">
     <g:if test="${question.type.interaction}">
-      <h1>Question ${indexQuestion}</h1>
+      <h3>Question ${indexQuestion}</h3>
       <g:set var="indexQuestion" value="${indexQuestion.toInteger() + 1}"/>
       <div class="tdbase-sujet-edition-question-points">
         <div id="SujetSequenceQuestions-${sujetQuestion.id}">
@@ -137,7 +130,7 @@
    <!-- -------------------------------- -->
    <div class="tdbase-sujet-edition-question">
     <g:if test="${question.type.interaction}">
-      <h2>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h2>
+      <h4>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h4>
       <g:set var="indexQuestionInExercice"
              value="${indexQuestionInExercice.toInteger() + 1}"/>
       <div class="tdbase-sujet-edition-question-points">
@@ -192,10 +185,10 @@
     <g:set var="etaitDansUnExercice" value="${true}"/>
     <div class="exercice" id="exercice_${indexExercice}">
 
-    <h1>Exercice ${indexExercice}</h1>
+    <h3>Exercice ${indexExercice}</h3>
 
     <div class="tdbase-sujet-edition-question">
-    <h2>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h2>
+    <h4>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h4>
 
     <g:set var="indexQuestionInExercice"
            value="${indexQuestionInExercice.toInteger() + 1}"/>
