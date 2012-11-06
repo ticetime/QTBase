@@ -32,7 +32,6 @@
   <r:require modules="jquery"/>
   <r:script>
     $(document).ready(function () {
-      $('#menu-item-resultats').addClass('actif');
       $("select").change(function () {
         $("form").submit();
       })
@@ -46,17 +45,15 @@
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
 <g:if test="${flash.messageCode}">
-  <div class="portal-messages">
-    <li class="notice"><g:message code="${flash.messageCode}"/></li>
-  </div>
+    <div class="alert alert-info"><g:message code="${flash.messageCode}"/></div>
 </g:if>
 <div class="portal-form_container result">
-  <g:form method="get" action="liste" controller="resultats"
+  <g:form method="get" action="liste" controller="resultats" class="form-horizontal"
           name="form-eleve-select">
     <table>
       <tr>
-        <td class="label">Élève :</td>
-        <td><strong><g:select from="${eleves}" name="eleveId"
+        <td class="control-label">Élève</td>
+        <td style="width:75%"><strong><g:select from="${eleves}" name="eleveId"
                               optionKey="id" optionValue="nomAffichage"
                               value="${eleveSelectionne.id}"/></strong>
         </td>
@@ -65,12 +62,9 @@
   </g:form>
 </div>
 <g:if test="${copies}">
-  <div class="portal_pagination">
-    <p class="nb_result">${copies.totalCount} résultat(s)</p>
-
-    <div class="pager">Page(s) : <g:paginate
-            total="${copies.totalCount}"></g:paginate></div>
-  </div>
+    <div class="pull-right" style="margin-top: 3em">${copies.totalCount} résultat(s)</div>
+    <g:paginate
+            total="${copies.totalCount}"></g:paginate>
 
   <div class="portal-default_results-list sceance resultats">
     <g:each in="${copies}" status="i" var="copie">
@@ -79,8 +73,8 @@
         <h1>${seance.matiere?.libelleLong}</h1>
 
         <g:link action="visualiseCopie" controller="resultats"
-                class="button voir"
-                id="${copie.id}" title="Visualiser la copie">
+                class="btn"
+                id="${copie.id}" title="Visualiser la copie"><i class="icon-eye-open"></i>
         </g:link>
 
         <h2><span>${seance.sujet.titre}</span></h2>
@@ -89,11 +83,11 @@
           <em>(Séance du :  ${seance.dateDebut.format('dd/MM/yy HH:mm')}  au ${seance.dateFin.format('dd/MM/yy HH:mm')})</em>
         </p>
 
-        <p class="note">
-          <strong>» Note finale :</strong><b><g:formatNumber
+        <p>
+          <strong>» Note finale :</strong> <g:formatNumber
                 number="${copie.correctionNoteFinale}"
                 format="##0.00"/> / <g:formatNumber number="${copie.maxPoints}"
-                                                    format="##0.00"/></b>
+                                                    format="##0.00"/>
           <strong>» Note auto. :</strong> <g:formatNumber
                 number="${copie.correctionNoteAutomatique}"
                 format="##0.00"/> / <g:formatNumber
@@ -110,8 +104,8 @@
 
 </g:if>
 <g:else>
-  <div class="portal_pagination">
-    <p class="nb_result">Aucune copie à visualiser</p>
+  <div class="alert alert-info">
+    Aucune copie à visualiser
   </div>
 </g:else>
 
