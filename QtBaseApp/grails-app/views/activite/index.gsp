@@ -31,13 +31,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta name="layout" content="eliot-tdbase-activite"/>
+  <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <r:script>
-    $(document).ready(function() {
-      $('#menu-item-accueil').addClass('actif');
-    });
-  </r:script>
   <title><g:message code="activite.index.head.title" /></title>
 </head>
 

@@ -29,7 +29,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta name="layout" content="eliot-tdbase-maintenance"/>
+  <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase"/>
   <title><g:message code="maintenance.head.title"/></title>
 </head>
@@ -50,7 +50,7 @@
 
     <g:link action="garbageCollectAttachementDataStore"
               controller="maintenance">Garbage collection des fichiers du datastore</g:link>
-  <div class="portal-messages notice" style="color: red">Par précauton, il est recommandé d'effectuer une sauvegarde du datastore avant de
+  <div class="alert alert-danger">Par précauton, il est recommandé d'effectuer une sauvegarde du datastore avant de
       lancer cette action de maintenance.</div>
     <p>
   </p>

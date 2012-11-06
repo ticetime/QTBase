@@ -1,7 +1,7 @@
 <html>
   <head>
 	  <title>Oups... une erreur s'est produite</title>
-      <meta name="layout" content="eliot-tdbase-pub"/>
+      <meta name="layout" content="eliot-tdbase"/>
 	  <style type="text/css">
 	  		.message {
 	  			border: 1px solid black;

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="eliot-tdbase-pub"/>
+		<meta name="layout" content="eliot-tdbase"/>
 		<title>Bienvenue sur éliot-tdbase</title>
 		<style type="text/css" media="screen">
 			#status {

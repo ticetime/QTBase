@@ -27,7 +27,7 @@
   --}%
 
 <head>
-  <meta name='layout' content='eliot-tdbase-pub'/>
+  <meta name='layout' content='eliot-tdbase'/>
   <title>Accès refusé</title>
 </head>
 

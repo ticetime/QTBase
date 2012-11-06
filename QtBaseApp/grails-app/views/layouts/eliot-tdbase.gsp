@@ -34,7 +34,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
   <meta charset="UTF-8">
-  <title><g:layoutTitle default="TDbase"/></title>
+  <title><g:layoutTitle default="QTBase"/></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style type="text/css">
           body {
@@ -44,8 +44,8 @@
         </style>
   <r:require module="eliot-tdbase"/>
   <r:require module="bootstrap"/>
-  <r:layoutResources/>
   <g:layoutHead/>
+  <r:layoutResources/>
 </head>
 
 <body>

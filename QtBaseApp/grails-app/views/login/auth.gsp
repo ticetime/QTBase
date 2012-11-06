@@ -26,7 +26,7 @@
   -  <http://www.cecill.info/licences.fr.html>.
   --}%
 <head>
-  <meta name='layout' content='eliot-tdbase-pub'/>
+  <meta name='layout' content='eliot-tdbase'/>
   <title>Login</title>
   <style type='text/css' media='screen'>
   #login {

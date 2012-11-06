@@ -28,7 +28,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta name="layout" content="eliot-tdbase-resultats"/>
+  <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="jquery"/>
   <r:script>
     $(document).ready(function () {

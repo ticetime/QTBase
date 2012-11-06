@@ -32,7 +32,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta name="layout" content="eliot-tdbase-activite"/>
+  <meta name="layout" content="eliot-tdbase"/>
   <g:if test="${copie.estModifiable()}">
     <r:require module="copieEdite_CopieModifiable"/>
   </g:if>
