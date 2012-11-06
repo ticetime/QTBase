@@ -49,40 +49,36 @@
           model="[liens: liens]"/>
 
 <g:hasErrors bean="${copie}">
-  <div class="portal-messages">
     <g:eachError>
-      <li class="error"><g:message error="${it}"/></li>
+      <div class="alert alert-error"><g:message error="${it}"/></div>
     </g:eachError>
-  </div>
 </g:hasErrors>
 <g:if test="${request.messageCode}">
-  <div class="portal-messages">
-    <li class="success"><g:message code="${request.messageCode}"/></li>
-  </div>
+    <div class="alert alert-success"><g:message code="${request.messageCode}"/></div>
 </g:if>
 <g:set var="sujet" value="${copie.sujet}"/>
 <g:if test="${copie.modaliteActivite.estPerimee()}">
-  <div class="portal-form_container">
+  <div class="alert alert-info">
     <table>
       <tr>
-        <td class="label">Élève :</td>
+        <td class="control-label">Élève :</td>
         <td><strong>${copie.eleve.nomAffichage}</strong></td>
       </tr>
 
       <tr>
-        <td class="label">Appréciation :</td>
+        <td class="control-label">Appréciation :</td>
         <td>
           ${copie.correctionAnnotation}
         </td>
       </tr>
       <tr>
-        <td class="label">Modulation :</td>
+        <td class="control-label">Modulation :</td>
         <td>
           ${NumberUtils.formatFloat(copie.pointsModulation)}
         </td>
       </tr>
       <tr>
-        <td class="label">Note :</td>
+        <td class="control-label">Note :</td>
         <td>
           <strong>${NumberUtils.formatFloat(copie.correctionNoteFinale)}
             / ${NumberUtils.formatFloat(copie.maxPoints)}</strong>
@@ -92,10 +88,8 @@
   </div>
 </g:if>
 <g:if test="${copie.modaliteActivite.estOuverte()}">
-  <ul>
 
-    <div class="portal-messages">
-      <li class="notice">
+      <div class="alert alert-info">
         Date dernier enregistrement : <span
               id="date_enregistrement">${copie.dateEnregistrement?.format(message(code:'default.date.format'))}</span>
         <g:if test="${copie.dateRemise}">
@@ -107,17 +101,13 @@
           &nbsp;&nbsp;   &nbsp;&nbsp;(copie remise le ${copie.dateRemise.format('dd/MM/yy  à HH:mm')})
 
         </g:if>
-      </li>
-    </div>
+      </div>
 
     <g:if test="${!copie.estModifiable()}">
-      <div class="portal-messages">
-        <li class="notice">
+        <div class="alert alert-warning">
           <strong>La copie n'est plus modifiable.</strong>
-        </li>
-      </div>
+        </div>
     </g:if>
-  </ul>
 </g:if>
 
 <g:render template="/copie/edite"
