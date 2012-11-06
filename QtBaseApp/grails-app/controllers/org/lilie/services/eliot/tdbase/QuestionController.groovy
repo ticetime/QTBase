@@ -355,7 +355,7 @@ class QuestionController {
       afficheLiensModifier = false
     }
     boolean affichePager = false
-    if (questions.totalCount > maxItems) {
+    if (questions.totalCount > params.max) {
       affichePager = true
     }
     [liens: breadcrumpsService.liens,
@@ -381,7 +381,7 @@ class QuestionController {
                                                                  params)
     boolean afficheLiensModifier = true
     boolean affichePager = false
-    if (questions.totalCount > maxItems) {
+    if (questions.totalCount > params.max) {
       affichePager = true
     }
     def model = [liens: breadcrumpsService.liens,

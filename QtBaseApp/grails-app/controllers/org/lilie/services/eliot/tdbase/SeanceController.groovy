@@ -184,7 +184,7 @@ class SeanceController {
     def modalitesActivites = modaliteActiviteService.findModalitesActivitesForEnseignant(personne,
                                                                                          params)
     boolean affichePager = false
-    if (modalitesActivites.totalCount > maxItems) {
+    if (modalitesActivites.totalCount > params.max ) {
       affichePager = true
     }
     render(view: '/seance/liste', model: [liens: breadcrumpsService.liens,

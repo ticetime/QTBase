@@ -33,12 +33,6 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="eliot-tdbase-ui"/>
-  <r:script>
-    $(document).ready(function () {
-      $('#menu-item-seances').addClass('actif');
-      initButtons();
-    });
-  </r:script>
   <title><g:message code="activite.seance.liste.head.title" /></title>
 </head>
 
@@ -48,18 +42,17 @@
           model="[liens: liens]"/>
 
 <g:if test="${flash.messageCode}">
-  <div class="portal-messages">
-    <li class="notice"><g:message code="${flash.messageCode}"/></li>
+  <div class="alert alert-info">
+    <g:message code="${flash.messageCode}"/>
   </div>
 </g:if>
 <g:if test="${seances}">
-  <div class="portal_pagination">
-    <p class="nb_result">${seances.totalCount} résultat(s)</p>
+  <div>
+    <div class="pull-right">${seances.totalCount} résultat(s)</div>
     <g:if test="${affichePager}">
-      <div class="pager">
-        Page(s) : <g:paginate total="${seances.totalCount}"></g:paginate>
-      </div>
+       <g:paginate total="${seances.totalCount}"></g:paginate>
     </g:if>
+    <g:else><div>&nbsp;</div></g:else>
 
   </div>
 
@@ -70,8 +63,8 @@
 
         <!-- Pour les sceance déjà effectuées et non modifiable à la place de la classe "work" mettre "voir" -->
         <g:link action="travailleCopie" controller="activite"
-                class="button work"
-                id="${seance.id}" title="Travailler sa copie">
+                class="btn"
+                id="${seance.id}" title="Travailler sa copie"><i class="icon-edit"></i>
         </g:link>
 
         <p><strong>» Groupe :</strong><b>${seance.groupeLibelle}</b></p>

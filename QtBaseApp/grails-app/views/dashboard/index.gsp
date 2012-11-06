@@ -34,7 +34,7 @@
 </head>
 
 <body>
-<div class="container">
+
   <g:render template="/breadcrumps" plugin="lms-common"
             model="[liens: liens]"/>
   <div id="widgets">
@@ -45,6 +45,6 @@
     <g:render template="/question/w_questions"
               model="[items: items, titre: 'Mes items récents']"/>
   </div>
-</div>
+
 </body>
 </html>

@@ -29,7 +29,7 @@
 
 
 <div class="widget resultats">
-  <h1><g:link action="listeResultats" controller="activite">${titre}</g:link></h1>
+  <h4><g:link action="listeResultats" controller="activite">${titre}</g:link></h4>
   <g:if test="${copies}">
   <p class="nb_result">${copies.totalCount} résultat(s)
   	<g:if test="${copies.totalCount>5}">

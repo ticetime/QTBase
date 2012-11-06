@@ -53,7 +53,7 @@ class SujetController {
                                          rechercheUniquementSujetsChercheur,
                                          params)
     boolean affichePager = false
-    if (sujets.totalCount > maxItems) {
+    if (sujets.totalCount > params.max) {
       affichePager = true
     }
 
@@ -80,7 +80,7 @@ class SujetController {
     Personne personne = authenticatedPersonne
     def sujets = sujetService.findSujetsForProprietaire(personne, params)
     boolean affichePager = false
-    if (sujets.totalCount > maxItems) {
+    if (sujets.totalCount > params.max ) {
       affichePager = true
     }
     def model = [liens: breadcrumpsService.liens,
