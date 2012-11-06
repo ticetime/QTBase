@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Erreur</title>
-		<meta name="layout" content="eliot-tdbase-pub">
+		<meta name="layout" content="eliot-tdbase">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'errors.css')}" type="text/css">
 	</head>
 	<body>

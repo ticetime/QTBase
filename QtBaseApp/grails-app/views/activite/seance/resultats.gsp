@@ -35,11 +35,6 @@
 <head>
   <meta name="layout" content="eliot-tdbase"/>
   <r:require modules="jquery"/>
-  <r:script>
-    $(document).ready(function() {
-      $('#menu-item-resultats').addClass('actif');
-    });
-  </r:script>
   <title><g:message code="activite.seance.resultats.head.title" /></title>
 </head>
 
@@ -47,9 +42,8 @@
   <g:render template="/breadcrumps" plugin="lms-common" model="[liens: liens]"/>
 
   <g:if test="${copies}">
-    <div class="portal_pagination">
-      <p class="nb_result">${copies.totalCount} résultat(s)</p> <g:paginate total="${copies.totalCount}"></g:paginate>
-    </div>
+
+      <div class="pull-right">${copies.totalCount} résultat(s)</div> <g:paginate total="${copies.totalCount}"></g:paginate>
 	
 	<div class="portal-default_results-list sceance">
 		<g:each in="${copies}" status="i" var="copie">
@@ -84,9 +78,7 @@
 	
   </g:if>
   <g:else>
-     <div class="portal_pagination">
-      <p class="nb_result">Aucune copie à visualiser</p>
-    </div>
+      <div class="alert alert-info">Aucune copie à visualiser</div>
   </g:else>
 
 </body>
