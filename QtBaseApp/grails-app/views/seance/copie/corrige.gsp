@@ -53,55 +53,50 @@
 
 <g:render template="/breadcrumps" plugin="lms-common"
           model="[liens: liens]"/>
-<div class="portal_pagination">
-  <p class="nb_result">${copies.totalCount} élève(s)</p><g:paginate
+  <div class="pull-right">${copies.totalCount} élève(s)</div><g:paginate
         total="${copies.totalCount}"
         id="${seance.id}">
 </g:paginate>
-</div>
+
 <g:set var="copie" value="${copies[0]}"/>
 
 <g:hasErrors>
-  <div class="portal-messages">
     <g:eachError>
-      <li class="error"><g:message error="${it}"/></li>
+      <div class="alert alert-error"><g:message error="${it}"/></div>
     </g:eachError>
-  </div>
 </g:hasErrors>
 <g:if test="${request.messageCode}">
-  <div class="portal-messages">
-    <li class="success"><g:message code="${request.messageCode}"
-                                   class="portal-messages success"/></li>
-  </div>
+    <div class="alert alert-success"><g:message code="${request.messageCode}"
+                                   class="portal-messages success"/></div>
 </g:if>
 <g:set var="sujet" value="${copie.sujet}"/>
-<form method="post">
+<form method="post" class="form-horizontal">
 
   <g:hiddenField name="copieId" value="${copie.id}"/>
   <div class="portal-form_container corrige">
     <table>
       <tr>
-        <td class="label">Élève :</td>
-        <td><strong>${copie.eleve.nomAffichage}</strong></td>
+        <td class="control-label">Élève</td>
+        <td style="width:75%;"><strong>${copie.eleve.nomAffichage}</strong></td>
       </tr>
 
       <tr>
-        <td class="label">Appréciation :</td>
+        <td class="control-label">Appréciation</td>
         <td>
-          <g:textArea name="copieAnnotation"
+          <g:textArea name="copieAnnotation" class="input-xlarge"
                       value="${copie.correctionAnnotation}" rows="3"
                       cols="50" style="height: auto;"/>
         </td>
       </tr>
       <tr>
-        <td class="label">Modulation :</td>
+        <td class="control-label">Modulation</td>
         <td>
           <g:textField name="copiePointsModulation"
-                       value="${NumberUtils.formatFloat(copie.pointsModulation)}" class="micro"/>
+                       value="${NumberUtils.formatFloat(copie.pointsModulation)}" class="input-small" style="width: 90px"/>
         </td>
       </tr>
       <tr>
-        <td class="label">Note :</td>
+        <td class="control-label">Note</td>
         <td>
           <strong><span
                   id="copie_note_finale">${NumberUtils.formatFloat(copie.correctionNoteFinale ?: 0)}</span>
@@ -113,14 +108,14 @@
   </div>
   <g:hiddenField name="copieNoteFinale" value="${NumberUtils.formatFloat(copie.correctionNoteFinale ?: 0)}"/>
   <g:hiddenField name="copieMaxPoints" value="${copie.maxPoints}"/>
-  <div class="form_actions corrige">
-    <g:actionSubmit value="Enregistrer" action="enregistreCopie" class="button"
+  <div class="form_actions">
+    <g:actionSubmit value="Enregistrer" action="enregistreCopie" class="btn"
                     title="Enregistrer" id="${seance.id}"/>
   </div>
 </form>
 
 <div class="correction_copie">
-<h1 class="tdbase-sujet-titre">${sujet.titre}</h1>
+<h2>${sujet.titre}</h2>
 <g:set var="indexReponseNonVide" value="0"/>
 <g:set var="indexQuestion" value="1"/>
 <g:set var="exericeEnCours" value="${null}"/>
@@ -146,7 +141,7 @@
    <!-- -------------------------------- -->
    <div class="tdbase-sujet-edition-question">
     <g:if test="${question.type.interaction}">
-      <h1>Question ${indexQuestion}</h1>
+      <h3>Question ${indexQuestion}</h3>
       <g:set var="indexQuestion" value="${indexQuestion.toInteger() + 1}"/>
       <div class="tdbase-sujet-edition-question-points">
         <div id="SujetSequenceQuestions-${sujetQuestion.id}">
@@ -198,7 +193,7 @@
    <!-- -------------------------------- -->
    <div class="tdbase-sujet-edition-question">
     <g:if test="${question.type.interaction}">
-      <h2>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h2>
+      <h4>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h4>
       <g:set var="indexQuestionInExercice"
              value="${indexQuestionInExercice.toInteger() + 1}"/>
       <div class="tdbase-sujet-edition-question-points">
@@ -256,10 +251,10 @@
     <g:set var="etaitDansUnExercice" value="${true}"/>
     <div class="exercice" id="exercice_${indexExercice}">
 
-    <h1>Exercice ${indexExercice}</h1>
+    <h3>Exercice ${indexExercice}</h3>
 
     <div class="tdbase-sujet-edition-question">
-    <h2>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h2>
+    <h4>Ex. ${indexExercice} → Question ${indexQuestionInExercice}</h4>
 
     <g:set var="indexQuestionInExercice"
            value="${indexQuestionInExercice.toInteger() + 1}"/>

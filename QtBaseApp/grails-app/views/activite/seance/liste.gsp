@@ -81,9 +81,7 @@
 
 </g:if>
 <g:else>
-  <div class="portal_pagination">
-    <p class="nb_result">Aucune séance</p>
-  </div>
+  <div class="alert alert-info">Aucune séance</div>
 </g:else>
 
 </body>
